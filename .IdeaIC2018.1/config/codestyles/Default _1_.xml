@@ -1,0 +1,40 @@
+<code_scheme name="Default (1)" version="173">
+  <option name="OTHER_INDENT_OPTIONS">
+    <value>
+      <option name="INDENT_SIZE" value="2" />
+      <option name="TAB_SIZE" value="2" />
+      <option name="SMART_TABS" value="true" />
+    </value>
+  </option>
+  <DartCodeStyleSettings>
+    <option name="DELEGATE_TO_DARTFMT" value="true" />
+  </DartCodeStyleSettings>
+  <ScalaCodeStyleSettings>
+    <option name="addFullQualifiedImports" value="false" />
+    <option name="addImportMostCloseToReference" value="true" />
+    <option name="classCountToUseImportOnDemand" value="2" />
+    <option name="collectImports" value="false" />
+    <option name="importLayout">
+      <array>
+        <option value="java" />
+        <option value="_______ blank line _______" />
+        <option value="scala" />
+        <option value="_______ blank line _______" />
+        <option value="all other imports" />
+      </array>
+    </option>
+    <option name="sortImports" value="false" />
+    <option name="NOT_CONTINUATION_INDENT_FOR_PARAMS" value="true" />
+    <option name="ALIGN_IN_COLUMNS_CASE_BRANCH" value="true" />
+    <option name="TYPE_ANNOTATION_PUBLIC_MEMBER" value="false" />
+    <option name="TYPE_ANNOTATION_PROTECTED_MEMBER" value="false" />
+    <option name="TYPE_ANNOTATION_EXCLUDE_IN_TEST_SOURCES" value="true" />
+  </ScalaCodeStyleSettings>
+  <editorconfig>
+    <option name="ENABLED" value="false" />
+  </editorconfig>
+  <codeStyleSettings language="Scala">
+    <option name="ALIGN_MULTILINE_PARAMETERS" value="false" />
+    <option name="ALIGN_GROUP_FIELD_DECLARATIONS" value="true" />
+  </codeStyleSettings>
+</code_scheme>

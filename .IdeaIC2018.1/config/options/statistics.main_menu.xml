@@ -1,0 +1,18 @@
+<application>
+  <component name="MainMenuCollector">
+    <counts>
+      <entry path="Edit -&gt; Redo" count="1" />
+      <entry path="File -&gt; Close Project" count="1" />
+      <entry path="File -&gt; Exit" count="1" />
+      <entry path="File -&gt; Invalidate Caches / Restart..." count="1" />
+      <entry path="File -&gt; Open Recent -&gt; Manage Projects..." count="1" />
+      <entry path="File -&gt; Open Recent -&gt; Reopen Project" count="4" />
+      <entry path="File -&gt; Open..." count="2" />
+      <entry path="File -&gt; Settings..." count="16" />
+      <entry path="Help -&gt; About" count="1" />
+      <entry path="Help -&gt; Check for Updates..." count="1" />
+      <entry path="Tools -&gt; Create Command-line Launcher..." count="1" />
+      <entry path="View -&gt; Tool Windows -&gt; sbt" count="1" />
+    </counts>
+  </component>
+</application>

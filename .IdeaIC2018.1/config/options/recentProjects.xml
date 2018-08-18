@@ -1,0 +1,512 @@
+<application>
+  <component name="RecentProjectsManager">
+    <option name="recentPaths">
+      <list>
+        <option value="$USER_HOME$/work/blaze-data-ingestion-service" />
+        <option value="$USER_HOME$/work/blaze-lib-kafkaencryption" />
+        <option value="$USER_HOME$/projects/talks/final-tagless" />
+        <option value="$USER_HOME$/work/blaze-data-retention-spark-jobs" />
+        <option value="$USER_HOME$/work/blaze-airflow-config" />
+        <option value="$USER_HOME$/work/blaze-bazaarvoice-ratings-spark-jobs" />
+        <option value="$USER_HOME$/work/replicator" />
+        <option value="$USER_HOME$/work/blaze-lib-dynamodb" />
+        <option value="$USER_HOME$/work/blaze-bazaarvoice-ratings-spark-jobs/blaze-bazaarvoice-ratings-spark-jobs_7039.ipr" />
+        <option value="$USER_HOME$/work/blaze-product-merge-rds-service" />
+        <option value="$USER_HOME$/work/blaze-lib-ingestion" />
+        <option value="$USER_HOME$/work/blaze-lib-kafka" />
+        <option value="$USER_HOME$/work/blaze-kafka-chatops-service/kafka-bot" />
+        <option value="$USER_HOME$/projects/haskell/kafka-bot" />
+        <option value="$USER_HOME$/tmp/kafka-rest" />
+        <option value="$USER_HOME$/tmp/kafka-rest/kafka-rest" />
+        <option value="$USER_HOME$/work/blaze-lib-consul" />
+        <option value="$USER_HOME$/work/blaze-product-merge-service" />
+        <option value="$USER_HOME$/work/jenkins-seed-scripts/cd.nl.wehkamp" />
+        <option value="$USER_HOME$/work/jenkins-seed-scripts/ci.global" />
+        <option value="$USER_HOME$/work/blaze-order-merge-service" />
+        <option value="$USER_HOME$/work/blaze-lib-docker-it" />
+        <option value="$USER_HOME$/projects/haskell/group" />
+        <option value="$USER_HOME$/projects/haskell/group/src" />
+        <option value="$USER_HOME$/projects/scala/reader-di" />
+        <option value="$USER_HOME$/tmp/quill" />
+        <option value="$USER_HOME$/work/blaze-recommendations-itemitem-service" />
+        <option value="$USER_HOME$/work/blaze-recommendations-toplist-service" />
+        <option value="$USER_HOME$/work/blaze-recommendations-gateway" />
+        <option value="$USER_HOME$/work/blaze-salesforce-jdbc-processor" />
+        <option value="$USER_HOME$/work/blaze-recommendations-toplist-redis-service" />
+        <option value="$USER_HOME$/work/blaze-product-service" />
+        <option value="$USER_HOME$/work/blaze-sri-spark-jobs" />
+        <option value="$USER_HOME$/work/blaze-recommendations-itemitem-service/blaze-recommendations-itemitem-service.ipr" />
+        <option value="$USER_HOME$/projects/scala/graphql-server" />
+        <option value="$USER_HOME$/projects/scala/shopping-list" />
+        <option value="$USER_HOME$/work/blaze-recommendations-itemitem-spark-jobs" />
+        <option value="$USER_HOME$/work/blaze-combination-merge-service" />
+        <option value="$USER_HOME$/work/blaze-basket-service" />
+        <option value="$USER_HOME$/work/blaze-recommendations-itemitem-service2" />
+        <option value="$USER_HOME$/work/blaze-recommendations-filtering-spark-jobs" />
+      </list>
+    </option>
+    <option name="openPaths">
+      <list>
+        <option value="$USER_HOME$/work/blaze-data-ingestion-service" />
+      </list>
+    </option>
+    <option name="lastPath" value="$USER_HOME$/work/blaze-data-ingestion-service" />
+    <option name="pid" value="29612" />
+    <option name="additionalInfo">
+      <map>
+        <entry key="$USER_HOME$/projects/haskell/group">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1524486875161" />
+              <option name="buildTimestamp" value="1522095812268" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/haskell/group/src">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1524386384350" />
+              <option name="buildTimestamp" value="1522095833958" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/haskell/kafka-bot">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1530777815929" />
+              <option name="buildTimestamp" value="1522095802214" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/scala/graphql-server">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-173.4127.27" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1515681795304" />
+              <option name="buildTimestamp" value="1514220689446" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/scala/reader-di">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1524385342889" />
+              <option name="buildTimestamp" value="1522095833958" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/scala/shopping-list">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-173.4127.27" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1514642913022" />
+              <option name="buildTimestamp" value="1514220660534" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/talks/final-tagless">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1533823801682" />
+              <option name="buildTimestamp" value="1522095798691" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tmp/kafka-rest">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1530602230792" />
+              <option name="buildTimestamp" value="1522095823857" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tmp/kafka-rest/kafka-rest">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1530283522900" />
+              <option name="buildTimestamp" value="1522095782164" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tmp/quill">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-173.4674.33" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1522933872937" />
+              <option name="buildTimestamp" value="1520278441349" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-airflow-config">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1533544760145" />
+              <option name="buildTimestamp" value="1522095822613" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-basket-service">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-172.4343.14" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1508868176908" />
+              <option name="buildTimestamp" value="1506404222814" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-bazaarvoice-ratings-spark-jobs">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1533539850620" />
+              <option name="buildTimestamp" value="1522095815522" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-bazaarvoice-ratings-spark-jobs/blaze-bazaarvoice-ratings-spark-jobs_7039.ipr">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1533215194960" />
+              <option name="buildTimestamp" value="1522095811562" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-combination-merge-service">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-172.4574.11" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1511263655730" />
+              <option name="buildTimestamp" value="1510606395959" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-data-ingestion-service">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1534269461160" />
+              <option name="buildTimestamp" value="1522095838662" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-data-retention-spark-jobs">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1533810396566" />
+              <option name="buildTimestamp" value="1522095798691" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-kafka-chatops-service/kafka-bot">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1531811171591" />
+              <option name="buildTimestamp" value="1522095827034" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-lib-consul">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1530282090155" />
+              <option name="buildTimestamp" value="1522095816359" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-lib-docker-it">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1524769390542" />
+              <option name="buildTimestamp" value="1522095794502" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-lib-dynamodb">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1533275721464" />
+              <option name="buildTimestamp" value="1522095795924" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-lib-ingestion">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1532603362737" />
+              <option name="buildTimestamp" value="1522095786774" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-lib-kafka">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1532508838854" />
+              <option name="buildTimestamp" value="1522095812113" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-lib-kafkaencryption">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1534231255199" />
+              <option name="buildTimestamp" value="1522095801905" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-order-merge-service">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1525422027555" />
+              <option name="buildTimestamp" value="1522095826096" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-product-merge-rds-service">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1533109527730" />
+              <option name="buildTimestamp" value="1522095801906" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-product-merge-service">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1530096341341" />
+              <option name="buildTimestamp" value="1522095818669" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-product-service">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-173.4301.25" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1517470717540" />
+              <option name="buildTimestamp" value="1516033038993" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-recommendations-filtering-spark-jobs">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-172.4343.14" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1508328170815" />
+              <option name="buildTimestamp" value="1506404235072" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-recommendations-gateway">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-173.4548.28" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1520329577362" />
+              <option name="buildTimestamp" value="1517267462916" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-recommendations-itemitem-service">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-173.4674.33" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1522144300112" />
+              <option name="buildTimestamp" value="1520278464210" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-recommendations-itemitem-service/blaze-recommendations-itemitem-service.ipr">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-173.4127.27" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1515765826159" />
+              <option name="buildTimestamp" value="1514220662811" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-recommendations-itemitem-service2">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-172.4343.14" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1508416102058" />
+              <option name="buildTimestamp" value="1506404265538" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-recommendations-itemitem-spark-jobs">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-173.3942.27" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1513268411845" />
+              <option name="buildTimestamp" value="1512983478853" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-recommendations-toplist-redis-service">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-173.4548.28" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1519899318332" />
+              <option name="buildTimestamp" value="1517267484314" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-recommendations-toplist-service">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-173.4548.28" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1521011131477" />
+              <option name="buildTimestamp" value="1517267470615" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-salesforce-jdbc-processor">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-173.4548.28" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1519899337409" />
+              <option name="buildTimestamp" value="1517267484314" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-sri-spark-jobs">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-173.4301.25" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1516861918499" />
+              <option name="buildTimestamp" value="1516033037742" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/jenkins-seed-scripts/cd.nl.wehkamp">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1530087999276" />
+              <option name="buildTimestamp" value="1522095818669" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/jenkins-seed-scripts/ci.global">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1530014714820" />
+              <option name="buildTimestamp" value="1522095818669" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/replicator">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1533539363812" />
+              <option name="buildTimestamp" value="1522095815522" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="lastProjectLocation" value="$USER_HOME$/work" />
+  </component>
+</application>

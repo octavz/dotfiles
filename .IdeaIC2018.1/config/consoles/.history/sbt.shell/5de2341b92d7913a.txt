@@ -1,0 +1,67 @@
+testOnly rfs.blaze.data.retention.loaders.SourceLoaderTest
+-. . -..- - / . -. - .-. -.--
+~testOnly rfs.blaze.data.retention.cmd.ProcessorTest
+-. . -..- - / . -. - .-. -.--
+last
+-. . -..- - / . -. - .-. -.--
+Future.succesful(1).andThen(x => Future.successful(2))
+-. . -..- - / . -. - .-. -.--
+import scala.concurrent._
+-. . -..- - / . -. - .-. -.--
+val f = Future.succesful(1).andThen(x => Future.successful(2))
+-. . -..- - / . -. - .-. -.--
+val f = Future.succesfull(1).andThen(x => Future.successfull(2))
+-. . -..- - / . -. - .-. -.--
+import scala.concurrent.ExecutionContext.Implicits.global
+-. . -..- - / . -. - .-. -.--
+val f = Future(1).andThen(x => Future(2))
+-. . -..- - / . -. - .-. -.--
+import scala.concurrent.duration_
+-. . -..- - / . -. - .-. -.--
+import scala.concurrent.duration._
+-. . -..- - / . -. - .-. -.--
+Await(f, 1.seconds)
+-. . -..- - / . -. - .-. -.--
+f
+-. . -..- - / . -. - .-. -.--
+val f = Future(1).andThen{ case x => Future(2)}
+-. . -..- - / . -. - .-. -.--
+Await.result(f, 1.seconds)
+-. . -..- - / . -. - .-. -.--
+reload
+-. . -..- - / . -. - .-. -.--
+         ceAction
+-. . -..- - / . -. - .-. -.--
+testOnly rfs.blaze.data.retendion.KafkaLoaderTest
+-. . -..- - / . -. - .-. -.--
+testOnly rfs.blaze.data.retention.kafka.KafkaLoaderTest
+-. . -..- - / . -. - .-. -.--
+testCompile
+-. . -..- - / . -. - .-. -.--
+clean
+-. . -..- - / . -. - .-. -.--
+evictions
+-. . -..- - / . -. - .-. -.--
+test:compile
+-. . -..- - / . -. - .-. -.--
+compile
+-. . -..- - / . -. - .-. -.--
+testOnly rfs.blaze.data.retension.kafka.KafkaLoaderTest
+-. . -..- - / . -. - .-. -.--
+dependencyTree
+-. . -..- - / . -. - .-. -.--
+assembly
+-. . -..- - / . -. - .-. -.--
+test rfs.blaz.data.retention.kafka.KafkaSinkTest
+-. . -..- - / . -. - .-. -.--
+testOnly rfs.blaz.data.retention.kafka.KafkaSinkTest
+-. . -..- - / . -. - .-. -.--
+testOnly rfs.blaze.data.retention.kafka.KafkaSinkTest
+-. . -..- - / . -. - .-. -.--
+testOnly rfs.blaze.data.retention.cmd.ProcessorTest
+-. . -..- - / . -. - .-. -.--
+test
+-. . -..- - / . -. - .-. -.--
+console
+-. . -..- - / . -. - .-. -.--
+testOnly rfs.blaze.data.retention.cmd.JobTest
