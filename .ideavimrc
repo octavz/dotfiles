@@ -1,0 +1,19 @@
+set ignorecase
+set smartcase
+set incsearch
+
+let mapleader = " "
+
+
+nmap <Leader>f :action FindInPath<CR>
+nmap <Leader><space> :action GotoFile<CR>
+nmap <Leader>cc :action CommentByLineComment<CR>
+nmap <Leader>cs :action CommentByBlockComment<CR>
+
+
+" Press `f` to activate AceJump
+map s :action AceAction<CR>
+" Press `F` to activate Target Mode
+map F :action AceTargetAction<CR>
+" Press `g` to activate Line Mode
+map S :action AceLineAction<CR>
