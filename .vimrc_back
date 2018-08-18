@@ -1,0 +1,308 @@
+set nocompatible | filetype indent plugin on | syn off
+
+call plug#begin()
+Plug 'megaannum/self'
+Plug 'megaannum/forms'
+Plug 'Shougo/vimproc', { 'do': 'make' }
+Plug 'Shougo/vimshell'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
+Plug 'scrooloose/syntastic'
+Plug 'majutsushi/tagbar'
+Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
+Plug 'tpope/vim-classpath', { 'for': 'clojure' }
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'nanotech/jellybeans.vim'
+Plug 'chriskempson/base16-vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'ervandew/supertab'
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'jlanzarotta/bufexplorer'
+Plug 'rking/ag.vim'
+"Plug 'tpope/vim-fugitive'
+"Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'wellle/targets.vim'
+"Plug 'ensime/ensime-vim', { 'for': 'scala1' }
+Plug 'mxw/vim-jsx', { 'for': 'javascript' }
+Plug 'elzr/vim-json'
+Plug 'justinmk/vim-sneak'
+Plug 'tpope/vim-repeat'
+Plug 'elmcast/elm-vim', { 'for': 'json' }
+Plug 'mattn/emmet-vim'
+"Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
+Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
+Plug 'raichoo/purescript-vim', { 'for': 'purescript'}
+Plug 'frigoeu/psc-ide-vim', { 'for': 'purescript'}
+Plug 'posva/vim-vue', { 'for': 'javascript'}
+"Plug 'easymotion/vim-easymotion'
+Plug 'vim-scripts/SyntaxRange'
+"Plug 'chrisbra/csv.vim'
+Plug 'junegunn/fzf'
+Plug 'Shougo/denite.nvim'
+Plug 'roxma/nvim-completion-manager'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'Shougo/deoplete.nvim'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
+call plug#end()
+
+let g:LanguageClient_serverCommands = {
+    \ 'haskell': ['hie', '--lsp','-l','/tmp/hie.log'],
+    \ 'python': ['pyls'],
+    \ }
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap <silent> <leader>t :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <leader><F2> :call LanguageClient#textDocument_rename()<CR>
+
+function! MakeSession()
+        let b:sessiondir = $HOME . "/.vim/sessions" . getcwd()
+        if (filewritable(b:sessiondir) != 2)
+                exe 'silent !mkdir -p ' b:sessiondir
+                redraw!
+        endif
+        let b:filename = b:sessiondir . '/session.vim'
+        exe "mksession! " . b:filename
+endfunction
+
+function! LoadSession()
+        let b:sessiondir = $HOME . "/.vim/sessions" . getcwd()
+        let b:sessionfile = b:sessiondir . "/session.vim"
+        if (filereadable(b:sessionfile))
+                exe 'source ' b:sessionfile
+        else
+                echo "No session loaded."
+        endif
+endfunction
+" au VimEnter * nested :call LoadSession()
+au VimLeave * :call MakeSession()
+
+set timeoutlen=500
+"set number
+set ruler
+set magic
+set tabstop=2
+set shiftwidth=2
+set expandtab
+if has("gui_running")
+  set guifont=Monaco\ 10
+endif
+"noremap h k
+"noremap j h
+"noremap k j
+set autoindent
+set ma
+set mouse=a
+set hlsearch      " highlight search terms
+set incsearch     " show search matches as you type
+set ignorecase
+set smartcase
+
+set undodir=~/.vim/undo//
+set backupdir=~/.vim/.backup//
+set directory=~/.vim/.swp//
+
+"set nobackup
+"set noswapfile
+set guioptions-=T
+set guioptions-=r
+set guioptions-=L
+set statusline=%n\ %F\ %m%r\%=%c-%l/%L
+set t_Co=256
+
+nmap <silent> <F3> :NERDTreeToggle<CR>
+
+let mapleader = " "
+inoremap <C-space> <C-x><C-o>
+:command! WQ wq
+:command! Wq wq
+:command! W w
+:command! Q q
+:command! R Require!
+
+let g:acp_enableAtStartup = 0
+
+"scala
+
+"autocmd BufWritePost *.scala :EnTypeCheck
+
+let g:syntastic_scala_checkers=['scalastyle']
+let g:loaded_syntastic_scala_scalastyle_checker = 1
+"let g:syntastic_scala_scalastyle_jar = '~/Apps/scalastyle_2.10-0.7.0-batch.jar'
+
+function! SaveAndRunVimdeck()
+   :write
+   :!vimdeck generate %:t
+ endfunction
+
+
+nmap <silent> <F7> :call SaveAndRunVimdeck()<CR><CR>
+
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>
+
+nmap <silent> <c-TAB> :ToggleBufExplorer<CR>
+nmap <silent> <leader><TAB> :ToggleBufExplorer<CR>
+
+au FileType clojure nmap <silent> cpR :Require!<CR>
+au FileType clojure nmap <silent> <leader>R :Require!<CR>
+au FileType clojure nmap <silent> <leader><f9> :!lein run<CR>
+au FileType clojure nmap <silent> <Leader>q :ccl<CR>
+
+au FileType scala nmap gd :EnDeclaration<CR>
+au FileType scala nmap <Esc>= :EnInspectType<CR>
+au FileType scala nmap <Esc><CR> :EnSuggestImport<CR>
+au FileType scala nmap <Leader>m :EnFormatSource<CR>
+au FileType scala let g:EclimCompletionMethod = 'omnifunc'
+
+"nmap <Leader>, :set filetype=scala<CR>
+
+"au filetype scala nmap <Leader>m :%!java -jar /home/octav/cli-assembly-0.1.7.jar -f -q +compactControlReadability +alignParameters +alignSingleLineCaseStatements +doubleIndentClassDeclaration +preserveDanglingCloseParenthesis +rewriteArrowSymbols +preserveSpaceBeforeArguments --stdin --stdout <CR>
+nmap <silent> <Leader><Space> :CtrlP<CR>
+nmap <silent> <Leader>n :CtrlP<CR>
+
+
+if !exists('g:neocomplcache_force_omni_patterns')
+        let g:neocomplcache_force_omni_patterns = {}
+endif
+let g:neocomplcache_force_omni_patterns.java = '\k\.\k*'
+
+"end scala
+
+"haskell
+"let g:ycm_semantic_triggers = {'haskell' : ['.'], 'elm':['.']}
+
+
+let g:syntastic_auto_loc_list=1
+nmap <F12> :TagbarToggle<CR>
+let g:tagbar_autofocus = 1
+
+"end haskell
+
+if has("gui_running") 
+  set background=dark
+  color dracula
+else 
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif 
+
+let g:fuf_modesDisable = []
+let g:fuf_mrufile_maxItem = 400
+let g:fuf_mrucmd_maxItem = 400
+let g:fuf_ignoreCase = 1
+
+let g:ctrlp_map = '<c-N>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_user_command = {
+                        \ 'types': {
+                        \ 1: ['.git', 'cd %s && git ls-files'],
+                        \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+                        \ },
+                        \ 'fallback': 'find %s/.. -type f'
+                        \ }
+let g:ctrlp_custom_ignore = {
+                        \ 'dir': '\.git$\|\.dist-buildwrapper$\|\.settings$',
+                        \ 'file': '\.o$\|\.so$\|\.class|\.hi$' }
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.class,*.hi,*.o
+set autowrite
+let g:NERDTreeChDirMode=2
+
+noremap <Leader>f :Ag <C-R><C-W><CR>
+
+"au VimEnter * RainbowParenthesesToggle
+"au Syntax * RainbowParenthesesLoadRound
+"au Syntax * RainbowParenthesesLoadSquare
+"au Syntax * RainbowParenthesesLoadBraces
+let g:rbpt_colorpairs = [
+    \ ['magenta',     'purple1'],
+    \ ['cyan',        'magenta1'],
+    \ ['green',       'slateblue1'],
+    \ ['yellow',      'cyan1'],
+    \ ['red',         'springgreen1'],
+    \ ['magenta',     'green1'],
+    \ ['cyan',        'greenyellow'],
+    \ ['green',       'yellow1'],
+    \ ['yellow',      'orange1'],
+    \ ]
+let g:rbpt_max = 9
+
+if has("gui_running")
+  set lines=80 columns=99
+else
+  " This is console Vim.
+  "if exists("+lines")
+    "set lines=50
+  "endif
+  "if exists("+columns")
+    "set columns=100
+  "endif
+endif
+
+let g:jsx_ext_required = 0
+set iskeyword-=!-~][)(
+set iskeyword-=.
+set iskeyword-='
+set iskeyword-="
+set iskeyword-=,
+set iskeyword-=|
+
+autocmd BufLeave,FocusLost * silent! wall
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+
+let g:elm_syntastic_show_warnings = 1
+let g:elm_format_autosave = 1
+let g:elm_setup_keybindings = 0
+nmap <silent> <Leader>q :lclose<CR>
+
+au FileType elm nmap <silent> <Leader>t :ElmShowDocs<CR>
+au FileType elm nmap <silent> <Leader>c :ElmMake<CR>
+au FileType elm nmap <silent> <Leader>l :ElmMakeMain<CR>
+au FileType elm nmap <silent> <Leader>e :ElmErrorDetail<CR>
+au FileType elm nmap <silent> <Leader>d :ElmBrowseDocs<CR>
+au FileType elm nmap <silent> <Leader>re :ElmRepl<CR>
+au FileType elm nmap <silent> <C-A-l> :ElmFormat<CR>
+
+au FileType purescript nmap <leader>t :PSCIDEtype<CR>
+au FileType purescript nmap <leader>s :PSCIDEapplySuggestion<CR>
+au FileType purescript nmap <leader>a :PSCIDEaddTypeAnnotation<CR>
+au FileType purescript nmap <leader>im :PSCIDEimportIdentifier<CR>
+au FileType purescript nmap <leader>r :PSCIDEload<CR>
+au FileType purescript nmap <leader>p :PSCIDEpursuit<CR>
+au FileType purescript nmap <leader>c :PSCIDEcaseSplit<CR>
+au FileType purescript nmap <leader>qd :PSCIDEremoveImportQualifications<CR>
+au FileType purescript nmap <leader>qa :PSCIDEaddImportQualifications<CR>
+au FileType purescript nmap gd :PSCIDEgoToDefinition<CR>
+
+let g:netrw_liststyle=3
+let g:netrw_winsize=20
+
+let g:psc_ide_syntastic_mode = 1
+let ensime_server_v2=1
+
+" unicode symbols
+"let g:airline_left_sep = '»'
+"let g:airline_left_sep = '▶'
+"let g:airline_right_sep = '«'
+"let g:airline_right_sep = '◀'
+"let g:airline_symbols.linenr = '␊'
+"let g:airline_symbols.linenr = '␤'
+"let g:airline_symbols.linenr = '¶'
+"let g:airline_symbols.branch = '⎇'
+"let g:airline_symbols.paste = 'ρ'
+"let g:airline_symbols.paste = 'Þ'
+"let g:airline_symbols.paste = '∥'
+"let g:airline_symbols.whitespace = 'Ξ'

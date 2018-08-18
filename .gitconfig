@@ -1,0 +1,18 @@
+[merge]
+  keepBackup = false
+	tool = meld
+[diff]
+	tool = kdiff3
+[user]
+	name = Octav Zaharia
+	email = ozaharia@wehkamp.nl
+[alias]
+	tree = log --graph --full-history --all --color --date=short --pretty=format:\"%Cred%x09%h %Creset%ad%Cblue%d %Creset %s %C(bold)(%an)%Creset\"
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
+[core]
+	excludesfile = ~/.gitignore_global
+	editor = /usr/bin/nvim
+[push]
+	default = current
+[gc]
+	autoDetach = false

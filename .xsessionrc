@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Load resources
+
+#xrandr --output HDMI1 --left-of eDP1 --dpi 96 
+#xrandr --output DP2 --above eDP1 --dpi 96 
+#xrandr --output eDP1 --refresh 60 
+#xrandr --output DP1 --left-of eDP1 --dpi 96 --refresh 60 --mode "3840x2160"
+
+setxkbmap -option 'caps:ctrl_modifier'  
+xcape -e 'Caps_Lock=Escape'
+setxkbmap us -variant colemak
+
