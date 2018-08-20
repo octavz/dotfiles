@@ -2,68 +2,81 @@ set nocompatible | filetype indent plugin on | syn off
 
 call plug#begin()
 "ui stuff
-Plug 'megaannum/self'
-Plug 'megaannum/forms'
 Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
-Plug 'roxma/nvim-completion-manager'
 Plug 'semanticart/simple-menu.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-startify'
+Plug 'vim-airline/vim-airline'
+Plug 'pseewald/nerdtree-tagbar-combined'
+Plug 'ervandew/supertab'
+Plug 'junegunn/fzf'
 Plug 'Shougo/denite.nvim'
+"Plug 'Shougo/deoplete.nvim'
+Plug 'ncm2/ncm2'
+Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-tagprefix'
+Plug 'ncm2/ncm2-syntax' | Plug 'Shougo/neco-syntax'
 
 "colors
-Plug 'nanotech/jellybeans.vim'
-Plug 'chriskempson/base16-vim'
 Plug 'altercation/vim-colors-solarized'
+Plug 'chriskempson/base16-vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'nanotech/jellybeans.vim'
+Plug 'vim-airline/vim-airline-themes'
 
 "general text productivity 
-Plug 'ervandew/supertab'
-Plug 'rking/ag.vim'
-Plug 'wellle/targets.vim'
-Plug 'justinmk/vim-sneak'
-Plug 'tpope/vim-repeat'
 Plug 'vim-scripts/SyntaxRange'
-Plug 'junegunn/fzf'
-Plug 'Shougo/deoplete.nvim'
 Plug 'vim-scripts/LargeFile'
-
+Plug 'justinmk/vim-sneak'
+Plug 'rking/ag.vim'
+Plug 'tpope/vim-repeat'
+Plug 'wellle/targets.vim'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-surround'
-Plug 'scrooloose/nerdcommenter'
 
-Plug 'neomake/neomake'
+"progrmamming productivity
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh', }
+Plug 'scrooloose/nerdcommenter'
 Plug 'w0rp/ale'
 Plug 'tpope/vim-fugitive'
 Plug 'kien/rainbow_parentheses.vim'
-
-Plug 'gabrielelana/vim-markdown'
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'mxw/vim-jsx', { 'for': 'javascript' }
-Plug 'elzr/vim-json'
-Plug 'posva/vim-vue', { 'for': 'javascript'}
-"Plug 'alx741/vim-hindent'
-Plug 'mpickering/hlint-refactor-vim'
-Plug 'neovimhaskell/haskell-vim'
-Plug 'elmcast/elm-vim', { 'for': 'json' }
 Plug 'mattn/emmet-vim'
+
+"languages
+"scala
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
+
+"elixir
+Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
+Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
+"javascript
+Plug 'mxw/vim-jsx', { 'for': 'javascript' }
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+"elm
+Plug 'elmcast/elm-vim'
+"purescript
+Plug 'frigoeu/psc-ide-vim', { 'for': 'purescript'}
+Plug 'raichoo/purescript-vim', { 'for': 'purescript'}
+"haskell
+Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
+Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
+"clojure
 Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
 Plug 'tpope/vim-classpath', { 'for': 'clojure' }
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
-Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
-Plug 'raichoo/purescript-vim', { 'for': 'purescript'}
-Plug 'frigoeu/psc-ide-vim', { 'for': 'purescript'}
+"others
+Plug 'elzr/vim-json'
+Plug 'gabrielelana/vim-markdown'
 
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-
-"Plug 'jlanzarotta/bufexplorer'
+"Plug 'megaannum/self'
+"Plug 'megaannum/forms'
+"Plug 'posva/vim-vue', { 'for': 'javascript'}
+"Plug 'neomake/neomake'
+"Plug 'alx741/vim-hindent'
 "Plug 'Shougo/vimproc', { 'do': 'make' }
 "Plug 'Shougo/vimshell'
 "Plug 'shime/vim-livedown'
@@ -151,6 +164,8 @@ au FileType haskell nnoremap <silent> <leader>him :HsimportModule<CR>
 let g:ale_linters ={
       \   'haskell': ['hlint', 'hdevtools', 'brittany'],
       \}
+let g:ale_fixers = {'haskell': ['brittany']}
+let g:ale_fix_on_save = 1
 
 "let g:necoghc_enable_detailed_browse = 1
 let g:haskell_classic_highlighting = 1
@@ -186,30 +201,6 @@ nnoremap <silent> <A-=> :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <leader><F2> :call LanguageClient#textDocument_rename()<CR>
 
-function! MakeSession()
-        let b:sessiondir = $HOME . "/.vim/sessions" . getcwd()
-        if (filewritable(b:sessiondir) != 2)
-                exe 'silent !mkdir -p ' b:sessiondir
-                redraw!
-        endif
-        let b:filename = b:sessiondir . '/session.vim'
-        exe "mksession! " . b:filename
-endfunction
-
-function! LoadSession()
-        let b:sessiondir = $HOME . "/.vim/sessions" . getcwd()
-        let b:sessionfile = b:sessiondir . "/session.vim"
-        if (filereadable(b:sessionfile))
-                exe 'source ' b:sessionfile
-        else
-                echo "No session loaded."
-        endif
-endfunction
-" au VimEnter * nested :call LoadSession()
-au VimLeave * :call MakeSession()
-
-nmap <silent> <F3> :NERDTreeToggle<CR>
-
 let mapleader = " "
 inoremap <C-space> <C-x><C-o>
 :command! WQ wq
@@ -217,15 +208,16 @@ inoremap <C-space> <C-x><C-o>
 :command! W w
 :command! Q q
 :command! R Require!
+:command! C e $MYVIMRC
+:command! S source %
 
 let g:acp_enableAtStartup = 0
 
 "scala
 
 "autocmd BufWritePost *.scala :EnTypeCheck
-
-let g:syntastic_scala_checkers=['scalastyle']
-let g:loaded_syntastic_scala_scalastyle_checker = 1
+"let g:syntastic_scala_checkers=['scalastyle']
+"let g:loaded_syntastic_scala_scalastyle_checker = 1
 "let g:syntastic_scala_scalastyle_jar = '~/Apps/scalastyle_2.10-0.7.0-batch.jar'
 
 function! SaveAndRunVimdeck()
@@ -242,6 +234,9 @@ nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 
 nmap <silent> <leader><TAB> :Denite buffer<CR>
+nmap <silent> <leader>df :Denite file/rec<CR>
+nmap <silent> <Leader><Space> :bnext<CR>
+nmap <silent> <C-A> :e $MYVIMRC<CR>
 
 au FileType clojure nmap <silent> cpR :Require!<CR>
 au FileType clojure nmap <silent> <leader>R :Require!<CR>
@@ -256,14 +251,8 @@ au FileType scala nmap <Leader>m :EnFormatSource<CR>
 "nmap <Leader>, :set filetype=scala<CR>
 
 "au filetype scala nmap <Leader>m :%!java -jar /home/octav/cli-assembly-0.1.7.jar -f -q +compactControlReadability +alignParameters +alignSingleLineCaseStatements +doubleIndentClassDeclaration +preserveDanglingCloseParenthesis +rewriteArrowSymbols +preserveSpaceBeforeArguments --stdin --stdout <CR>
-nmap <silent> <Leader><Space> :CtrlP<CR>
 nmap <silent> <Leader>n :CtrlP<CR>
 
-
-if !exists('g:neocomplcache_force_omni_patterns')
-        let g:neocomplcache_force_omni_patterns = {}
-endif
-let g:neocomplcache_force_omni_patterns.java = '\k\.\k*'
 
 "end scala
 
@@ -272,45 +261,58 @@ let g:neocomplcache_force_omni_patterns.java = '\k\.\k*'
 
 
 let g:syntastic_auto_loc_list=1
-nmap <F12> :TagbarToggle<CR>
+nmap <silent><M-3> :TagbarToggle<CR>
+nmap <silent><M-1> :ToggleNERDTreeAndTagbar<CR>
+nmap <silent> <M-2> :NERDTreeToggle<CR>
 let g:tagbar_autofocus = 1
 
 let g:tagbar_type_haskell = {
-    \ 'ctagsbin'  : 'hasktags',
-    \ 'ctagsargs' : '-x -c -o-',
-    \ 'kinds'     : [
+    \ 'ctagsbin'    : 'hasktags',
+    \ 'ctagsargs'   : '-x -c -o-',
+    \ 'kinds'       : [
         \  'm:modules:0:1',
-        \  'd:data: 0:1',
-        \  'd_gadt: data gadt:0:1',
-        \  't:type names:0:1',
-        \  'nt:new types:0:1',
+        \  'd:data:0:1',
+        \  'd_gadt:data gadt:0:1',
+        \  'nt:newtype:0:1',
         \  'c:classes:0:1',
-        \  'cons:constructors:1:1',
-        \  'c_gadt:constructor gadt:1:1',
+        \  'i:instances:0:1',
+        \  'cons:constructors:0:1',
+        \  'c_gadt:constructor gadt:0:1',
         \  'c_a:constructor accessors:1:1',
-        \  'ft:function types:1:1',
+        \  't:type names:0:1',
+        \  'pt:pattern types:0:1',
+        \  'pi:pattern implementations:0:1',
+        \  'ft:function types:0:1',
         \  'fi:function implementations:0:1',
         \  'o:others:0:1'
     \ ],
-    \ 'sro'        : '.',
-    \ 'kind2scope' : {
-        \ 'm' : 'module',
-        \ 'c' : 'class',
-        \ 'd' : 'data',
-        \ 't' : 'type'
+    \ 'sro'          : '.',
+    \ 'kind2scope'   : {
+        \ 'm'        : 'module',
+        \ 'd'        : 'data',
+        \ 'd_gadt'   : 'd_gadt',
+        \ 'c_gadt'   : 'c_gadt',
+        \ 'nt'       : 'newtype',
+        \ 'cons'     : 'cons',
+        \ 'c_a'      : 'accessor',
+        \ 'c'        : 'class',
+        \ 'i'        : 'instance'
     \ },
-    \ 'scope2kind' : {
-        \ 'module' : 'm',
-        \ 'class'  : 'c',
-        \ 'data'   : 'd',
-        \ 'type'   : 't'
+    \ 'scope2kind'   : {
+        \ 'module'   : 'm',
+        \ 'data'     : 'd',
+        \ 'newtype'  : 'nt',
+        \ 'cons'     : 'c_a',
+        \ 'd_gadt'   : 'c_gadt',
+        \ 'class'    : 'ft',
+        \ 'instance' : 'ft'
     \ }
 \ }
 
 "end haskell
 
 color dracula
-color solarized
+"color solarized
 if has("gui_running") 
   set background=dark
   set guifont=Monaco\ 10
@@ -326,6 +328,7 @@ let g:fuf_ignoreCase = 1
 
 let g:ctrlp_map = '<c-N>'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_root_markers = ['stack.yaml','build.sbt']
 let g:ctrlp_user_command = {
                         \ 'types': {
                         \ 1: ['.git', 'cd %s && git ls-files'],
@@ -340,10 +343,10 @@ let g:NERDTreeChDirMode=2
 
 noremap <Leader>f :Ag <C-R><C-W><CR>
 
-"au VimEnter * RainbowParenthesesToggle
-"au Syntax * RainbowParenthesesLoadRound
-"au Syntax * RainbowParenthesesLoadSquare
-"au Syntax * RainbowParenthesesLoadBraces
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 let g:rbpt_colorpairs = [
     \ ['magenta',     'purple1'],
     \ ['cyan',        'magenta1'],
@@ -357,26 +360,14 @@ let g:rbpt_colorpairs = [
     \ ]
 let g:rbpt_max = 9
 
-if has("gui_running")
-  set lines=80 columns=99
-else
-  " This is console Vim.
-  "if exists("+lines")
-    "set lines=50
-  "endif
-  "if exists("+columns")
-    "set columns=100
-  "endif
-endif
-
 let g:jsx_ext_required = 0
 
 autocmd BufLeave,FocusLost * silent! wall
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
 
-let g:elm_syntastic_show_warnings = 1
+"let g:elm_syntastic_show_warnings = 1
 "let g:elm_format_autosave = 1
 let g:elm_setup_keybindings = 0
 nmap <silent> <Leader>q :lclose<CR>:pclose<CR>
@@ -403,23 +394,16 @@ au FileType purescript nmap gd :PSCIDEgoToDefinition<CR>
 let g:netrw_liststyle=3
 let g:netrw_winsize=20
 
-let g:psc_ide_syntastic_mode = 1
+"let g:psc_ide_syntastic_mode = 1
 let g:LargeFile = 2
-let ensime_server_v2=1
 
-" unicode symbols
-"let g:airline_left_sep = '»'
-"let g:airline_left_sep = '▶'
-"let g:airline_right_sep = '«'
-"let g:airline_right_sep = '◀'
-"let g:airline_symbols.linenr = '␊'
-"let g:airline_symbols.linenr = '␤'
-"let g:airline_symbols.linenr = '¶'
-"let g:airline_symbols.branch = '⎇'
-"let g:airline_symbols.paste = 'ρ'
-"let g:airline_symbols.paste = 'Þ'
-"let g:airline_symbols.paste = '∥'
-"let g:airline_symbols.whitespace = 'Ξ'
+"airline settings
+let g:airline_section_a = ''
+let g:airline_section_y = ''
+let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#ale#enabled = 1
+let g:airline_powerline_fonts = 1
+
 set timeoutlen=500
 set number
 set ruler
@@ -449,7 +433,7 @@ set directory=~/tmp/.swp//
 set guioptions-=T
 set guioptions-=r
 set guioptions-=L
-set statusline=%n\ %F\ %m%r\%=%c-%l/%L
+"set statusline=%n\ %F\ %m%r\%=%c-%l/%L
 set iskeyword-=!-~][)(
 set iskeyword-=.
 set iskeyword-='

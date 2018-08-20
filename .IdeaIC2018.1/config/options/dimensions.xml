@@ -31,7 +31,7 @@
     <location key="FileChooserDialogImpl.1920.1080.1920.1080" x="2616" y="440" />
     <location key="git4idea.branch.GitSmartOperationDialog.1920.1080.1920.1080" x="2637" y="1353" />
     <location key="find.popup.0.0.3840.2160" x="2549" y="1367" />
-    <location key="SettingsEditor.0.0.3840.2160" x="797" y="1164" />
+    <location key="SettingsEditor.0.0.3840.2160" x="797" y="1038" />
     <location key="CommitChangelistDialog2.0.0.3840.2160" x="2501" y="1223" />
     <location key="SettingsEditor.1920.1080.1920.1080" x="2341" y="362" />
     <location key="FileChooserDialogImpl.0.493.1920.1080" x="744" y="812" />
@@ -70,7 +70,7 @@
     <location key="CommitChangelistDialog2.0.360.1920.1080" x="627" y="358" />
     <location key="SettingsEditor.0.360.1920.1080" x="53" y="343" />
     <location key="#Notifications.0.0.1920.1080" x="769" y="293" />
-    <location key="FileChooserDialogImpl.0.0.3840.2160" x="647" y="323" />
+    <location key="FileChooserDialogImpl.0.0.3840.2160" x="647" y="305" />
     <location key="Vcs.Push.Dialog.0.0.3840.2160" x="2632" y="1317" />
     <location key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog.0.0.3840.2160" x="2728" y="1452" />
     <location key="FileChooserDialogImpl.0.1536.1920.1080" x="791" y="1869" />
@@ -162,7 +162,7 @@
     <location key="#com.intellij.framework.addSupport.AddSupportForSingleFrameworkDialog.0.0.4954.1710" x="1267" y="741" />
     <location key="#com.intellij.ide.util.TreeClassChooserDialog.0.0.3840.2160" x="1652" y="758" />
     <location key="#com.intellij.execution.impl.EditConfigurationsDialog.0.0.3840.2160" x="1378" y="693" />
-    <location key="#Plugins.0.0.3840.2160" x="1515" y="713" />
+    <location key="#Plugins.0.0.3840.2160" x="1515" y="695" />
     <location key="#com.intellij.ide.util.MemberChooser.0.0.3840.2160" x="1728" y="750" />
     <location key="SettingsEditor.0.0.3840.2160@120dpi" x="2357" y="884" />
     <location key="FileChooserDialogImpl.0.0.3840.2160@120dpi" x="1653" y="652" />
@@ -212,6 +212,7 @@
     <location key="#Plugins.0.0.3380.1901" x="1254" y="580" />
     <location key="#Project_Structure.0.0.3380.1901" x="1173" y="936" />
     <location key="#com.intellij.ide.util.MemberChooser.0.0.3380.1901" x="1498" y="1058" />
+    <location key="#Browse_Repositories.0.0.3840.2160" x="1498" y="595" />
     <size key="FileChooserDialogImpl.0.0.1920.1080" width="446" height="490" />
     <size key="SettingsEditor.1920.0.1920.1080" width="1024" height="708" />
     <size key="FileChooserDialogImpl.1920.0.1920.1080" width="440" height="490" />
@@ -553,5 +554,6 @@
     <size key="GridCell.Tab.0.center.3380.0.1920.1080" width="1125" height="1230" />
     <size key="GridCell.Tab.0.right.3380.0.1920.1080" width="1125" height="1230" />
     <size key="GridCell.Tab.0.bottom.3380.0.1920.1080" width="1125" height="1230" />
+    <size key="#Browse_Repositories.0.0.3840.2160" width="824" height="680" />
   </component>
 </application>

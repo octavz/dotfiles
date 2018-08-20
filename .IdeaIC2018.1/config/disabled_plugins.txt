@@ -1,4 +1,5 @@
 AntSupport
+AutoSwitchIm
 CVS
 DevKit
 Subversion
@@ -6,16 +7,16 @@ TestNG-J
 XPathView
 XSLT-Debugger
 com.android.tools.idea.smali
-com.github.gtache.lsp
 com.intellij.copyright
 com.intellij.java-i18n
 com.intellij.uiDesigner
-com.remoterapp.adbremote.plugin.id
 hg4idea
-org.elmlang.intellijplugin
+org.intellij.intelliLang
 org.jetbrains.android
+org.jetbrains.debugger.streams
 org.jetbrains.idea.eclipse
+org.jetbrains.idea.maven
+org.jetbrains.kotlin
 org.jetbrains.plugins.github
 org.jetbrains.plugins.gradle
 org.jetbrains.plugins.javaFX
-ru.adelf.idea.dotenv

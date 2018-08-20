@@ -457,6 +457,12 @@
         <mark key="." line="10" column="7" />
         <mark key="^" line="34" column="32" />
       </file>
+      <file name="$USER_HOME$/work/blaze-lib-kafka/src/it/scala/rfs/blaze/kafka/consumer/IntegrationTestScenarios.scala" timestamp="1534751392550">
+        <mark key="[" line="100" column="9" />
+        <mark key="]" line="100" column="8" />
+        <mark key="^" line="100" column="8" />
+        <mark key="." line="100" column="8" />
+      </file>
       <file name="$USER_HOME$/work/blaze-data-retention-spark-jobs/src/main/scala/rfs/blaze/data/retention/cmd/BuildMetrics.scala" timestamp="1532770784323">
         <mark key="'" line="30" column="8" />
         <mark key="[" line="7" column="12" />
@@ -5932,7 +5938,6 @@
         <entry>Encryptable</entry>
       </history-search>
       <history-cmd>
-        <entry>qa</entry>
         <entry>43</entry>
         <entry>100</entry>
         <entry>141</entry>
@@ -5951,6 +5956,7 @@
         <entry>q</entry>
         <entry>set nu</entry>
         <entry>74</entry>
+        <entry>action AceAction</entry>
         <entry>w</entry>
       </history-cmd>
       <history-expr />

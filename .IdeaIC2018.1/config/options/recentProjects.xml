@@ -2,6 +2,7 @@
   <component name="RecentProjectsManager">
     <option name="recentPaths">
       <list>
+        <option value="$USER_HOME$/work/blaze-lib-kafka" />
         <option value="$USER_HOME$/work/blaze-data-ingestion-service" />
         <option value="$USER_HOME$/work/blaze-lib-kafkaencryption" />
         <option value="$USER_HOME$/projects/talks/final-tagless" />
@@ -13,7 +14,6 @@
         <option value="$USER_HOME$/work/blaze-bazaarvoice-ratings-spark-jobs/blaze-bazaarvoice-ratings-spark-jobs_7039.ipr" />
         <option value="$USER_HOME$/work/blaze-product-merge-rds-service" />
         <option value="$USER_HOME$/work/blaze-lib-ingestion" />
-        <option value="$USER_HOME$/work/blaze-lib-kafka" />
         <option value="$USER_HOME$/work/blaze-kafka-chatops-service/kafka-bot" />
         <option value="$USER_HOME$/projects/haskell/kafka-bot" />
         <option value="$USER_HOME$/tmp/kafka-rest" />
@@ -47,11 +47,11 @@
     </option>
     <option name="openPaths">
       <list>
-        <option value="$USER_HOME$/work/blaze-data-ingestion-service" />
+        <option value="$USER_HOME$/work/blaze-lib-kafka" />
       </list>
     </option>
-    <option name="lastPath" value="$USER_HOME$/work/blaze-data-ingestion-service" />
-    <option name="pid" value="29612" />
+    <option name="lastPath" value="$USER_HOME$/work/blaze-lib-kafka" />
+    <option name="pid" value="11870" />
     <option name="additionalInfo">
       <map>
         <entry key="$USER_HOME$/projects/haskell/group">
@@ -225,8 +225,8 @@
               <option name="build" value="IC-181.4203.550" />
               <option name="productionCode" value="IC" />
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="projectOpenTimestamp" value="1534269461160" />
-              <option name="buildTimestamp" value="1522095838662" />
+              <option name="projectOpenTimestamp" value="1534750668565" />
+              <option name="buildTimestamp" value="1522095804501" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
@@ -302,8 +302,8 @@
               <option name="build" value="IC-181.4203.550" />
               <option name="productionCode" value="IC" />
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="projectOpenTimestamp" value="1532508838854" />
-              <option name="buildTimestamp" value="1522095812113" />
+              <option name="projectOpenTimestamp" value="1534751657332" />
+              <option name="buildTimestamp" value="1522095819536" />
             </RecentProjectMetaInfo>
           </value>
         </entry>

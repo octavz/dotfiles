@@ -6,13 +6,13 @@
       <entry action="$Delete" count="46" />
       <entry action="$Paste" count="41" />
       <entry action="$Redo" count="1" />
-      <entry action="$SelectAll" count="52" />
+      <entry action="$SelectAll" count="53" />
       <entry action="$Undo" count="26" />
       <entry action="About" count="7" />
       <entry action="AceAction" count="7" />
       <entry action="ActivateFavoritesToolWindow" count="72" />
       <entry action="ActivateFindToolWindow" count="3" />
-      <entry action="ActivateProjectToolWindow" count="1048" />
+      <entry action="ActivateProjectToolWindow" count="1053" />
       <entry action="ActivateSBTToolWindow" count="1" />
       <entry action="ActivateStructureToolWindow" count="2" />
       <entry action="ActivateTODOToolWindow" count="1" />
@@ -55,7 +55,7 @@
       <entry action="DialogOkAction Enter" count="32" />
       <entry action="Diff.ShowDiff" count="7" />
       <entry action="Disable inspection" count="2" />
-      <entry action="EditorBackSpace" count="10182" />
+      <entry action="EditorBackSpace" count="10246" />
       <entry action="EditorChooseLookupItem" count="256" />
       <entry action="EditorChooseLookupItemReplace" count="4811" />
       <entry action="EditorCloneCaretAbove" count="1" />
@@ -104,7 +104,7 @@
       <entry action="FindUsages" count="209" />
       <entry action="GenerateSetter" count="1" />
       <entry action="Git.CompareWithBranch" count="36" />
-      <entry action="GotoAction" count="665" />
+      <entry action="GotoAction" count="674" />
       <entry action="GotoBookmark0" count="4" />
       <entry action="GotoBookmark1" count="1" />
       <entry action="GotoClass" count="33" />
@@ -205,7 +205,7 @@
       <entry action="Stop" count="44" />
       <entry action="SurroundWithLiveTemplate" count="8" />
       <entry action="SwitchBootJdk" count="1" />
-      <entry action="Switcher" count="11618" />
+      <entry action="Switcher" count="11621" />
       <entry action="SynchronizeCurrentFile" count="4" />
       <entry action="Toggle Type Annotation" count="10" />
       <entry action="ToggleBookmark" count="3" />
@@ -227,8 +227,8 @@
       <entry action="WelcomeScreen.Configure.Export" count="2" />
       <entry action="WelcomeScreen.DevelopPlugins" count="1" />
       <entry action="WelcomeScreen.OpenProject" count="72" />
-      <entry action="WelcomeScreen.Plugins" count="17" />
-      <entry action="WelcomeScreen.Settings" count="131" />
+      <entry action="WelcomeScreen.Plugins" count="18" />
+      <entry action="WelcomeScreen.Settings" count="137" />
       <entry action="XDebugger.CopyValue" count="2" />
       <entry action="XDebugger.NewWatch" count="1" />
     </counts>
@@ -239,13 +239,13 @@
     <feature id="editing.completion.second.smarttype.aslist" count="0" last-shown="0" last-used="0" shown-count="0" />
     <feature id="codeassists.surroundwith.statement" count="0" last-shown="0" last-used="0" shown-count="0" />
     <feature id="refactoring.rename" count="13" last-shown="0" last-used="1533212552676" shown-count="0" />
-    <feature id="navigation.popup.action" count="673" last-shown="0" last-used="1534269432787" shown-count="0" />
+    <feature id="navigation.popup.action" count="682" last-shown="0" last-used="1534751620625" shown-count="0" />
     <feature id="editing.completion.cancelByControlArrows" count="0" last-shown="0" last-used="0" shown-count="0" />
     <feature id="editing.completion.finishBySmartEnter" count="0" last-shown="1532882813984" last-used="0" shown-count="41" />
     <feature id="navigation.popup.symbol" count="0" last-shown="0" last-used="0" shown-count="0" />
     <feature id="find.recent.search" count="0" last-shown="0" last-used="0" shown-count="0" />
-    <feature id="editing.completion.replace" count="4806" last-shown="1529311645141" last-used="1533823682299" shown-count="173" />
-    <feature id="switcher" count="8845" last-shown="0" last-used="1534231294568" shown-count="0" />
+    <feature id="editing.completion.replace" count="4806" last-shown="1534751088089" last-used="1533823682299" shown-count="177" />
+    <feature id="switcher" count="8848" last-shown="0" last-used="1534751417804" shown-count="0" />
     <feature id="codeassists.complete.statement" count="0" last-shown="0" last-used="0" shown-count="0" />
     <feature id="navigation.goto.inspection" count="0" last-shown="0" last-used="0" shown-count="0" />
     <feature id="editing.completion.variable.name" count="0" last-shown="0" last-used="0" shown-count="0" />
@@ -276,7 +276,7 @@
     <feature id="editing.completion.second.smarttype.chain" count="0" last-shown="0" last-used="0" shown-count="0" />
     <feature id="ant.quickfix.CreateProperty" count="0" last-shown="0" last-used="0" shown-count="0" />
     <feature id="editing.completion.second.smarttype.toar" count="0" last-shown="0" last-used="0" shown-count="0" />
-    <feature id="navigation.popup.camelprefix" count="460" last-shown="0" last-used="1534231310498" shown-count="0" />
+    <feature id="navigation.popup.camelprefix" count="461" last-shown="0" last-used="1534750658901" shown-count="0" />
     <feature id="SearchEverywhere" count="67" last-shown="0" last-used="1533044605856" shown-count="0" />
     <feature id="navigation.popup.class" count="36" last-shown="0" last-used="1533799027466" shown-count="0" />
     <feature id="editor.delete.line" count="3" last-shown="0" last-used="1522325156389" shown-count="0" />
@@ -345,7 +345,7 @@
   </component>
   <component name="ShortcutsCollector">
     <counts>
-      <entry shortcut="Alt+1" count="1055" />
+      <entry shortcut="Alt+1" count="1060" />
       <entry shortcut="Alt+2" count="88" />
       <entry shortcut="Alt+3" count="3" />
       <entry shortcut="Alt+6" count="1" />
@@ -364,13 +364,13 @@
       <entry shortcut="Alt+Right" count="1" />
       <entry shortcut="Alt+Shift+J" count="5" />
       <entry shortcut="Alt+Shift+Minus" count="15" />
-      <entry shortcut="Backspace" count="23536" />
+      <entry shortcut="Backspace" count="23600" />
       <entry shortcut="Ctrl+0" count="5" />
       <entry shortcut="Ctrl+1" count="2" />
       <entry shortcut="Ctrl+3" count="1" />
       <entry shortcut="Ctrl+5" count="24" />
       <entry shortcut="Ctrl+8" count="2" />
-      <entry shortcut="Ctrl+A" count="52" />
+      <entry shortcut="Ctrl+A" count="53" />
       <entry shortcut="Ctrl+Alt+B" count="184" />
       <entry shortcut="Ctrl+Alt+Equals" count="1" />
       <entry shortcut="Ctrl+Alt+I" count="1" />
@@ -378,7 +378,7 @@
       <entry shortcut="Ctrl+Alt+L" count="1178" />
       <entry shortcut="Ctrl+Alt+Left" count="4" />
       <entry shortcut="Ctrl+Alt+Shift+L" count="1" />
-      <entry shortcut="Ctrl+B" count="319" />
+      <entry shortcut="Ctrl+B" count="322" />
       <entry shortcut="Ctrl+Back Quote" count="2" />
       <entry shortcut="Ctrl+Back Slash" count="1" />
       <entry shortcut="Ctrl+Backspace" count="3" />
@@ -389,7 +389,7 @@
       <entry shortcut="Ctrl+End" count="4" />
       <entry shortcut="Ctrl+Enter" count="3" />
       <entry shortcut="Ctrl+Equals" count="137" />
-      <entry shortcut="Ctrl+F" count="478" />
+      <entry shortcut="Ctrl+F" count="481" />
       <entry shortcut="Ctrl+F1" count="2" />
       <entry shortcut="Ctrl+F11" count="1" />
       <entry shortcut="Ctrl+F12" count="3" />
@@ -415,7 +415,7 @@
       <entry shortcut="Ctrl+S" count="2" />
       <entry shortcut="Ctrl+Semicolon" count="7" />
       <entry shortcut="Ctrl+Shift+0" count="1" />
-      <entry shortcut="Ctrl+Shift+A" count="675" />
+      <entry shortcut="Ctrl+Shift+A" count="684" />
       <entry shortcut="Ctrl+Shift+Back Quote" count="15" />
       <entry shortcut="Ctrl+Shift+Backspace" count="1" />
       <entry shortcut="Ctrl+Shift+C" count="39" />
@@ -441,7 +441,7 @@
       <entry shortcut="Ctrl+Shift+W" count="2" />
       <entry shortcut="Ctrl+Slash" count="60" />
       <entry shortcut="Ctrl+Space" count="77" />
-      <entry shortcut="Ctrl+Tab" count="11616" />
+      <entry shortcut="Ctrl+Tab" count="11619" />
       <entry shortcut="Ctrl+U" count="1" />
       <entry shortcut="Ctrl+V" count="194" />
       <entry shortcut="Ctrl+W" count="26" />
@@ -451,7 +451,7 @@
       <entry shortcut="Delete" count="32" />
       <entry shortcut="Down" count="6845" />
       <entry shortcut="Enter" count="2422" />
-      <entry shortcut="Escape" count="343203" />
+      <entry shortcut="Escape" count="343205" />
       <entry shortcut="F1" count="1" />
       <entry shortcut="F11" count="3" />
       <entry shortcut="F12" count="11" />
@@ -542,7 +542,7 @@
       <entry feature="ide.help.ideaInterface.editor" count="1" />
       <entry feature="ide.help.select.path.dialog" count="2" />
       <entry feature="ide.help.top" count="1" />
-      <entry feature="ide.settings.Appearance" count="31" />
+      <entry feature="ide.settings.Appearance" count="33" />
       <entry feature="ide.settings.Code Style" count="9" />
       <entry feature="ide.settings.Code_Style" count="5" />
       <entry feature="ide.settings.Color Scheme" count="12" />
@@ -552,7 +552,7 @@
       <entry feature="ide.settings.Console Font" count="12" />
       <entry feature="ide.settings.Editor Tabs" count="2" />
       <entry feature="ide.settings.Editor_Tabs" count="1" />
-      <entry feature="ide.settings.Font" count="361" />
+      <entry feature="ide.settings.Font" count="367" />
       <entry feature="ide.settings.General" count="12" />
       <entry feature="ide.settings.Gutter Icons" count="1" />
       <entry feature="ide.settings.Haskell Compiler" count="4" />
@@ -565,7 +565,7 @@
       <entry feature="ide.settings.Language Defaults" count="1" />
       <entry feature="ide.settings.Material Custom Theme" count="40" />
       <entry feature="ide.settings.Material Theme" count="11" />
-      <entry feature="ide.settings.Plugins" count="24" />
+      <entry feature="ide.settings.Plugins" count="27" />
       <entry feature="ide.settings.Project Structure" count="2" />
       <entry feature="ide.settings.Scala" count="8" />
       <entry feature="ide.settings.Scala Compile Server" count="7" />
@@ -573,7 +573,7 @@
       <entry feature="ide.settings.Vim Emulation" count="1" />
       <entry feature="ide.settings.sbt" count="1" />
       <entry feature="idea.caches.invalidated" count="8" />
-      <entry feature="ideaapp.started" count="276" />
+      <entry feature="ideaapp.started" count="280" />
       <entry feature="project.view.pane.PackagesPane" count="3" />
       <entry feature="project.view.pane.ProjectPane" count="7" />
       <entry feature="project.view.pane.Scope.Project Files" count="10" />
@@ -583,8 +583,8 @@
       <entry feature="scala.debugger.compiling.evaluator" count="2" />
       <entry feature="scala.debugger.evaluator" count="4393" />
       <entry feature="scala.debugger.lambda.breakpoint" count="209" />
-      <entry feature="scala.file.script.parsed" count="1385726" />
-      <entry feature="scala.file.with.type.aware.annotated" count="48137" />
+      <entry feature="scala.file.script.parsed" count="1388647" />
+      <entry feature="scala.file.with.type.aware.annotated" count="48140" />
       <entry feature="scala.move.class" count="26" />
       <entry feature="scala.optimize.imports" count="28" />
       <entry feature="scala.overrideImplement" count="18" />
@@ -593,7 +593,7 @@
       <entry feature="scala.sbt.shell.execute.command" count="377" />
       <entry feature="scala.sbt.shell.test.command" count="280" />
       <entry feature="scala.show.type.info" count="918" />
-      <entry feature="scala.structure.view" count="570" />
+      <entry feature="scala.structure.view" count="584" />
       <entry feature="terminal.linux" count="46" />
       <entry feature="vcs.log.ShowDiff" count="10" />
       <entry feature="welcome.screen.WelcomeScreen.Configure" count="1" />
