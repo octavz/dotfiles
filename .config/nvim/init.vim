@@ -13,7 +13,6 @@ Plug 'pseewald/nerdtree-tagbar-combined'
 Plug 'ervandew/supertab'
 Plug 'junegunn/fzf'
 Plug 'Shougo/denite.nvim'
-"Plug 'Shougo/deoplete.nvim'
 Plug 'ncm2/ncm2'
 Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim'
 Plug 'ncm2/ncm2-bufword'
@@ -72,6 +71,7 @@ Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'elzr/vim-json'
 Plug 'gabrielelana/vim-markdown'
 
+"Plug 'Shougo/deoplete.nvim'
 "Plug 'megaannum/self'
 "Plug 'megaannum/forms'
 "Plug 'posva/vim-vue', { 'for': 'javascript'}
@@ -191,6 +191,7 @@ let g:SuperTabClosePreviewOnPopupClose = 1
 
 let g:LanguageClient_serverCommands = {
     \ 'haskell': ['hie-wrapper'],
+    \ 'javascript': ['node', 'lib/language-server-stdio'],
     \ }
 
 

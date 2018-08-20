@@ -80,6 +80,12 @@
         <mark key="^" line="8" column="11" />
         <mark key="." line="16" column="0" />
       </file>
+      <file name="$USER_HOME$/work/blaze-lib-kafka/src/main/scala/rfs/blaze/kafka/consumer/KafkaMessageConsumer.scala" timestamp="1534760272516">
+        <mark key="[" line="55" column="50" />
+        <mark key="]" line="55" column="49" />
+        <mark key="^" line="55" column="49" />
+        <mark key="." line="55" column="49" />
+      </file>
       <file name="$USER_HOME$/work/blaze-data-retention-spark-jobs/src/test/scala/rfs/blaze/data/retention/JobTest.scala" timestamp="1533726191860">
         <mark key="'" line="24" column="11" />
         <mark key="[" line="5" column="0" />
