@@ -10,11 +10,13 @@ Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-startify'
 Plug 'vim-airline/vim-airline'
 Plug 'pseewald/nerdtree-tagbar-combined'
-Plug 'ervandew/supertab'
 Plug 'junegunn/fzf'
 Plug 'Shougo/denite.nvim'
-Plug 'ncm2/ncm2'
+
+"autocomplete
+Plug 'ncm2/ncm2' | Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim'
+Plug 'ncm2/ncm2-neoinclude' | Plug 'Shougo/neoinclude.vim'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
 Plug 'ncm2/ncm2-tagprefix'
@@ -28,6 +30,7 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'vim-airline/vim-airline-themes'
 
 "general text productivity 
+Plug 'ervandew/supertab'
 Plug 'vim-scripts/SyntaxRange'
 Plug 'vim-scripts/LargeFile'
 Plug 'justinmk/vim-sneak'
@@ -48,6 +51,8 @@ Plug 'mattn/emmet-vim'
 "languages
 "scala
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
+Plug 'ensime/ensime-vim', { 'for': 'scala', 'do': ':UpdateRemotePlugins' }
+Plug 'scrooloose/syntastic', { 'for': ['scala'] }
 
 "elixir
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
@@ -67,6 +72,11 @@ Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
 Plug 'tpope/vim-classpath', { 'for': 'clojure' }
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+"fsharp
+Plug 'fsharp/vim-fsharp', {
+      \ 'for': 'fsharp',
+      \ 'do':  'make fsautocomplete',
+      \}
 "others
 Plug 'elzr/vim-json'
 Plug 'gabrielelana/vim-markdown'
@@ -80,9 +90,7 @@ Plug 'gabrielelana/vim-markdown'
 "Plug 'Shougo/vimproc', { 'do': 'make' }
 "Plug 'Shougo/vimshell'
 "Plug 'shime/vim-livedown'
-"Plug 'scrooloose/syntastic'
 "Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
-"Plug 'ensime/ensime-vim', { 'for': 'scala1' }
 "Plug 'jeffkreeftmeijer/vim-numbertoggle'
 "Plug 'easymotion/vim-easymotion'
 "Plug 'parsonsmatt/intero-neovim'
@@ -91,76 +99,16 @@ Plug 'gabrielelana/vim-markdown'
 "Plug 'chrisbra/csv.vim'
 call plug#end()
 
-" Automatically reload on save
-"au BufWritePost *.hs InteroReload
+autocmd BufWritePost *.scala :EnTypeCheck
+autocmd BufEnter * call ncm2#enable_for_buffer()
+autocmd BufLeave,FocusLost * silent! wall
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 
-"function! IGenericType()
-  "call intero#repl#type(1)
-"endfunction
+set completeopt=noinsert,menuone,noselect
 
-"function! IType()
-  "call intero#repl#type(0)
-"endfunction
-
-"function! IStartAndLoad()
-  "call intero#process#start()
-  "call intero#repl#load_current_file()
-"endfunction
-
-
-"au FileType haskell nnoremap <silent> <leader>it :call SimpleMenu([ 
-  "\ ['1','Start and load current file', 'IStartAndLoad'], 
-  "\ ['2','Type', 'IType'],
-  "\ ['3','Generic Type', 'IGenericType'],
-  "\ ['4','Insert type', 'intero#repl#insert_type'], 
-  "\ ['5','Load current module', 'intero#repl#load_current_module'], 
-  "\ ['6','Load current file', 'intero#repl#load_current_file'], 
-  "\ ['7','Open', 'intero#process#open'], 
-  "\ ['8','Hide', 'intero#process#hide'], 
-  "\ ['9','Restart', 'intero#process#restart'], 
-  "\ ['0','Reload', 'intero#repl#reload'], 
-  "\ ])<CR>
-
-"" Lookup the type of expression under the cursor
-"au FileType haskell nmap <silent> <leader>t <Plug>InteroGenericType
-"au FileType haskell nmap <silent> <leader>T <Plug>InteroType
-"" Insert type declaration
-"au FileType haskell nnoremap <silent> <leader>s :InteroTypeInsert<CR>
-"" Show info about expression or type under the cursor
-"au FileType haskell nnoremap <silent> <leader>i :InteroInfo<CR>
-
-"" Open/Close the Intero terminal window
-"au FileType haskell nnoremap <silent> <leader>o :InteroOpen<CR>
-"au FileType haskell nnoremap <silent> <leader>h :InteroHide<CR>
-
-"" Reload the current file into REPL
-"au FileType haskell nnoremap <silent> <leader>l :InteroLoadCurrentFile<CR>
-"" Jump to the definition of an identifier
-"au FileType haskell nnoremap <silent> gd :InteroGoToDef<CR>
-"" Evaluate an expression in REPL
-"au FileType haskell map <silent> <leader>e :InteroEval<CR>
-"au FileType haskell nmap <silent> <leader>u :InteroUses<CR>
-
-"" Start/Stop Intero
-"au FileType haskell nnoremap <silent> <leader>st :InteroStart<CR>
-"au FileType haskell nnoremap <silent> <leader>k :InteroKill<CR>
-
-"" Reboot Intero, for when dependencies are added
-"au FileType haskell nnoremap <silent> <leader>re :InteroKill<CR> :InteroOpen<CR>
-
-"" Managing targets
-"" Prompts you to enter targets (no silent):
-"au FileType haskell nnoremap <leader>st :InteroSetTargets<CR>
-
-au FileType haskell nnoremap <silent> <leader>his :HsimportSymbol<CR>
-au FileType haskell nnoremap <silent> <leader>him :HsimportModule<CR>
-"
-" Disable haskell-vim omnifunc
-"let g:haskellmode_completion_ghc = 0
-
-" neco-ghc
-"autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc 
-"let g:necoghc_enable_detailed_browse = 1
 let g:ale_linters ={
       \   'haskell': ['hlint', 'hdevtools', 'brittany'],
       \}
@@ -185,25 +133,19 @@ let g:neomake_open_list = 2
 let g:neomake_haskell_enabled_makers = []
 
 
-let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_at_startup = 1
 let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
 let g:SuperTabClosePreviewOnPopupClose = 1
 
 let g:LanguageClient_serverCommands = {
     \ 'haskell': ['hie-wrapper'],
-    \ 'javascript': ['node', 'lib/language-server-stdio'],
+    \ 'javascript': ['/home/ozaharia/node_modules/.bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'python': ['/home/ozaharia/.local/bin/pyls'],
+    \ 'clojure': ['/home/ozaharia/bin/clojure-lsp'],
+    \ 'fsharp': ['dotnet', '/home/ozaharia/tmp/fsharp-language-server/src/FSharpLanguageServer/bin/Release/netcoreapp2.0/target/FSharpLanguageServer.dll']
     \ }
 
-
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-" Or map each action separately
-nnoremap <silent> <leader>t :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> <A-=> :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <leader><F2> :call LanguageClient#textDocument_rename()<CR>
-
-let mapleader = " "
-inoremap <C-space> <C-x><C-o>
 :command! WQ wq
 :command! Wq wq
 :command! W w
@@ -215,58 +157,15 @@ inoremap <C-space> <C-x><C-o>
 let g:acp_enableAtStartup = 0
 
 "scala
-
-"autocmd BufWritePost *.scala :EnTypeCheck
-"let g:syntastic_scala_checkers=['scalastyle']
-"let g:loaded_syntastic_scala_scalastyle_checker = 1
+"let ensime_server_v2=1
+let $BROWSER = 'firefox %s'
+let g:syntastic_scala_checkers=['scalastyle']
+let g:loaded_syntastic_scala_scalastyle_checker = 1
+let g:syntastic_auto_loc_list=1
 "let g:syntastic_scala_scalastyle_jar = '~/Apps/scalastyle_2.10-0.7.0-batch.jar'
-
-function! SaveAndRunVimdeck()
-   :write
-   :!vimdeck generate %:t
- endfunction
-
-
-nmap <silent> <F7> :call SaveAndRunVimdeck()<CR><CR>
-
-nmap <silent> <c-k> :wincmd k<CR>
-nmap <silent> <c-j> :wincmd j<CR>
-nmap <silent> <c-h> :wincmd h<CR>
-nmap <silent> <c-l> :wincmd l<CR>
-
-nmap <silent> <leader><TAB> :Denite buffer<CR>
-nmap <silent> <leader>df :Denite file/rec<CR>
-nmap <silent> <Leader><Space> :bnext<CR>
-nmap <silent> <C-A> :e $MYVIMRC<CR>
-
-au FileType clojure nmap <silent> cpR :Require!<CR>
-au FileType clojure nmap <silent> <leader>R :Require!<CR>
-au FileType clojure nmap <silent> <leader><f9> :!lein run<CR>
-au FileType clojure nmap <silent> <Leader>q :ccl<CR>
-
-au FileType scala nmap gd :EnDeclaration<CR>
-au FileType scala nmap <Esc>= :EnInspectType<CR>
-au FileType scala nmap <Esc><CR> :EnSuggestImport<CR>
-au FileType scala nmap <Leader>m :EnFormatSource<CR>
-
-"nmap <Leader>, :set filetype=scala<CR>
-
-"au filetype scala nmap <Leader>m :%!java -jar /home/octav/cli-assembly-0.1.7.jar -f -q +compactControlReadability +alignParameters +alignSingleLineCaseStatements +doubleIndentClassDeclaration +preserveDanglingCloseParenthesis +rewriteArrowSymbols +preserveSpaceBeforeArguments --stdin --stdout <CR>
-nmap <silent> <Leader>n :CtrlP<CR>
-
-
 "end scala
 
 "haskell
-"let g:ycm_semantic_triggers = {'haskell' : ['.'], 'elm':['.']}
-
-
-let g:syntastic_auto_loc_list=1
-nmap <silent><M-3> :TagbarToggle<CR>
-nmap <silent><M-1> :ToggleNERDTreeAndTagbar<CR>
-nmap <silent> <M-2> :NERDTreeToggle<CR>
-let g:tagbar_autofocus = 1
-
 let g:tagbar_type_haskell = {
     \ 'ctagsbin'    : 'hasktags',
     \ 'ctagsargs'   : '-x -c -o-',
@@ -327,9 +226,9 @@ let g:fuf_mrufile_maxItem = 400
 let g:fuf_mrucmd_maxItem = 400
 let g:fuf_ignoreCase = 1
 
-let g:ctrlp_map = '<c-N>'
+let g:tagbar_autofocus = 1
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_root_markers = ['stack.yaml','build.sbt']
+let g:ctrlp_root_markers = ['stack.yaml','build.sbt','project']
 let g:ctrlp_user_command = {
                         \ 'types': {
                         \ 1: ['.git', 'cd %s && git ls-files'],
@@ -342,12 +241,7 @@ let g:ctrlp_custom_ignore = {
                         \ 'file': '\.o$\|\.so$\|\.class|\.hi$' }
 let g:NERDTreeChDirMode=2
 
-noremap <Leader>f :Ag <C-R><C-W><CR>
 
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
 let g:rbpt_colorpairs = [
     \ ['magenta',     'purple1'],
     \ ['cyan',        'magenta1'],
@@ -363,35 +257,13 @@ let g:rbpt_max = 9
 
 let g:jsx_ext_required = 0
 
-autocmd BufLeave,FocusLost * silent! wall
 
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
 
-"let g:elm_syntastic_show_warnings = 1
-"let g:elm_format_autosave = 1
+let g:elm_syntastic_show_warnings = 1
+let g:elm_format_autosave = 1
 let g:elm_setup_keybindings = 0
-nmap <silent> <Leader>q :lclose<CR>:pclose<CR>
-
-au FileType elm nmap <silent> <Leader>t :ElmShowDocs<CR>
-au FileType elm nmap <silent> <Leader>c :ElmMake<CR>
-au FileType elm nmap <silent> <Leader>l :ElmMakeMain<CR>
-au FileType elm nmap <silent> <Leader>e :ElmErrorDetail<CR>
-au FileType elm nmap <silent> <Leader>d :ElmBrowseDocs<CR>
-au FileType elm nmap <silent> <Leader>re :ElmRepl<CR>
-au FileType elm nmap <silent> <C-A-l> :ElmFormat<CR>
-
-au FileType purescript nmap <leader>t :PSCIDEtype<CR>
-au FileType purescript nmap <leader>s :PSCIDEapplySuggestion<CR>
-au FileType purescript nmap <leader>a :PSCIDEaddTypeAnnotation<CR>
-au FileType purescript nmap <leader>im :PSCIDEimportIdentifier<CR>
-au FileType purescript nmap <leader>r :PSCIDEload<CR>
-au FileType purescript nmap <leader>p :PSCIDEpursuit<CR>
-au FileType purescript nmap <leader>c :PSCIDEcaseSplit<CR>
-au FileType purescript nmap <leader>qd :PSCIDEremoveImportQualifications<CR>
-au FileType purescript nmap <leader>qa :PSCIDEaddImportQualifications<CR>
-au FileType purescript nmap gd :PSCIDEgoToDefinition<CR>
-
 let g:netrw_liststyle=3
 let g:netrw_winsize=20
 
@@ -417,8 +289,8 @@ set ma
 set mouse=a
 set hlsearch      " highlight search terms
 set incsearch     " show search matches as you type
-"set smartcase
 set ignorecase
+set smartcase
 set smarttab
 set smartindent
 set autoindent
@@ -442,3 +314,96 @@ set iskeyword-="
 set iskeyword-=,
 set iskeyword-=|
 set termguicolors
+
+let mapleader = " "
+
+"movement
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>
+
+"ui
+let g:ctrlp_map = '<c-N>'
+nmap <silent><M-1> :ToggleNERDTreeAndTagbar<CR>
+nmap <silent><M-2> :TagbarToggle<CR>
+nmap <silent><M-3> :NERDTreeToggle<CR>
+nmap <silent> <Leader>q :lclose<CR>:pclose<CR>:cclose<CR>
+nmap <silent> <Leader>n :CtrlP<CR>
+nmap <silent> <leader><TAB> :Denite buffer<CR>
+nmap <silent> <leader>fd :Denite file/rec<CR>
+call denite#custom#map(
+      \ 'insert',
+      \ '<C-j>',
+      \ '<denite:move_to_next_line>',
+      \ 'noremap'
+      \)
+call denite#custom#map(
+      \ 'insert',
+      \ '<C-k>',
+      \ '<denite:move_to_previous_line>',
+      \ 'noremap'
+      \)
+
+nmap <silent> <leader>fz :FZF<CR>
+
+"lsp
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+
+"productivity
+noremap <Leader>f :Ag <C-R><C-W><CR>
+nmap <silent> <Leader><Space> :bnext<CR>
+nmap <silent> <C-A> :e $MYVIMRC<CR>
+inoremap <C-space> <C-x><C-o>
+
+"scala
+au FileType scala,java nmap gd :EnDeclaration<CR>
+au FileType scala,java nmap gds :EnDeclarationSplit<CR>
+au FileType scala,java nmap  gdv :EnDeclarationSplit v<CR>
+au FileType scala,java nmap <silent> <Leader>d :EnDocBrowse<CR>
+au FileType scala,java nmap <silent> <Leader>i :EnInspectType<CR>
+au FileType scala,java nmap <silent> <Leader>I :EnSuggestImport<CR>
+au FileType scala,java nmap <silent> <Leader><f2> :EnRename<CR>
+au FileType scala,java nmap <silent> <A-=> :EnType<CR>
+au FileType scala,java xnoremap <silent> <A-=> :EnType selection<CR>
+au FileType scala,java nmap <silent> <A-CR>> :EnSuggestImport<CR>
+au FileType scala,java nmap <silent> <Leader>f :EnFormatSource<CR>
+"au filetype scala nmap <Leader>m :%!java -jar /home/octav/cli-assembly-0.1.7.jar -f -q +compactControlReadability +alignParameters +alignSingleLineCaseStatements +doubleIndentClassDeclaration +preserveDanglingCloseParenthesis +rewriteArrowSymbols +preserveSpaceBeforeArguments --stdin --stdout <CR>
+
+
+"elm
+au FileType elm nmap <silent> <Leader>t :ElmShowDocs<CR>
+au FileType elm nmap <silent> <Leader>c :ElmMake<CR>
+au FileType elm nmap <silent> <Leader>l :ElmMakeMain<CR>
+au FileType elm nmap <silent> <Leader>e :ElmErrorDetail<CR>
+au FileType elm nmap <silent> <Leader>d :ElmBrowseDocs<CR>
+au FileType elm nmap <silent> <Leader>re :ElmRepl<CR>
+au FileType elm nmap <silent> <C-A-l> :ElmFormat<CR>
+
+"purescript
+au FileType purescript nmap <leader>t :PSCIDEtype<CR>
+au FileType purescript nmap <leader>s :PSCIDEapplySuggestion<CR>
+au FileType purescript nmap <leader>a :PSCIDEaddTypeAnnotation<CR>
+au FileType purescript nmap <leader>im :PSCIDEimportIdentifier<CR>
+au FileType purescript nmap <leader>r :PSCIDEload<CR>
+au FileType purescript nmap <leader>p :PSCIDEpursuit<CR>
+au FileType purescript nmap <leader>c :PSCIDEcaseSplit<CR>
+au FileType purescript nmap <leader>qd :PSCIDEremoveImportQualifications<CR>
+au FileType purescript nmap <leader>qa :PSCIDEaddImportQualifications<CR>
+au FileType purescript nmap gd :PSCIDEgoToDefinition<CR>
+
+
+"clojure
+au FileType clojure nmap <silent> cpR :Require!<CR>
+au FileType clojure nmap <silent> <leader>R :Require!<CR>
+au FileType clojure nmap <silent> <leader><f9> :!lein run<CR>
+au FileType clojure nmap <silent> <Leader>q :ccl<CR>
+
+"haskell
+au FileType haskell nnoremap <silent> <leader>his :HsimportSymbol<CR>
+au FileType haskell nnoremap <silent> <leader>him :HsimportModule<CR>
+" Or map each action separately
+au FileType haskell,javascript,python,fsharp nnoremap <silent> <leader>t :call LanguageClient#textDocument_hover()<CR>
+au FileType haskell,javascript,python,fsharp nnoremap <silent> <A-=> :call LanguageClient#textDocument_hover()<CR>
+au FileType haskell,javascript,python,fsharp nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+au FileType haskell,javascript,python,fsharp nnoremap <silent> <leader><F2> :call LanguageClient#textDocument_rename()<CR>
