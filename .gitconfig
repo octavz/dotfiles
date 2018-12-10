@@ -4,8 +4,8 @@
 [diff]
 	tool = kdiff3
 [user]
-	name = Octav Zaharia
-	email = ozaharia@wehkamp.nl
+	name = octav
+	email = zahariao@gmail.com
 [alias]
 	tree = log --graph --full-history --all --color --date=short --pretty=format:\"%Cred%x09%h %Creset%ad%Cblue%d %Creset %s %C(bold)(%an)%Creset\"
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all

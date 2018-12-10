@@ -1,6 +1,6 @@
 <application>
   <component name="DimensionService">
-    <location key="FileChooserDialogImpl.0.0.1920.1080" x="720" y="1" />
+    <location key="FileChooserDialogImpl.0.0.1920.1080" x="257" y="250" />
     <location key="WELCOME_SCREEN.0.0.1920.1080" x="959" y="427" />
     <location key="com.intellij.ide.util.TipDialog.1920.0.1920.1080" x="2591" y="369" />
     <location key="SettingsEditor.1920.0.1920.1080" x="2357" y="119" />
@@ -13,11 +13,11 @@
     <location key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog.0.0.3840.1080" x="2708" y="422" />
     <location key="FileChooserDialogImpl.1920.279.1920.1080" x="2663" y="570" />
     <location key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog.1920.279.1920.1080" x="2701" y="691" />
-    <location key="find.popup.0.0.1920.1080" x="540" y="17" />
+    <location key="find.popup.0.0.1920.1080" x="527" y="4" />
     <location key="git4idea.branch.GitSmartOperationDialog.0.0.1920.1080" x="235" y="258" />
     <location key="#com.intellij.execution.impl.EditConfigurationsDialog.0.0.1920.1080" x="418" y="122" />
-    <location key="SettingsEditor.0.0.1920.1080" x="441" y="84" />
-    <location key="#com.intellij.ide.util.MemberChooser.0.0.1920.1080" x="768" y="157" />
+    <location key="SettingsEditor.0.0.1920.1080" x="91" y="144" />
+    <location key="#com.intellij.ide.util.MemberChooser.0.0.1920.1080" x="773" y="8" />
     <location key="find.popup.1920.279.1920.1080" x="2544" y="378" />
     <location key="Vcs.Push.Dialog.1920.279.1920.1080" x="2559" y="552" />
     <location key="CommitChangelistDialog2.1920.279.1920.1080" x="2324" y="419" />
@@ -26,13 +26,13 @@
     <location key="find.popup.1920.1080.1920.1080" x="2571" y="1165" />
     <location key="CommitChangelistDialog2.3840.1080.1920.1080" x="4219" y="1257" />
     <location key="FileChooserDialogImpl.3840.0.1920.1080" x="4582" y="310" />
-    <location key="find.popup.3840.0.1920.1080" x="3996" y="182" />
+    <location key="find.popup.3840.0.1920.1080" x="3995" y="181" />
     <location key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog.3840.0.1920.1080" x="4154" y="461" />
     <location key="FileChooserDialogImpl.1920.1080.1920.1080" x="2616" y="440" />
     <location key="git4idea.branch.GitSmartOperationDialog.1920.1080.1920.1080" x="2637" y="1353" />
-    <location key="find.popup.0.0.3840.2160" x="2549" y="1367" />
-    <location key="SettingsEditor.0.0.3840.2160" x="797" y="1038" />
-    <location key="CommitChangelistDialog2.0.0.3840.2160" x="2501" y="1223" />
+    <location key="find.popup.0.0.3840.2160" x="653" y="0" />
+    <location key="SettingsEditor.0.0.3840.2160" x="0" y="-18" />
+    <location key="CommitChangelistDialog2.0.0.3840.2160" x="2501" y="1079" />
     <location key="SettingsEditor.1920.1080.1920.1080" x="2341" y="362" />
     <location key="FileChooserDialogImpl.0.493.1920.1080" x="744" y="812" />
     <location key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser.0.0.1920.1080" x="241" y="107" />
@@ -50,7 +50,7 @@
     <location key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser.0.1536.1920.1080" x="794" y="1681" />
     <location key="NewModule_or_Project.wizard.0.0.1920.1080" x="699" y="212" />
     <location key="#com.intellij.framework.addSupport.AddSupportForSingleFrameworkDialog.0.0.1920.1080" x="1185" y="443" />
-    <location key="#com.intellij.refactoring.rename.AutomaticRenamingDialog.0.0.1920.1080" x="187" y="54" />
+    <location key="#com.intellij.refactoring.rename.AutomaticRenamingDialog.0.0.1920.1080" x="187" y="36" />
     <location key="Vcs.Push.Dialog.0.0.1920.1080" x="638" y="239" />
     <location key="Vcs.Push.Dialog.0.1464.1920.1080" x="640" y="1710" />
     <location key="SettingsEditor.0.1464.1920.1080" x="2" y="1445" />
@@ -70,18 +70,18 @@
     <location key="CommitChangelistDialog2.0.360.1920.1080" x="627" y="358" />
     <location key="SettingsEditor.0.360.1920.1080" x="53" y="343" />
     <location key="#Notifications.0.0.1920.1080" x="769" y="293" />
-    <location key="FileChooserDialogImpl.0.0.3840.2160" x="647" y="305" />
-    <location key="Vcs.Push.Dialog.0.0.3840.2160" x="2632" y="1317" />
-    <location key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog.0.0.3840.2160" x="2728" y="1452" />
+    <location key="FileChooserDialogImpl.0.0.3840.2160" x="652" y="1061" />
+    <location key="Vcs.Push.Dialog.0.0.3840.2160" x="2632" y="1263" />
+    <location key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog.0.0.3840.2160" x="2728" y="1434" />
     <location key="FileChooserDialogImpl.0.1536.1920.1080" x="791" y="1869" />
     <location key="Vcs.Push.Dialog.0.424.1920.1080" x="2632" y="1327" />
-    <location key="Vcs.Push.Dialog.1920.0.2560.1440" x="2349" y="400" />
-    <location key="SettingsEditor.1920.0.2560.1440" x="2142" y="202" />
-    <location key="CommitChangelistDialog2.1920.0.2560.1440" x="2298" y="199" />
-    <location key="FileChooserDialogImpl.1920.0.2560.1440" x="2526" y="453" />
+    <location key="Vcs.Push.Dialog.1920.0.2560.1440" x="2349" y="364" />
+    <location key="SettingsEditor.1920.0.2560.1440" x="2142" y="76" />
+    <location key="CommitChangelistDialog2.1920.0.2560.1440" x="2298" y="73" />
+    <location key="FileChooserDialogImpl.1920.0.2560.1440" x="2526" y="345" />
     <location key="FileDocumentManager.FileCacheConflict.1920.0.2560.1440" x="1918" y="228" />
-    <location key="find.popup.1920.0.2560.1440" x="2198" y="95" />
-    <location key="#com.intellij.refactoring.rename.AutomaticRenamingDialog.1920.0.2560.1440" x="1953" y="-17" />
+    <location key="find.popup.1920.0.2560.1440" x="2188" y="85" />
+    <location key="#com.intellij.refactoring.rename.AutomaticRenamingDialog.1920.0.2560.1440" x="3199" y="-7" />
     <location key="#Scala.0.0.1920.1080" x="757" y="-17" />
     <location key="FileDocumentManager.FileCacheConflict.0.0.1920.1080" x="-2" y="-17" />
     <location key="#com.intellij.execution.impl.EditConfigurationsDialog.0.0.4480.1440" x="-2" y="534" />
@@ -103,7 +103,7 @@
     <location key="chooseDestDirectoryDialog.0.360.1920.1080" x="777" y="614" />
     <location key="#Project_Structure.1920.1080.1920.1080" x="2009" y="1270" />
     <location key="#xdebugger.evaluate.0.360.1920.1080" x="348" y="451" />
-    <location key="CommitChangelistDialog2.0.0.1920.1080" x="55" y="30" />
+    <location key="CommitChangelistDialog2.0.0.1920.1080" x="540" y="105" />
     <location key="find.popup.0.0.4480.1440" x="203" y="453" />
     <location key="NewModule_or_Project.wizard.0.360.1920.1080" x="256" y="740" />
     <location key="NewModule_or_Project.wizard.0.424.1920.1080" x="250" y="689" />
@@ -161,9 +161,9 @@
     <location key="NewModule_or_Project.wizard.0.0.4954.1710" x="507" y="662" />
     <location key="#com.intellij.framework.addSupport.AddSupportForSingleFrameworkDialog.0.0.4954.1710" x="1267" y="741" />
     <location key="#com.intellij.ide.util.TreeClassChooserDialog.0.0.3840.2160" x="1652" y="758" />
-    <location key="#com.intellij.execution.impl.EditConfigurationsDialog.0.0.3840.2160" x="1378" y="693" />
-    <location key="#Plugins.0.0.3840.2160" x="1515" y="695" />
-    <location key="#com.intellij.ide.util.MemberChooser.0.0.3840.2160" x="1728" y="750" />
+    <location key="#com.intellij.execution.impl.EditConfigurationsDialog.0.0.3840.2160" x="836" y="362" />
+    <location key="#Plugins.0.0.3840.2160" x="1515" y="677" />
+    <location key="#com.intellij.ide.util.MemberChooser.0.0.3840.2160" x="1728" y="390" />
     <location key="SettingsEditor.0.0.3840.2160@120dpi" x="2357" y="884" />
     <location key="FileChooserDialogImpl.0.0.3840.2160@120dpi" x="1653" y="652" />
     <location key="WELCOME_SCREEN.0.0.3840.2160@120dpi" x="1920" y="791" />
@@ -197,22 +197,62 @@
     <location key="NewModule_or_Project.wizard.0.0.3380.1901" x="608" y="685" />
     <location key="find.popup.1920.0.3840.2160" x="1268" y="96" />
     <location key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages.0.0.1920.1080" x="677" y="352" />
-    <location key="chooseDestDirectoryDialog.0.0.1920.1080" x="735" y="262" />
-    <location key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes.0.0.1920.1080" x="677" y="230" />
-    <location key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog.0.0.1920.1080" x="693" y="216" />
+    <location key="chooseDestDirectoryDialog.0.0.1920.1080" x="735" y="154" />
+    <location key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes.0.0.1920.1080" x="677" y="140" />
+    <location key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog.0.0.1920.1080" x="693" y="198" />
     <location key="StructurePopup.0.0.1920.1080" x="334" y="0" />
-    <location key="SettingsEditor.0.0.5760.2160" x="450" y="157" />
-    <location key="find.popup.0.0.5760.2160" x="752" y="97" />
-    <location key="NewModule_or_Project.wizard.0.0.3840.2160" x="723" y="310" />
+    <location key="SettingsEditor.0.0.5760.2160" x="455" y="613" />
+    <location key="find.popup.0.0.5760.2160" x="717" y="62" />
+    <location key="NewModule_or_Project.wizard.0.0.3840.2160" x="723" y="238" />
     <location key="StructurePopup.0.0.3840.2160" x="679" y="761" />
-    <location key="#com.intellij.framework.addSupport.AddSupportForSingleFrameworkDialog.0.0.3840.2160" x="712" y="389" />
+    <location key="#com.intellij.framework.addSupport.AddSupportForSingleFrameworkDialog.0.0.3840.2160" x="712" y="335" />
     <location key="WELCOME_SCREEN.0.0.3840.2160" x="1919" y="769" />
     <location key="#com.intellij.framework.addSupport.AddSupportForSingleFrameworkDialog.0.0.3380.1901" x="1334" y="817" />
     <location key="#Browse_Repositories.0.0.3380.1901" x="1237" y="553" />
     <location key="#Plugins.0.0.3380.1901" x="1254" y="580" />
     <location key="#Project_Structure.0.0.3380.1901" x="1173" y="936" />
     <location key="#com.intellij.ide.util.MemberChooser.0.0.3380.1901" x="1498" y="1058" />
-    <location key="#Browse_Repositories.0.0.3840.2160" x="1498" y="595" />
+    <location key="#Browse_Repositories.0.0.3840.2160" x="1498" y="577" />
+    <location key="#Project_Structure.0.0.3840.2160" x="448" y="889" />
+    <location key="#com.intellij.fileTypes.FileTypeChooser.0.0.3840.2160" x="627" y="326" />
+    <location key="#com.intellij.ide.util.MemberChooser.1920.0.2560.1440" x="2368" y="707" />
+    <location key="chooseDestDirectoryDialog.0.768.1920.1080" x="275" y="750" />
+    <location key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes.0.768.1920.1080" x="238" y="750" />
+    <location key="#com.intellij.execution.impl.EditConfigurationsDialog.1920.0.2560.1440" x="2018" y="-14" />
+    <location key="#com.intellij.fileTypes.FileTypeChooser.1920.0.2560.1440" x="2309" y="126" />
+    <location key="SettingsEditor.0.768.1920.1080" x="383" y="241" />
+    <location key="chooseDestDirectoryDialog.0.0.3840.2160" x="715" y="697" />
+    <location key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes.0.0.3840.2160" x="719" y="715" />
+    <location key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser.0.0.3840.2160" x="569" y="113" />
+    <location key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages.0.0.3840.2160" x="2334" y="136" />
+    <location key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate.0.0.3840.2160" x="2312" y="220" />
+    <location key="#com.intellij.ide.util.MemberChooser.0.768.1920.1080" x="293" y="750" />
+    <location key="find.popup.0.768.1920.1080" x="753" y="768" />
+    <location key="find.popup.0.0.3840.1080" x="2690" y="74" />
+    <location key="#com.intellij.tools.ToolEditorDialog.1920.0.2560.1440" x="2407" y="135" />
+    <location key="#com.intellij.refactoring.rename.AutomaticRenamingDialog.0.0.3840.2160" x="1919" y="216" />
+    <location key="#com.intellij.ide.util.MemberChooser.0.0.5760.2160" x="972" y="403" />
+    <location key="#com.intellij.refactoring.rename.AutomaticRenamingDialog.0.0.5760.2160" x="600" y="-18" />
+    <location key="chooseDestDirectoryDialog.0.0.5760.2160" x="915" y="262" />
+    <location key="FileChooserDialogImpl.0.0.5760.2160" x="942" y="442" />
+    <location key="FileChooserDialogImpl.0.0.4480.1848" x="2402" y="192" />
+    <location key="find.popup.0.0.4480.1848" x="2431" y="766" />
+    <location key="#com.intellij.ide.util.MemberChooser.0.0.4480.1848" x="2427" y="147" />
+    <location key="NewModule_or_Project.wizard.1920.0.2560.1440" x="2323" y="830" />
+    <location key="#com.intellij.framework.addSupport.AddSupportForSingleFrameworkDialog.1920.0.2560.1440" x="2322" y="241" />
+    <location key="#Project_Structure.1920.0.2560.1440" x="2031" y="-18" />
+    <location key="FileChooserDialogImpl.0.768.1920.1080" x="748" y="794" />
+    <location key="NewModule_or_Project.wizard.0.768.1920.1080" x="723" y="886" />
+    <location key="#com.intellij.framework.addSupport.AddSupportForSingleFrameworkDialog.0.768.1920.1080" x="722" y="961" />
+    <location key="SettingsEditor.0.0.3840.1080" x="2390" y="139" />
+    <location key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog.3840.700.1920.1080" x="3104" y="403" />
+    <location key="#com.intellij.ide.util.MemberChooser.3840.700.1920.1080" x="3456" y="189" />
+    <location key="FileChooserDialogImpl.3840.700.1920.1080" x="3101" y="195" />
+    <location key="SettingsEditor.3840.700.1920.1080" x="2806" y="39" />
+    <location key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog.0.0.3840.2160" x="373" y="248" />
+    <location key="find.popup.3840.700.1920.1080" x="688" y="33" />
+    <location key="#Updates.0.0.1920.1080" x="725" y="345" />
+    <location key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes.0.0.5760.2160" x="659" y="355" />
     <size key="FileChooserDialogImpl.0.0.1920.1080" width="446" height="490" />
     <size key="SettingsEditor.1920.0.1920.1080" width="1024" height="708" />
     <size key="FileChooserDialogImpl.1920.0.1920.1080" width="440" height="490" />
@@ -222,25 +262,25 @@
     <size key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog.0.0.1920.1080" width="388" height="251" />
     <size key="FileChooserDialogImpl.0.0.3840.1080" width="424" height="489" />
     <size key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog.0.0.3840.1080" width="334" height="251" />
-    <size key="GridCell.Tab.0.left.0.0.3840.1080" width="1920" height="317" />
-    <size key="GridCell.Tab.0.center.0.0.3840.1080" width="1920" height="317" />
-    <size key="GridCell.Tab.0.right.0.0.3840.1080" width="1920" height="317" />
-    <size key="GridCell.Tab.0.bottom.0.0.3840.1080" width="1920" height="317" />
+    <size key="GridCell.Tab.0.left.0.0.3840.1080" width="1278" height="328" />
+    <size key="GridCell.Tab.0.center.0.0.3840.1080" width="1278" height="328" />
+    <size key="GridCell.Tab.0.right.0.0.3840.1080" width="1278" height="328" />
+    <size key="GridCell.Tab.0.bottom.0.0.3840.1080" width="1278" height="328" />
     <size key="GridCell.Tab.1.left.0.0.3840.1080" width="1920" height="317" />
     <size key="GridCell.Tab.1.center.0.0.3840.1080" width="1920" height="317" />
     <size key="GridCell.Tab.1.right.0.0.3840.1080" width="1920" height="317" />
     <size key="GridCell.Tab.1.bottom.0.0.3840.1080" width="1920" height="317" />
-    <size key="GridCell.Tab.0.left.0.0.1920.1080" width="958" height="124" />
-    <size key="GridCell.Tab.0.center.0.0.1920.1080" width="958" height="124" />
-    <size key="GridCell.Tab.0.right.0.0.1920.1080" width="958" height="124" />
-    <size key="GridCell.Tab.0.bottom.0.0.1920.1080" width="958" height="124" />
+    <size key="GridCell.Tab.0.left.0.0.1920.1080" width="1918" height="664" />
+    <size key="GridCell.Tab.0.center.0.0.1920.1080" width="1918" height="664" />
+    <size key="GridCell.Tab.0.right.0.0.1920.1080" width="1918" height="664" />
+    <size key="GridCell.Tab.0.bottom.0.0.1920.1080" width="1918" height="664" />
     <size key="GridCell.Tab.1.left.0.0.1920.1080" width="958" height="124" />
     <size key="GridCell.Tab.1.center.0.0.1920.1080" width="958" height="124" />
     <size key="GridCell.Tab.1.right.0.0.1920.1080" width="958" height="124" />
     <size key="GridCell.Tab.1.bottom.0.0.1920.1080" width="958" height="124" />
     <size key="FileChooserDialogImpl.1920.279.1920.1080" width="424" height="489" />
     <size key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog.1920.279.1920.1080" width="344" height="251" />
-    <size key="find.popup.0.0.1920.1080" width="1017" height="732" />
+    <size key="find.popup.0.0.1920.1080" width="1043" height="758" />
     <size key="git4idea.branch.GitSmartOperationDialog.0.0.1920.1080" width="479" height="560" />
     <size key="Vcs.CompareWithSelectedRevision.Popup.1920.279.1920.1080" width="302" height="308" />
     <size key="SettingsEditor.0.0.1920.1080" width="1037" height="821" />
@@ -260,12 +300,12 @@
     <size key="find.popup.1920.1080.1920.1080" width="879" height="594" />
     <size key="CommitChangelistDialog2.3840.1080.1920.1080" width="1153" height="764" />
     <size key="FileChooserDialogImpl.3840.0.1920.1080" width="424" height="463" />
-    <size key="find.popup.3840.0.1920.1080" width="879" height="594" />
+    <size key="find.popup.3840.0.1920.1080" width="881" height="596" />
     <size key="Vcs.CompareWithSelectedRevision.Popup.3840.0.1920.1080" width="466" height="421" />
     <size key="FileChooserDialogImpl.1920.1080.1920.1080" width="426" height="521" />
     <size key="javadoc.popup.1920.1080.1920.1080" width="446" height="169" />
-    <size key="find.popup.0.0.3840.2160" width="879" height="594" />
-    <size key="SettingsEditor.0.0.3840.2160" width="1037" height="741" />
+    <size key="find.popup.0.0.3840.2160" width="1169" height="884" />
+    <size key="SettingsEditor.0.0.3840.2160" width="1920" height="1098" />
     <size key="CommitChangelistDialog2.0.0.3840.2160" width="746" height="764" />
     <size key="SettingsEditor.1920.1080.1920.1080" width="1037" height="701" />
     <size key="FileChooserDialogImpl.0.493.1920.1080" width="424" height="463" />
@@ -316,7 +356,7 @@
     <size key="CommitChangelistDialog2.0.360.1920.1080" width="632" height="781" />
     <size key="SettingsEditor.0.360.1920.1080" width="851" height="613" />
     <size key="#Notifications.0.0.1920.1080" width="371" height="433" />
-    <size key="FileChooserDialogImpl.0.0.3840.2160" width="627" height="360" />
+    <size key="FileChooserDialogImpl.0.0.3840.2160" width="617" height="348" />
     <size key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog.0.0.3840.2160" width="337" height="210" />
     <size key="git4idea.branch.GitSmartOperationDialog.1920.1080.1920.1080" width="414" height="551" />
     <size key="FileChooserDialogImpl.0.1536.1920.1080" width="328" height="372" />
@@ -325,7 +365,7 @@
     <size key="FileChooserDialogImpl.1920.0.2560.1440" width="328" height="372" />
     <size key="FileDocumentManager.FileCacheConflict.1920.0.2560.1440" width="1563" height="880" />
     <size key="javadoc.popup.1920.0.2560.1440" width="335" height="144" />
-    <size key="find.popup.1920.0.2560.1440" width="762" height="514" />
+    <size key="find.popup.1920.0.2560.1440" width="782" height="534" />
     <size key="#com.intellij.refactoring.rename.AutomaticRenamingDialog.1920.0.2560.1440" width="1030" height="1429" />
     <size key="#Scala.0.0.1920.1080" width="395" height="1069" />
     <size key="#com.intellij.refactoring.rename.AutomaticRenamingDialog.0.0.1920.1080" width="855" height="845" />
@@ -533,18 +573,18 @@
     <size key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog.0.0.1920.1080" width="524" height="481" />
     <size key="StructurePopup.0.0.1920.1080" width="559" height="639" />
     <size key="SettingsEditor.0.0.5760.2160" width="1010" height="700" />
-    <size key="find.popup.0.0.5760.2160" width="649" height="662" />
+    <size key="find.popup.0.0.5760.2160" width="719" height="732" />
     <size key="NewModule_or_Project.wizard.0.0.3840.2160" width="636" height="756" />
-    <size key="GridCell.Tab.0.left.0.0.3840.2160" width="1918" height="322" />
-    <size key="GridCell.Tab.0.center.0.0.3840.2160" width="1918" height="322" />
-    <size key="GridCell.Tab.0.right.0.0.3840.2160" width="1918" height="322" />
-    <size key="GridCell.Tab.0.bottom.0.0.3840.2160" width="1918" height="322" />
+    <size key="GridCell.Tab.0.left.0.0.3840.2160" width="958" height="107" />
+    <size key="GridCell.Tab.0.center.0.0.3840.2160" width="958" height="107" />
+    <size key="GridCell.Tab.0.right.0.0.3840.2160" width="958" height="107" />
+    <size key="GridCell.Tab.0.bottom.0.0.3840.2160" width="958" height="107" />
     <size key="StructurePopup.0.0.3840.2160" width="559" height="639" />
     <size key="GridCell.Tab.0.left.3840.630.1920.1080" width="1918" height="323" />
     <size key="GridCell.Tab.0.center.3840.630.1920.1080" width="1918" height="323" />
     <size key="GridCell.Tab.0.right.3840.630.1920.1080" width="1918" height="323" />
     <size key="GridCell.Tab.0.bottom.3840.630.1920.1080" width="1918" height="323" />
-    <size key="#com.intellij.framework.addSupport.AddSupportForSingleFrameworkDialog.0.0.3840.2160" width="466" height="176" />
+    <size key="#com.intellij.framework.addSupport.AddSupportForSingleFrameworkDialog.0.0.3840.2160" width="466" height="183" />
     <size key="#com.intellij.framework.addSupport.AddSupportForSingleFrameworkDialog.0.0.3380.1901" width="466" height="176" />
     <size key="#Browse_Repositories.0.0.3380.1901" width="824" height="681" />
     <size key="#Plugins.0.0.3380.1901" width="800" height="674" />
@@ -555,5 +595,73 @@
     <size key="GridCell.Tab.0.right.3380.0.1920.1080" width="1125" height="1230" />
     <size key="GridCell.Tab.0.bottom.3380.0.1920.1080" width="1125" height="1230" />
     <size key="#Browse_Repositories.0.0.3840.2160" width="824" height="680" />
+    <size key="#Project_Structure.0.0.3840.2160" width="1024" height="842" />
+    <size key="GridCell.Tab.0.left.3840.0.1920.1080" width="1918" height="323" />
+    <size key="GridCell.Tab.0.center.3840.0.1920.1080" width="1918" height="323" />
+    <size key="GridCell.Tab.0.right.3840.0.1920.1080" width="1918" height="323" />
+    <size key="GridCell.Tab.0.bottom.3840.0.1920.1080" width="1918" height="323" />
+    <size key="#com.intellij.fileTypes.FileTypeChooser.0.0.3840.2160" width="667" height="391" />
+    <size key="#com.intellij.ide.util.MemberChooser.1920.0.2560.1440" width="374" height="607" />
+    <size key="chooseDestDirectoryDialog.0.768.1920.1080" width="399" height="454" />
+    <size key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes.0.768.1920.1080" width="483" height="321" />
+    <size key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes.0.0.1920.1080" width="569" height="321" />
+    <size key="GridCell.Tab.0.right.1920.0.2560.1440" width="959" height="132" />
+    <size key="GridCell.Tab.0.left.1920.0.2560.1440" width="959" height="132" />
+    <size key="GridCell.Tab.0.center.1920.0.2560.1440" width="959" height="132" />
+    <size key="GridCell.Tab.0.bottom.1920.0.2560.1440" width="959" height="132" />
+    <size key="GridCell.Tab.1.left.1920.0.2560.1440" width="1278" height="253" />
+    <size key="GridCell.Tab.1.center.1920.0.2560.1440" width="1278" height="253" />
+    <size key="GridCell.Tab.1.right.1920.0.2560.1440" width="1278" height="253" />
+    <size key="GridCell.Tab.1.bottom.1920.0.2560.1440" width="1278" height="253" />
+    <size key="DebuggerActiveHint.1920.0.2560.1440" width="426" height="646" />
+    <size key="#com.intellij.fileTypes.FileTypeChooser.1920.0.2560.1440" width="502" height="402" />
+    <size key="SettingsEditor.0.768.1920.1080" width="970" height="700" />
+    <size key="chooseDestDirectoryDialog.0.0.3840.2160" width="479" height="454" />
+    <size key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes.0.0.3840.2160" width="601" height="321" />
+    <size key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser.0.0.3840.2160" width="772" height="680" />
+    <size key="#com.intellij.ide.util.MemberChooser.0.768.1920.1080" width="374" height="607" />
+    <size key="find.popup.0.768.1920.1080" width="641" height="706" />
+    <size key="GridCell.Tab.0.left.0.768.1920.1080" width="1918" height="328" />
+    <size key="GridCell.Tab.0.center.0.768.1920.1080" width="1918" height="328" />
+    <size key="GridCell.Tab.0.right.0.768.1920.1080" width="1918" height="328" />
+    <size key="GridCell.Tab.0.bottom.0.768.1920.1080" width="1918" height="328" />
+    <size key="find.popup.0.0.3840.1080" width="607" height="672" />
+    <size key="GridCell.Tab.0.left.3840.700.1920.1080" width="958" height="107" />
+    <size key="GridCell.Tab.0.center.3840.700.1920.1080" width="958" height="107" />
+    <size key="GridCell.Tab.0.right.3840.700.1920.1080" width="958" height="107" />
+    <size key="GridCell.Tab.0.bottom.3840.700.1920.1080" width="958" height="107" />
+    <size key="#com.intellij.tools.ToolEditorDialog.1920.0.2560.1440" width="510" height="371" />
+    <size key="#com.intellij.refactoring.rename.AutomaticRenamingDialog.0.0.3840.2160" width="1098" height="1908" />
+    <size key="GridCell.Tab.1.left.0.0.3840.2160" width="958" height="263" />
+    <size key="GridCell.Tab.1.center.0.0.3840.2160" width="958" height="263" />
+    <size key="GridCell.Tab.1.right.0.0.3840.2160" width="958" height="263" />
+    <size key="GridCell.Tab.1.bottom.0.0.3840.2160" width="958" height="263" />
+    <size key="#com.intellij.ide.util.MemberChooser.0.0.5760.2160" width="374" height="607" />
+    <size key="#com.intellij.refactoring.rename.AutomaticRenamingDialog.0.0.5760.2160" width="1118" height="1830" />
+    <size key="chooseDestDirectoryDialog.0.0.5760.2160" width="479" height="454" />
+    <size key="FileChooserDialogImpl.0.0.5760.2160" width="424" height="481" />
+    <size key="FileChooserDialogImpl.0.0.4480.1848" width="424" height="481" />
+    <size key="find.popup.0.0.4480.1848" width="603" height="668" />
+    <size key="GridCell.Tab.0.left.0.0.4480.1848" width="1396" height="187" />
+    <size key="GridCell.Tab.0.center.0.0.4480.1848" width="1396" height="187" />
+    <size key="GridCell.Tab.0.right.0.0.4480.1848" width="1396" height="187" />
+    <size key="GridCell.Tab.0.bottom.0.0.4480.1848" width="1396" height="187" />
+    <size key="#com.intellij.ide.util.MemberChooser.0.0.4480.1848" width="374" height="607" />
+    <size key="NewModule_or_Project.wizard.1920.0.2560.1440" width="463" height="574" />
+    <size key="#com.intellij.framework.addSupport.AddSupportForSingleFrameworkDialog.1920.0.2560.1440" width="466" height="179" />
+    <size key="#Project_Structure.1920.0.2560.1440" width="1048" height="849" />
+    <size key="FileChooserDialogImpl.0.768.1920.1080" width="424" height="481" />
+    <size key="#com.intellij.framework.addSupport.AddSupportForSingleFrameworkDialog.0.768.1920.1080" width="466" height="183" />
+    <size key="GridCell.Tab.0.left.0.0.5760.2160" width="1918" height="664" />
+    <size key="GridCell.Tab.0.center.0.0.5760.2160" width="1918" height="664" />
+    <size key="GridCell.Tab.0.right.0.0.5760.2160" width="1918" height="664" />
+    <size key="GridCell.Tab.0.bottom.0.0.5760.2160" width="1918" height="664" />
+    <size key="SettingsEditor.0.0.3840.1080" width="969" height="700" />
+    <size key="#com.intellij.ide.util.MemberChooser.3840.700.1920.1080" width="374" height="578" />
+    <size key="FileChooserDialogImpl.3840.700.1920.1080" width="424" height="481" />
+    <size key="SettingsEditor.3840.700.1920.1080" width="1024" height="842" />
+    <size key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog.0.0.3840.2160" width="524" height="481" />
+    <size key="find.popup.3840.700.1920.1080" width="1099" height="814" />
+    <size key="#Updates.0.0.1920.1080" width="450" height="276" />
   </component>
 </application>

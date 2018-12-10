@@ -1,4 +1,7 @@
-help
 open_with vim
 open_with cat
+search gz
+copy
+help
 delete
+new scala

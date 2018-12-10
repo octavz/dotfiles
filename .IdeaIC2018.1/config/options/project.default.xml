@@ -115,16 +115,22 @@
         <option name="projectSyncType">
           <map>
             <entry key="$USER_HOME$/projects/scala/graphql-server" value="PREVIEW" />
+            <entry key="$USER_HOME$/projects/scala/kafka-support" value="PREVIEW" />
+            <entry key="$USER_HOME$/projects/scala/kclient" value="PREVIEW" />
             <entry key="$USER_HOME$/projects/talks/final-tagless" value="PREVIEW" />
             <entry key="$USER_HOME$/tmp/quill" value="PREVIEW" />
+            <entry key="$USER_HOME$/work/blaze-avro-demo/scala/scala-monix-kafka" value="PREVIEW" />
             <entry key="$USER_HOME$/work/blaze-bazaarvoice-ratings-spark-jobs" value="PREVIEW" />
+            <entry key="$USER_HOME$/work/blaze-files-processor-spark-jobs" value="PREVIEW" />
             <entry key="$USER_HOME$/work/blaze-lib-consul" value="PREVIEW" />
             <entry key="$USER_HOME$/work/blaze-lib-dynamodb" value="PREVIEW" />
             <entry key="$USER_HOME$/work/blaze-lib-ingestion" value="PREVIEW" />
             <entry key="$USER_HOME$/work/blaze-lib-kafkaencryption" value="PREVIEW" />
+            <entry key="$USER_HOME$/work/blaze-logs-s3-processor" value="PREVIEW" />
             <entry key="$USER_HOME$/work/blaze-product-merge-rds-service" value="PREVIEW" />
             <entry key="$USER_HOME$/work/blaze-product-merge-service" value="PREVIEW" />
             <entry key="$USER_HOME$/work/blaze-recommendations-itemitem-service" value="PREVIEW" />
+            <entry key="$USER_HOME$/work/blaze-retail-credit-service" value="PREVIEW" />
           </map>
         </option>
       </component>

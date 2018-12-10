@@ -39,17 +39,19 @@ bindsym $mod+q exec vivaldi --new-window www.duckduckgo.com
 bindsym $mod+e exec gvim
 bindsym $mod+n exec --no-startup-id nautilus --no-desktop
 bindsym $mod+Control+Delete exec xtrlock
-bindsym $mod+Mod1+a exec xtrlock
 bindsym $mod+Shift+s exec termite --name=cheatsheet --geometry=900x600 -e ~/bin/cheatsheet
 bindsym $mod+b bar mode toggle
 bindsym $mod+z exec --no-startup-id exec i3zen
 bindsym $mod+Shift+b border pixel 5
 bindsym --release $mod+Shift+b border pixel 1
+bindsym $mod+d exec --no-startup-id td4k
+bindsym $mod+Shift+d exec --no-startup-id tdf
 
 bindsym $mod+Control+1 exec laptop.sh
 bindsym $mod+Control+2 exec 4k
 bindsym $mod+Control+3 exec conf.sh
 bindsym $mod+Control+4 exec home.sh
+bindsym $mod+a exec easyfocus 
 
 # kill focused window
 bindsym $mod+Shift+c kill
@@ -155,9 +157,9 @@ bindsym $mod+F3 mark "m3"
 bindsym Mod1+F3 [con_mark="m3"] focus
 #
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 10%+ #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 10%- #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id  amixer -D pulse sset Master 0% # mute sound
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
@@ -197,6 +199,7 @@ mode "resize" {
 bindsym $mod+p mode "resize"
 bindsym $mod+minus move scratchpad
 bindsym F1 scratchpad show
+bindsym $mod+grave scratchpad show
 #bindsym F1 exec "tdrop -ma -w -4 -y 20 -h 720 termite"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -220,6 +223,7 @@ exec --no-startup-id indicator-diskman
 #exec --no-startup-id touchpad-indicator
 exec --no-startup-id blueman-applet
 exec --no-startup-id nm-applet
+exec --no-startup-id i3-easyfocus -ar
 #show cheatsheet as floating
 for_window [instance="cheatsheet"] floating enable
 # hide window title
@@ -331,3 +335,9 @@ gaps inner 0
 gaps outer 0
 smart_gaps on
 smart_borders on
+
+# Resizing by 10
+bindsym $mod+Ctrl+Right resize shrink width 5 px or 5 ppt
+bindsym $mod+Ctrl+Up resize grow height 5 px or 5 ppt
+bindsym $mod+Ctrl+Down resize shrink height 5 px or 5 ppt
+bindsym $mod+Ctrl+Left resize grow width 5 px or 5 ppt

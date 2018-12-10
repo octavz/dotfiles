@@ -7,7 +7,7 @@
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="theunraveler"
+ZSH_THEME="lambda"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -108,6 +108,8 @@ alias dow="cd ~/Downloads"
 alias back='feh --bg-scale "/home/ozaharia/Pictures/$((RANDOM%60)).jpg"'
 alias ll='ls -al'
 alias cal='ncal -3Mb'
+alias inline='cd /home/ozaharia/projects/inline/haskell && ls -al'
+alias ovpn="oathtool --base32 --totp $OSECRET | xclip -sel clip && sudo openvpn  --config ~/.openvpn/client.ovpn"
 
 setxkbmap us -variant colemak
 bindkey '^R' history-incremental-search-backward
@@ -120,16 +122,20 @@ if [[ $TERM == xterm-termite ]]; then
   __vte_osc7
 fi
 export GOROOT=/usr/local/go
-export PATH=$GOPATH/bin:$GOROOT/bin:~/go/bin:$PATH:$PATH:~/.cargo/bin:~/.local/bin:~/bin:/home/ozaharia/.cabal/bin
+export PATH=$PATH:$GOPATH/bin:$GOROOT/bin:/home/ozaharia/go/bin:/home/ozaharia/.cargo/bin:/home/ozaharia/.local/bin:/home/ozaharia/bin:/home/ozaharia/.cabal/bin:/home/ozaharia/node_modules/.bin:/home/ozaharia/apps/apache-maven-3.6.0/bin
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export XDG_RUNTIME_DIR=/run/user/`id -u`
 
-setxkbmap -option ctrl:nocaps
-pkill -f xcape
-xcape -e 'Control_L=Escape'
+source ~/.xsessionrc
+#setxkbmap -option ctrl:nocaps
+#pkill -f xcape
+#xcape -e 'Control_L=Escape'
+#xmodmap -e 'keycode 77 = NoSymbol Num_Lock'
+
 export IDEA_JDK=~/bin/jdk-idea
 source ~/work/env.sh
 export TERM=xterm-color
 synclient MaxTapTime=0
+export LD_LIBRARY_PATH=/usr/local/lib

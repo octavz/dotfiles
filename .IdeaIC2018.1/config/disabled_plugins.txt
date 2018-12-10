@@ -1,7 +1,7 @@
 AntSupport
-AutoSwitchIm
 CVS
 DevKit
+SBT
 Subversion
 TestNG-J
 XPathView
@@ -15,7 +15,6 @@ org.intellij.intelliLang
 org.jetbrains.android
 org.jetbrains.debugger.streams
 org.jetbrains.idea.eclipse
-org.jetbrains.idea.maven
 org.jetbrains.kotlin
 org.jetbrains.plugins.github
 org.jetbrains.plugins.gradle

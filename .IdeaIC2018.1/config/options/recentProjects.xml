@@ -2,33 +2,46 @@
   <component name="RecentProjectsManager">
     <option name="recentPaths">
       <list>
-        <option value="$USER_HOME$/work/blaze-lib-kafka" />
+        <option value="$USER_HOME$/work/blaze-logs-s3-processor" />
+        <option value="$USER_HOME$/work/blaze-product-merge-spark-jobs" />
+        <option value="$USER_HOME$/work/blaze-product-merge-rds-service" />
+        <option value="$USER_HOME$/work/blaze-recommendations-itemitem-service" />
+        <option value="$USER_HOME$/projects/scala/kclient" />
+        <option value="$USER_HOME$/work/blaze-files-processor-spark-jobs" />
+        <option value="$USER_HOME$/work/blaze-data-retention-spark-jobs" />
+        <option value="$USER_HOME$/projects/scala/reader-di" />
         <option value="$USER_HOME$/work/blaze-data-ingestion-service" />
+        <option value="$USER_HOME$/work/blaze-avro-demo/scala/scala-monix-kafka" />
+        <option value="$USER_HOME$/work/blaze-avro-demo/scala" />
+        <option value="$USER_HOME$/projects/java/demo" />
+        <option value="$USER_HOME$/work/blaze-product-merge-service" />
+        <option value="$USER_HOME$/projects/scala/kafka-support" />
+        <option value="$USER_HOME$/projects/scala/engine/server" />
+        <option value="$USER_HOME$/projects/scala" />
+        <option value="$USER_HOME$/work/replicator" />
+        <option value="$USER_HOME$/work/blaze-kafka-s3-processor/partitioner/kafka-connect-custom-partitioner" />
+        <option value="$USER_HOME$/tmp/kafka-connect-storage-cloud" />
+        <option value="$USER_HOME$/work/blaze-lib-docker-it" />
+        <option value="$USER_HOME$/work/blaze-retail-credit-service" />
+        <option value="$USER_HOME$/work/blaze-lib-kafka" />
         <option value="$USER_HOME$/work/blaze-lib-kafkaencryption" />
         <option value="$USER_HOME$/projects/talks/final-tagless" />
-        <option value="$USER_HOME$/work/blaze-data-retention-spark-jobs" />
         <option value="$USER_HOME$/work/blaze-airflow-config" />
         <option value="$USER_HOME$/work/blaze-bazaarvoice-ratings-spark-jobs" />
-        <option value="$USER_HOME$/work/replicator" />
         <option value="$USER_HOME$/work/blaze-lib-dynamodb" />
         <option value="$USER_HOME$/work/blaze-bazaarvoice-ratings-spark-jobs/blaze-bazaarvoice-ratings-spark-jobs_7039.ipr" />
-        <option value="$USER_HOME$/work/blaze-product-merge-rds-service" />
         <option value="$USER_HOME$/work/blaze-lib-ingestion" />
         <option value="$USER_HOME$/work/blaze-kafka-chatops-service/kafka-bot" />
         <option value="$USER_HOME$/projects/haskell/kafka-bot" />
         <option value="$USER_HOME$/tmp/kafka-rest" />
         <option value="$USER_HOME$/tmp/kafka-rest/kafka-rest" />
         <option value="$USER_HOME$/work/blaze-lib-consul" />
-        <option value="$USER_HOME$/work/blaze-product-merge-service" />
         <option value="$USER_HOME$/work/jenkins-seed-scripts/cd.nl.wehkamp" />
         <option value="$USER_HOME$/work/jenkins-seed-scripts/ci.global" />
         <option value="$USER_HOME$/work/blaze-order-merge-service" />
-        <option value="$USER_HOME$/work/blaze-lib-docker-it" />
         <option value="$USER_HOME$/projects/haskell/group" />
         <option value="$USER_HOME$/projects/haskell/group/src" />
-        <option value="$USER_HOME$/projects/scala/reader-di" />
         <option value="$USER_HOME$/tmp/quill" />
-        <option value="$USER_HOME$/work/blaze-recommendations-itemitem-service" />
         <option value="$USER_HOME$/work/blaze-recommendations-toplist-service" />
         <option value="$USER_HOME$/work/blaze-recommendations-gateway" />
         <option value="$USER_HOME$/work/blaze-salesforce-jdbc-processor" />
@@ -39,19 +52,15 @@
         <option value="$USER_HOME$/projects/scala/graphql-server" />
         <option value="$USER_HOME$/projects/scala/shopping-list" />
         <option value="$USER_HOME$/work/blaze-recommendations-itemitem-spark-jobs" />
-        <option value="$USER_HOME$/work/blaze-combination-merge-service" />
-        <option value="$USER_HOME$/work/blaze-basket-service" />
-        <option value="$USER_HOME$/work/blaze-recommendations-itemitem-service2" />
-        <option value="$USER_HOME$/work/blaze-recommendations-filtering-spark-jobs" />
       </list>
     </option>
     <option name="openPaths">
       <list>
-        <option value="$USER_HOME$/work/blaze-lib-kafka" />
+        <option value="$USER_HOME$/work/blaze-logs-s3-processor" />
       </list>
     </option>
-    <option name="lastPath" value="$USER_HOME$/work/blaze-lib-kafka" />
-    <option name="pid" value="11870" />
+    <option name="lastPath" value="$USER_HOME$/work/blaze-logs-s3-processor" />
+    <option name="pid" value="24493" />
     <option name="additionalInfo">
       <map>
         <entry key="$USER_HOME$/projects/haskell/group">
@@ -87,6 +96,39 @@
             </RecentProjectMetaInfo>
           </value>
         </entry>
+        <entry key="$USER_HOME$/projects/java/demo">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1541831284036" />
+              <option name="buildTimestamp" value="1522095803765" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/scala">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1541409899951" />
+              <option name="buildTimestamp" value="1522095783859" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/scala/engine/server">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1541412667756" />
+              <option name="buildTimestamp" value="1522095809695" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
         <entry key="$USER_HOME$/projects/scala/graphql-server">
           <value>
             <RecentProjectMetaInfo>
@@ -98,14 +140,36 @@
             </RecentProjectMetaInfo>
           </value>
         </entry>
+        <entry key="$USER_HOME$/projects/scala/kafka-support">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1541493183232" />
+              <option name="buildTimestamp" value="1522095808423" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/projects/scala/kclient">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1543393831882" />
+              <option name="buildTimestamp" value="1522095805116" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
         <entry key="$USER_HOME$/projects/scala/reader-di">
           <value>
             <RecentProjectMetaInfo>
               <option name="build" value="IC-181.4203.550" />
               <option name="productionCode" value="IC" />
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="projectOpenTimestamp" value="1524385342889" />
-              <option name="buildTimestamp" value="1522095833958" />
+              <option name="projectOpenTimestamp" value="1542265621939" />
+              <option name="buildTimestamp" value="1522095821221" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
@@ -128,6 +192,17 @@
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
               <option name="projectOpenTimestamp" value="1533823801682" />
               <option name="buildTimestamp" value="1522095798691" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/tmp/kafka-connect-storage-cloud">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1539870071560" />
+              <option name="buildTimestamp" value="1522095813416" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
@@ -172,6 +247,28 @@
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
               <option name="projectOpenTimestamp" value="1533544760145" />
               <option name="buildTimestamp" value="1522095822613" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-avro-demo/scala">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1542095025790" />
+              <option name="buildTimestamp" value="1522095787611" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-avro-demo/scala/scala-monix-kafka">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1542115963055" />
+              <option name="buildTimestamp" value="1522095787611" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
@@ -225,8 +322,8 @@
               <option name="build" value="IC-181.4203.550" />
               <option name="productionCode" value="IC" />
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="projectOpenTimestamp" value="1534750668565" />
-              <option name="buildTimestamp" value="1522095804501" />
+              <option name="projectOpenTimestamp" value="1542115970514" />
+              <option name="buildTimestamp" value="1522095787611" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
@@ -236,8 +333,19 @@
               <option name="build" value="IC-181.4203.550" />
               <option name="productionCode" value="IC" />
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="projectOpenTimestamp" value="1533810396566" />
-              <option name="buildTimestamp" value="1522095798691" />
+              <option name="projectOpenTimestamp" value="1542798188403" />
+              <option name="buildTimestamp" value="1522095806175" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-files-processor-spark-jobs">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1543320708237" />
+              <option name="buildTimestamp" value="1522095805116" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
@@ -249,6 +357,17 @@
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
               <option name="projectOpenTimestamp" value="1531811171591" />
               <option name="buildTimestamp" value="1522095827034" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-kafka-s3-processor/partitioner/kafka-connect-custom-partitioner">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1540453464869" />
+              <option name="buildTimestamp" value="1522095819540" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
@@ -269,8 +388,8 @@
               <option name="build" value="IC-181.4203.550" />
               <option name="productionCode" value="IC" />
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="projectOpenTimestamp" value="1524769390542" />
-              <option name="buildTimestamp" value="1522095794502" />
+              <option name="projectOpenTimestamp" value="1538636134171" />
+              <option name="buildTimestamp" value="1522095805743" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
@@ -302,8 +421,8 @@
               <option name="build" value="IC-181.4203.550" />
               <option name="productionCode" value="IC" />
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="projectOpenTimestamp" value="1534762577938" />
-              <option name="buildTimestamp" value="1522095819536" />
+              <option name="projectOpenTimestamp" value="1534861201525" />
+              <option name="buildTimestamp" value="1522095839884" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
@@ -315,6 +434,17 @@
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
               <option name="projectOpenTimestamp" value="1534231255199" />
               <option name="buildTimestamp" value="1522095801905" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-logs-s3-processor">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1543994374881" />
+              <option name="buildTimestamp" value="1522095832609" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
@@ -335,8 +465,8 @@
               <option name="build" value="IC-181.4203.550" />
               <option name="productionCode" value="IC" />
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="projectOpenTimestamp" value="1533109527730" />
-              <option name="buildTimestamp" value="1522095801906" />
+              <option name="projectOpenTimestamp" value="1543903601127" />
+              <option name="buildTimestamp" value="1522095808945" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
@@ -346,8 +476,19 @@
               <option name="build" value="IC-181.4203.550" />
               <option name="productionCode" value="IC" />
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="projectOpenTimestamp" value="1530096341341" />
-              <option name="buildTimestamp" value="1522095818669" />
+              <option name="projectOpenTimestamp" value="1541742401870" />
+              <option name="buildTimestamp" value="1522095803765" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/work/blaze-product-merge-spark-jobs">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1543933556954" />
+              <option name="buildTimestamp" value="1522095832609" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
@@ -387,11 +528,11 @@
         <entry key="$USER_HOME$/work/blaze-recommendations-itemitem-service">
           <value>
             <RecentProjectMetaInfo>
-              <option name="build" value="IC-173.4674.33" />
+              <option name="build" value="IC-181.4203.550" />
               <option name="productionCode" value="IC" />
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="projectOpenTimestamp" value="1522144300112" />
-              <option name="buildTimestamp" value="1520278464210" />
+              <option name="projectOpenTimestamp" value="1543485123346" />
+              <option name="buildTimestamp" value="1522095833680" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
@@ -450,6 +591,17 @@
             </RecentProjectMetaInfo>
           </value>
         </entry>
+        <entry key="$USER_HOME$/work/blaze-retail-credit-service">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IC-181.4203.550" />
+              <option name="productionCode" value="IC" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1535630303623" />
+              <option name="buildTimestamp" value="1522095803830" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
         <entry key="$USER_HOME$/work/blaze-salesforce-jdbc-processor">
           <value>
             <RecentProjectMetaInfo>
@@ -500,13 +652,13 @@
               <option name="build" value="IC-181.4203.550" />
               <option name="productionCode" value="IC" />
               <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
-              <option name="projectOpenTimestamp" value="1533539363812" />
-              <option name="buildTimestamp" value="1522095815522" />
+              <option name="projectOpenTimestamp" value="1540625632334" />
+              <option name="buildTimestamp" value="1522095819540" />
             </RecentProjectMetaInfo>
           </value>
         </entry>
       </map>
     </option>
-    <option name="lastProjectLocation" value="$USER_HOME$/work" />
+    <option name="lastProjectLocation" value="$USER_HOME$/work/blaze-avro-demo/scala" />
   </component>
 </application>

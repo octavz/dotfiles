@@ -1,7 +1,7 @@
 <scheme name="Solarized Light" version="142" parent_scheme="Default">
   <option name="FONT_SCALE" value="1.0" />
   <option name="EDITOR_FONT_SIZE" value="14" />
-  <option name="EDITOR_FONT_NAME" value="Ubuntu Mono" />
+  <option name="EDITOR_FONT_NAME" value="Hack Nerd Font Mono" />
   <option name="EDITOR_LIGATURES" value="true" />
   <colors>
     <option name="ADDED_LINES_COLOR" value="baeeba" />

@@ -1,31 +1,35 @@
 <application>
   <component name="WindowStateApplicationService">
-    <state x="1" y="962" width="1918" height="736" key="DiffContextDialog" />
+    <state x="1" y="703" width="1918" height="736" key="DiffContextDialog" />
     <state x="0" y="-14" width="1920" height="1094" key="DiffContextDialog/1920.1080" />
     <state x="1079" y="578" width="1922" height="1098" key="DiffContextDialog/1920.1080/1080.1920/1920.1080" />
     <state x="1918" y="1063" width="1924" height="1099" key="DiffContextDialog/1920.1080/1920.1080/1920.1080" />
     <state x="639" y="362" width="642" height="1079" key="DiffContextDialog/1920.1080/2560.1440" />
     <state x="1013" y="-15" width="1009" height="1721" key="DiffContextDialog/1920.1080/3034.1707" />
-    <state x="1" y="962" width="1918" height="736" key="DiffContextDialog/1920.1080/3840.2160" />
+    <state x="1" y="703" width="1918" height="736" key="DiffContextDialog/1920.1080/3840.2160" />
     <state x="1" y="962" width="1918" height="736" key="DiffContextDialog@1920.1080" />
     <state x="3200" y="3" width="1272" height="1409" key="DiffContextDialog@2560.1440" />
     <state x="1013" y="-15" width="1009" height="1721" key="DiffContextDialog@3034.1707" />
-    <state x="3841" y="35" width="958" height="1044" key="DiffContextDialog@3840.2160" />
+    <state x="1" y="703" width="1918" height="736" key="DiffContextDialog@3840.2160" />
     <state x="1921" y="703" width="1918" height="736" key="DiffContextDialog@3840.2160@120dpi" />
-    <state x="0" y="-18" width="1920" height="1098" key="com.intellij.history.integration.ui.views.FileHistoryDialog" />
+    <state x="1" y="1423" width="1918" height="736" key="com.intellij.history.integration.ui.views.FileHistoryDialog" />
     <state x="0" y="-18" width="1920" height="1098" key="com.intellij.history.integration.ui.views.FileHistoryDialog/1920.1080" />
     <state x="640" y="-16" width="640" height="1096" key="com.intellij.history.integration.ui.views.FileHistoryDialog/1920.1080/1080.1920/1920.1080" />
     <state x="1918" y="1063" width="1924" height="1099" key="com.intellij.history.integration.ui.views.FileHistoryDialog/1920.1080/1920.1080/1920.1080" />
-    <state x="3628" y="-17" width="851" height="1456" key="com.intellij.history.integration.ui.views.FileHistoryDialog/1920.1080/2560.1440" />
+    <state x="1921" y="463" width="1278" height="496" key="com.intellij.history.integration.ui.views.FileHistoryDialog/1920.1080/2560.1440" />
     <state x="0" y="-16" width="1920" height="1096" key="com.intellij.history.integration.ui.views.FileHistoryDialog/1920.1080/3034.1707" />
-    <state x="1" y="523" width="1227" height="556" key="com.intellij.history.integration.ui.views.FileHistoryDialog/1920.1080/3840.2160" />
+    <state x="1" y="1423" width="1918" height="736" key="com.intellij.history.integration.ui.views.FileHistoryDialog/1920.1080/3840.2160" />
     <state x="2040" y="575" width="960" height="1097" key="com.intellij.history.integration.ui.views.FileHistoryDialog/4920.1920" />
+    <state x="0" y="-18" width="3840" height="2178" key="com.intellij.history.integration.ui.views.FileHistoryDialog/5760.2160" />
     <state x="640" y="-16" width="640" height="1096" key="com.intellij.history.integration.ui.views.FileHistoryDialog@1080.1920" />
     <state x="0" y="-18" width="1920" height="1098" key="com.intellij.history.integration.ui.views.FileHistoryDialog@1920.1080" />
+    <state x="1921" y="463" width="1278" height="496" key="com.intellij.history.integration.ui.views.FileHistoryDialog@2560.1440" />
     <state x="3628" y="-17" width="851" height="1456" key="com.intellij.history.integration.ui.views.FileHistoryDialog@2560.1440@120dpi" />
     <state x="0" y="-16" width="1920" height="1096" key="com.intellij.history.integration.ui.views.FileHistoryDialog@3034.1707" />
+    <state x="1" y="1423" width="1918" height="736" key="com.intellij.history.integration.ui.views.FileHistoryDialog@3840.2160" />
     <state x="1921" y="1423" width="1918" height="736" key="com.intellij.history.integration.ui.views.FileHistoryDialog@3840.2160@120dpi" />
     <state x="2040" y="575" width="960" height="1097" key="com.intellij.history.integration.ui.views.FileHistoryDialog@4920.1920" />
+    <state x="0" y="-18" width="3840" height="2178" key="com.intellij.history.integration.ui.views.FileHistoryDialog@5760.2160" />
     <state x="959" y="362" width="962" height="1079" key="dock-window-1" />
     <state x="959" y="362" width="962" height="1079" key="dock-window-1/1920.1080/2560.1440" />
     <state x="959" y="362" width="962" height="1079" key="dock-window-1@1920.1080" />

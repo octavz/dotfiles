@@ -40,19 +40,20 @@ Plug 'wellle/targets.vim'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-surround'
 
-"progrmamming productivity
+"programming productivity
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh', }
 Plug 'scrooloose/nerdcommenter'
 Plug 'w0rp/ale'
 Plug 'tpope/vim-fugitive'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'mattn/emmet-vim'
+Plug 'vim-latex/vim-latex'
 
 "languages
 "scala
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
-Plug 'ensime/ensime-vim', { 'for': 'scala', 'do': ':UpdateRemotePlugins' }
 Plug 'scrooloose/syntastic', { 'for': ['scala'] }
+Plug 'natebosch/vim-lsc', { 'for': ['scala'] }
 
 "elixir
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
@@ -68,6 +69,8 @@ Plug 'raichoo/purescript-vim', { 'for': 'purescript'}
 "haskell
 Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
+Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
+
 "clojure
 Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
 Plug 'tpope/vim-classpath', { 'for': 'clojure' }
@@ -78,7 +81,7 @@ Plug 'fsharp/vim-fsharp', {
       \ 'do':  'make fsautocomplete',
       \}
 "others
-Plug 'elzr/vim-json'
+"Plug 'elzr/vim-json'
 Plug 'gabrielelana/vim-markdown'
 
 "Plug 'Shougo/deoplete.nvim'
@@ -99,7 +102,7 @@ Plug 'gabrielelana/vim-markdown'
 "Plug 'chrisbra/csv.vim'
 call plug#end()
 
-autocmd BufWritePost *.scala :EnTypeCheck
+"autocmd BufWritePost *.scala :EnTypeCheck
 autocmd BufEnter * call ncm2#enable_for_buffer()
 autocmd BufLeave,FocusLost * silent! wall
 au VimEnter * RainbowParenthesesToggle
@@ -132,20 +135,25 @@ let g:cabal_indent_section = 2
 let g:neomake_open_list = 2
 let g:neomake_haskell_enabled_makers = []
 
+"let g:LanguageClient_loggingLevel = 'INFO'
+"let g:LanguageClient_loadSettings = 0
+let g:LanguageClient_loggingFile =  expand('/tmp/LanguageClient.log')
+let g:LanguageClient_serverStderr = expand('/tmp/LanguageServer.log')
 
 "let g:deoplete#enable_at_startup = 1
 let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
 let g:SuperTabClosePreviewOnPopupClose = 1
 
 let g:LanguageClient_serverCommands = {
-    \ 'haskell': ['hie-wrapper'],
+    \ 'haskell': ['hie-wrapper', '-l', '/tmp/hie.log'],
     \ 'javascript': ['/home/ozaharia/node_modules/.bin/javascript-typescript-stdio'],
     \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
     \ 'python': ['/home/ozaharia/.local/bin/pyls'],
     \ 'clojure': ['/home/ozaharia/bin/clojure-lsp'],
-    \ 'fsharp': ['dotnet', '/home/ozaharia/tmp/fsharp-language-server/src/FSharpLanguageServer/bin/Release/netcoreapp2.0/target/FSharpLanguageServer.dll']
+    \ 'fsharp': ['dotnet', '/home/ozaharia/tmp/fsharp-language-server/src/FSharpLanguageServer/bin/Release/netcoreapp2.0/target/FSharpLanguageServer.dll'],
     \ }
 
+    " \ 'scala': ['/home/ozaharia/bin/scalameta_lsp'],
 :command! WQ wq
 :command! Wq wq
 :command! W w
@@ -157,13 +165,29 @@ let g:LanguageClient_serverCommands = {
 let g:acp_enableAtStartup = 0
 
 "scala
-"let ensime_server_v2=1
-let $BROWSER = 'firefox %s'
 let g:syntastic_scala_checkers=['scalastyle']
 let g:loaded_syntastic_scala_scalastyle_checker = 1
 let g:syntastic_auto_loc_list=1
 "let g:syntastic_scala_scalastyle_jar = '~/Apps/scalastyle_2.10-0.7.0-batch.jar'
 "end scala
+
+let g:tagbar_type_scala = {
+    \ 'ctagstype' : 'scala',
+    \ 'ctagsbin'    : 'stags',
+    \ 'sro'       : '.',
+    \ 'kinds'     : [
+      \ 'p:packages',
+      \ 'T:types:1',
+      \ 't:traits',
+      \ 'o:objects',
+      \ 'O:case objects',
+      \ 'c:classes',
+      \ 'C:case classes',
+      \ 'm:methods',
+      \ 'V:values:1',
+      \ 'v:variables:1'
+    \ ]
+\ }
 
 "haskell
 let g:tagbar_type_haskell = {
@@ -347,29 +371,30 @@ call denite#custom#map(
 
 nmap <silent> <leader>fz :FZF<CR>
 
-"lsp
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 
 "productivity
 noremap <Leader>f :Ag <C-R><C-W><CR>
 nmap <silent> <Leader><Space> :bnext<CR>
 nmap <silent> <C-A> :e $MYVIMRC<CR>
 inoremap <C-space> <C-x><C-o>
+noremap <silent> <Leader>h :Startify <CR>
+nnoremap Q gq
 
 "scala
-au FileType scala,java nmap gd :EnDeclaration<CR>
-au FileType scala,java nmap gds :EnDeclarationSplit<CR>
-au FileType scala,java nmap  gdv :EnDeclarationSplit v<CR>
-au FileType scala,java nmap <silent> <Leader>d :EnDocBrowse<CR>
-au FileType scala,java nmap <silent> <Leader>i :EnInspectType<CR>
-au FileType scala,java nmap <silent> <Leader>I :EnSuggestImport<CR>
-au FileType scala,java nmap <silent> <Leader><f2> :EnRename<CR>
-au FileType scala,java nmap <silent> <A-=> :EnType<CR>
-au FileType scala,java xnoremap <silent> <A-=> :EnType selection<CR>
-au FileType scala,java nmap <silent> <A-CR>> :EnSuggestImport<CR>
-au FileType scala,java nmap <silent> <Leader>f :EnFormatSource<CR>
 "au filetype scala nmap <Leader>m :%!java -jar /home/octav/cli-assembly-0.1.7.jar -f -q +compactControlReadability +alignParameters +alignSingleLineCaseStatements +doubleIndentClassDeclaration +preserveDanglingCloseParenthesis +rewriteArrowSymbols +preserveSpaceBeforeArguments --stdin --stdout <CR>
 
+au BufRead,BufNewFile *.sbt set filetype=scala
+let g:lsc_enable_autocomplete = v:false
+let g:lsc_server_commands = {
+  \ 'scala': 'metals-vim'
+  \}
+let g:lsc_auto_map = {
+    \ 'GoToDefinition': 'gd',
+    \}
+vmap <Leader>% :Tabularize /%\{1,2} <CR>
+vmap <Leader>= :Tabularize /=\{1,2} <CR>
+vmap <Leader>, :Tabularize /=\{1} <CR>
+vmap <Leader>s :Tabularize /\s\+ <CR>
 
 "elm
 au FileType elm nmap <silent> <Leader>t :ElmShowDocs<CR>
@@ -403,7 +428,17 @@ au FileType clojure nmap <silent> <Leader>q :ccl<CR>
 au FileType haskell nnoremap <silent> <leader>his :HsimportSymbol<CR>
 au FileType haskell nnoremap <silent> <leader>him :HsimportModule<CR>
 " Or map each action separately
-au FileType haskell,javascript,python,fsharp nnoremap <silent> <leader>t :call LanguageClient#textDocument_hover()<CR>
-au FileType haskell,javascript,python,fsharp nnoremap <silent> <A-=> :call LanguageClient#textDocument_hover()<CR>
-au FileType haskell,javascript,python,fsharp nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-au FileType haskell,javascript,python,fsharp nnoremap <silent> <leader><F2> :call LanguageClient#textDocument_rename()<CR>
+au FileType haskell,javascript,python,fsharp nnoremap <leader>t :call LanguageClient#textDocument_hover()<CR>
+au FileType haskell,javascript,python,fsharp nnoremap <A-=> :call LanguageClient#textDocument_hover()<CR>
+au FileType haskell,javascript,python,fsharp nnoremap <leader><S-t> :call LanguageClient#textDocument_typeDefinition()<CR>
+au FileType haskell,javascript,python,fsharp nnoremap gd :call LanguageClient#textDocument_definition()<CR>
+au FileType haskell,javascript,python,fsharp nnoremap <S-F6> :call LanguageClient#textDocument_rename()<CR>
+au FileType haskell,javascript,python,fsharp nnoremap <leader>lf :call LanguageClient#textDocument_rangeFormatting()<CR>
+au FileType haskell,javascript,python,fsharp nnoremap <C-A-l> :call LanguageClient#textDocument_formatting()<CR>
+au FileType haskell,javascript,python,fsharp nnoremap <A-F7> :call LanguageClient#textDocument_references()<CR>
+au FileType haskell,javascript,python,fsharp nnoremap <A-CR> :call LanguageClient#textDocument_codeAction()<CR>
+au FileType haskell,javascript,python,fsharp nnoremap <Leader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
+
+"lsp
+au FileType haskell,javascript,python,fsharp nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+au FileType haskell,javascript,python,fsharp set formatexpr=LanguageClient_textDocument_rangeFormatting() 
