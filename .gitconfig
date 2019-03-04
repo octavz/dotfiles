@@ -1,6 +1,6 @@
 [merge]
   keepBackup = false
-	tool = meld
+	tool = p4mergetool
 [diff]
 	tool = kdiff3
 [user]
@@ -16,3 +16,7 @@
 	default = current
 [gc]
 	autoDetach = false
+[mergetool "p4mergetool"]
+	trustExitCode = false
+	keepBackup = false
+  cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"

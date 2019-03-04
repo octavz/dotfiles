@@ -1,0 +1,76 @@
+[global_config]
+  borderless = True
+  enabled_plugins = TerminatorThemes, APTURLHandler
+  handle_size = 1
+  inactive_color_offset = 0.64
+  suppress_multiple_term_dialog = True
+  title_hide_sizetext = True
+  title_transmit_bg_color = "#4f3637"
+[keybindings]
+  close_term = <Alt>F4
+  close_window = <Primary><Shift>d
+  go_next = <Primary><Shift>n
+  go_prev = <Primary><Shift>p
+  group_all = None
+  help = None
+  hide_window = None
+  insert_number = None
+  insert_padded = None
+  line_down = <Shift>Down
+  line_up = <Shift>Up
+  new_tab = <Primary><Shift>t
+  new_terminator = None
+  next_profile = <Primary><Alt>Page_Up
+  page_down = Page_Down
+  page_down_half = <Shift>Page_Down
+  page_up = Page_Up
+  page_up_half = <Shift>Page_Up
+  rotate_cw = None
+  scaled_zoom = <Shift><Alt>z
+  search = <Primary><Shift>question
+  split_horiz = <Primary><Shift>x
+  split_vert = <Primary><Shift>z
+  switch_to_tab_1 = None
+  switch_to_tab_10 = None
+  switch_to_tab_2 = None
+  switch_to_tab_3 = None
+  switch_to_tab_4 = None
+  switch_to_tab_5 = None
+  switch_to_tab_6 = None
+  switch_to_tab_7 = None
+  switch_to_tab_8 = None
+  switch_to_tab_9 = None
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      profile = default
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      size = 1920, 1040
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    background_color = "#282a36"
+    background_darkness = 0.78
+    copy_on_selection = True
+    cursor_color = "#aaaaaa"
+    font = Iosevka Term 11
+    foreground_color = "#f8f8f2"
+    palette = "#44475a:#ff5555:#50fa7b:#f1fa8c:#8be9fd:#bd93f9:#ff79c6:#94a3a5:#000000:#ff5555:#50fa7b:#f1fa8c:#8be9fd:#bd93f9:#ff79c6:#ffffff"
+    scrollback_infinite = True
+    show_titlebar = False
+    use_system_font = False
+  [[default1]]
+    background_color = "#282a36"
+    background_darkness = 0.2
+    copy_on_selection = True
+    cursor_color = "#f8f8f2"
+    font = Iosevka Term 11
+    foreground_color = "#ffffff"
+    palette = "#44475a:#ff5555:#50fa7b:#ffb86c:#3465a4:#ff79c6:#f1fa8c:#44475a:#44475a:#ff5555:#50fa7b:#ffb86c:#729fcf:#ad7fa8:#f1fa8c:#44475a"
+    scrollback_infinite = True
+    show_titlebar = False
+    use_system_font = False

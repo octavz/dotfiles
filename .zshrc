@@ -109,7 +109,10 @@ alias back='feh --bg-scale "/home/ozaharia/Pictures/$((RANDOM%60)).jpg"'
 alias ll='ls -al'
 alias cal='ncal -3Mb'
 alias inline='cd /home/ozaharia/projects/inline/haskell && ls -al'
+alias kc='cd /home/ozaharia/projects/scala/kclient && ls -al'
 alias ovpn="oathtool --base32 --totp $OSECRET | xclip -sel clip && sudo openvpn  --config ~/.openvpn/client.ovpn"
+alias s='sbt -mem 4000'
+alias sd='sbt -mem 4000 -jvmDebug 9999'
 
 setxkbmap us -variant colemak
 bindkey '^R' history-incremental-search-backward
@@ -139,3 +142,30 @@ source ~/work/env.sh
 export TERM=xterm-color
 synclient MaxTapTime=0
 export LD_LIBRARY_PATH=/usr/local/lib
+
+alias aws_whoami='aws iam list-account-aliases'
+
+function common_wehkamp(){
+  export AWS_DEFAULT_REGION=eu-west-1
+  export BLAZE_COUNTRY=nl
+  export BLAZE_LABEL=wehkamp
+  aws_whoami
+}
+
+function playground(){
+  export AWS_PROFILE=blaze_play_ground_dev
+  export BLAZE_ENV=playground
+  common_wehkamp
+}
+
+function dev(){
+  export AWS_PROFILE=blaze_nl_wehkamp_dev
+  export BLAZE_ENV=dev
+  common_wehkamp
+}
+
+function prod(){
+  export AWS_PROFILE=blaze_nl_wehkamp_prod
+  export BLAZE_ENV=prod
+  common_wehkamp
+}

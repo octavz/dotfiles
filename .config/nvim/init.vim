@@ -1,3 +1,5 @@
+au BufRead,BufNewFile *.sbt set filetype=scala
+
 set nocompatible | filetype indent plugin on | syn off
 
 call plug#begin()
@@ -41,9 +43,10 @@ Plug 'godlygeek/tabular'
 Plug 'tpope/vim-surround'
 
 "programming productivity
-Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh', }
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh', 'for': ['fhsarp','javascript','python','reason', 'haskell' ] }
+Plug 'natebosch/vim-lsc', { 'for': ['scala'] }
 Plug 'scrooloose/nerdcommenter'
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 Plug 'tpope/vim-fugitive'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'mattn/emmet-vim'
@@ -53,7 +56,6 @@ Plug 'vim-latex/vim-latex'
 "scala
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'scrooloose/syntastic', { 'for': ['scala'] }
-Plug 'natebosch/vim-lsc', { 'for': ['scala'] }
 
 "elixir
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
@@ -66,10 +68,11 @@ Plug 'elmcast/elm-vim'
 "purescript
 Plug 'frigoeu/psc-ide-vim', { 'for': 'purescript'}
 Plug 'raichoo/purescript-vim', { 'for': 'purescript'}
+
 "haskell
 Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
-Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
+Plug 'ndmitchell/ghcid', { 'for' : 'haskell', 'rtp': 'plugins/nvim' }
 
 "clojure
 Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
@@ -80,29 +83,13 @@ Plug 'fsharp/vim-fsharp', {
       \ 'for': 'fsharp',
       \ 'do':  'make fsautocomplete',
       \}
+"reasonml
+Plug 'reasonml-editor/vim-reason-plus'
 "others
-"Plug 'elzr/vim-json'
 Plug 'gabrielelana/vim-markdown'
 
-"Plug 'Shougo/deoplete.nvim'
-"Plug 'megaannum/self'
-"Plug 'megaannum/forms'
-"Plug 'posva/vim-vue', { 'for': 'javascript'}
-"Plug 'neomake/neomake'
-"Plug 'alx741/vim-hindent'
-"Plug 'Shougo/vimproc', { 'do': 'make' }
-"Plug 'Shougo/vimshell'
-"Plug 'shime/vim-livedown'
-"Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
-"Plug 'jeffkreeftmeijer/vim-numbertoggle'
-"Plug 'easymotion/vim-easymotion'
-"Plug 'parsonsmatt/intero-neovim'
-"Plug 'eagletmt/neco-ghc'
-"Plug 'dan-t/vim-hsimport' "needs stack install hsimport hdevtools
-"Plug 'chrisbra/csv.vim'
 call plug#end()
 
-"autocmd BufWritePost *.scala :EnTypeCheck
 autocmd BufEnter * call ncm2#enable_for_buffer()
 autocmd BufLeave,FocusLost * silent! wall
 au VimEnter * RainbowParenthesesToggle
@@ -113,9 +100,11 @@ au Syntax * RainbowParenthesesLoadBraces
 set completeopt=noinsert,menuone,noselect
 
 let g:ale_linters ={
-      \   'haskell': ['hlint', 'hdevtools', 'brittany'],
+      \   'haskell': ['hie','hlint', 'brittany'],
       \}
 let g:ale_fixers = {'haskell': ['brittany']}
+let g:ale_haskell_hie_executable='hie-wrapper'
+let g:ale_reason_ols_executable='reason-language-server.exe'
 let g:ale_fix_on_save = 1
 
 "let g:necoghc_enable_detailed_browse = 1
@@ -146,6 +135,7 @@ let g:SuperTabClosePreviewOnPopupClose = 1
 
 let g:LanguageClient_serverCommands = {
     \ 'haskell': ['hie-wrapper', '-l', '/tmp/hie.log'],
+    \ 'reason': ['/home/ozaharia/bin/reason-language-server.exe'],
     \ 'javascript': ['/home/ozaharia/node_modules/.bin/javascript-typescript-stdio'],
     \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
     \ 'python': ['/home/ozaharia/.local/bin/pyls'],
@@ -153,7 +143,25 @@ let g:LanguageClient_serverCommands = {
     \ 'fsharp': ['dotnet', '/home/ozaharia/tmp/fsharp-language-server/src/FSharpLanguageServer/bin/Release/netcoreapp2.0/target/FSharpLanguageServer.dll'],
     \ }
 
-    " \ 'scala': ['/home/ozaharia/bin/scalameta_lsp'],
+let g:lsc_auto_map = {
+    \ 'GoToDefinition': 'gd',
+    \ 'FindReferences': 'gr',
+    \ 'NextReference': '<C-n>',
+    \ 'PreviousReference': '<C-p>',
+    \ 'FindImplementations': 'gI',
+    \ 'FindCodeActions': 'ga',
+    \ 'DocumentSymbol': 'go',
+    \ 'WorkspaceSymbol': 'gS',
+    \ 'SignatureHelp': '<C-m>',
+    \ 'Completion': 'completefunc',
+    \}
+
+let g:lsc_enable_autocomplete = v:true
+let g:lsc_server_commands = {
+  \ 'scala': 'metals-vim',
+  \ 'haskell': 'hie-wrapper -l /tmp/hie.log'
+  \}
+
 :command! WQ wq
 :command! Wq wq
 :command! W w
@@ -322,10 +330,10 @@ set t_Co=256
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.class,*.hi,*.o
 set autowrite
 set undodir=/tmp/undo//
-set backupdir=~/tmp/.backup//
-set directory=~/tmp/.swp//
-"set nobackup
-"set noswapfile
+"set backupdir=~/tmp/.backup//
+"set directory=~/tmp/.swp//
+set nobackup
+set noswapfile
 
 set guioptions-=T
 set guioptions-=r
@@ -346,6 +354,10 @@ nmap <silent> <c-k> :wincmd k<CR>
 nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
+nmap <silent> <leader>k :wincmd k<CR>
+nmap <silent> <leader>j :wincmd j<CR>
+nmap <silent> <leader>h :wincmd h<CR>
+nmap <silent> <leader>l :wincmd l<CR>
 
 "ui
 let g:ctrlp_map = '<c-N>'
@@ -383,14 +395,6 @@ nnoremap Q gq
 "scala
 "au filetype scala nmap <Leader>m :%!java -jar /home/octav/cli-assembly-0.1.7.jar -f -q +compactControlReadability +alignParameters +alignSingleLineCaseStatements +doubleIndentClassDeclaration +preserveDanglingCloseParenthesis +rewriteArrowSymbols +preserveSpaceBeforeArguments --stdin --stdout <CR>
 
-au BufRead,BufNewFile *.sbt set filetype=scala
-let g:lsc_enable_autocomplete = v:false
-let g:lsc_server_commands = {
-  \ 'scala': 'metals-vim'
-  \}
-let g:lsc_auto_map = {
-    \ 'GoToDefinition': 'gd',
-    \}
 vmap <Leader>% :Tabularize /%\{1,2} <CR>
 vmap <Leader>= :Tabularize /=\{1,2} <CR>
 vmap <Leader>, :Tabularize /=\{1} <CR>
@@ -417,7 +421,6 @@ au FileType purescript nmap <leader>qd :PSCIDEremoveImportQualifications<CR>
 au FileType purescript nmap <leader>qa :PSCIDEaddImportQualifications<CR>
 au FileType purescript nmap gd :PSCIDEgoToDefinition<CR>
 
-
 "clojure
 au FileType clojure nmap <silent> cpR :Require!<CR>
 au FileType clojure nmap <silent> <leader>R :Require!<CR>
@@ -428,17 +431,20 @@ au FileType clojure nmap <silent> <Leader>q :ccl<CR>
 au FileType haskell nnoremap <silent> <leader>his :HsimportSymbol<CR>
 au FileType haskell nnoremap <silent> <leader>him :HsimportModule<CR>
 " Or map each action separately
-au FileType haskell,javascript,python,fsharp nnoremap <leader>t :call LanguageClient#textDocument_hover()<CR>
-au FileType haskell,javascript,python,fsharp nnoremap <A-=> :call LanguageClient#textDocument_hover()<CR>
-au FileType haskell,javascript,python,fsharp nnoremap <leader><S-t> :call LanguageClient#textDocument_typeDefinition()<CR>
-au FileType haskell,javascript,python,fsharp nnoremap gd :call LanguageClient#textDocument_definition()<CR>
-au FileType haskell,javascript,python,fsharp nnoremap <S-F6> :call LanguageClient#textDocument_rename()<CR>
-au FileType haskell,javascript,python,fsharp nnoremap <leader>lf :call LanguageClient#textDocument_rangeFormatting()<CR>
-au FileType haskell,javascript,python,fsharp nnoremap <C-A-l> :call LanguageClient#textDocument_formatting()<CR>
-au FileType haskell,javascript,python,fsharp nnoremap <A-F7> :call LanguageClient#textDocument_references()<CR>
-au FileType haskell,javascript,python,fsharp nnoremap <A-CR> :call LanguageClient#textDocument_codeAction()<CR>
-au FileType haskell,javascript,python,fsharp nnoremap <Leader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
+au FileType haskell,javascript,python,fsharp,reason nnoremap <leader>t :call LanguageClient#textDocument_hover()<CR>
+au FileType haskell,javascript,python,fsharp,reason nnoremap <A-=> :call LanguageClient#textDocument_hover()<CR>
+au FileType haskell,javascript,python,fsharp,reason nnoremap <leader><S-t> :call LanguageClient#textDocument_typeDefinition()<CR>
+au FileType haskell,javascript,python,fsharp,reason nnoremap gd :call LanguageClient#textDocument_definition()<CR>
+au FileType haskell,javascript,python,fsharp,reason nnoremap <S-F6> :call LanguageClient#textDocument_rename()<CR>
+au FileType haskell,javascript,python,fsharp,reason nnoremap <leader>lf :call LanguageClient#textDocument_rangeFormatting()<CR>
+au FileType haskell,javascript,python,fsharp,reason nnoremap <C-A-l> :call LanguageClient#textDocument_formatting()<CR>
+au FileType haskell,javascript,python,fsharp,reason nnoremap <A-F7> :call LanguageClient#textDocument_references()<CR>
+au FileType haskell,javascript,python,fsharp,reason nnoremap <A-CR> :call LanguageClient#textDocument_codeAction()<CR>
+au FileType haskell,javascript,python,fsharp,reason nnoremap <Leader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
+au FileType haskell,javascript,python,fsharp,reason nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+au FileType haskell,javascript,python,fsharp,reason set formatexpr=LanguageClient_textDocument_rangeFormatting() 
+"lsc
+"au FileType haskell nnoremap <Leader>t :LSClientShowHover<CR>
 
-"lsp
-au FileType haskell,javascript,python,fsharp nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-au FileType haskell,javascript,python,fsharp set formatexpr=LanguageClient_textDocument_rangeFormatting() 
+
+
