@@ -113,6 +113,7 @@ alias kc='cd /home/ozaharia/projects/scala/kclient && ls -al'
 alias ovpn="oathtool --base32 --totp $OSECRET | xclip -sel clip && sudo openvpn  --config ~/.openvpn/client.ovpn"
 alias s='sbt -mem 4000'
 alias sd='sbt -mem 4000 -jvmDebug 9999'
+alias v='nvim'
 
 setxkbmap us -variant colemak
 bindkey '^R' history-incremental-search-backward
@@ -169,3 +170,4 @@ function prod(){
   export BLAZE_ENV=prod
   common_wehkamp
 }
+

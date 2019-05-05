@@ -9,6 +9,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $alt Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -29,16 +30,17 @@ font pango:Ubuntu 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec terminator
-bindsym $mod+Shift+Return exec termite
-bindsym $mod+Mod1+t exec terminator
+bindsym $mod+Return exec alacritty
+bindsym $mod+Shift+Return exec terminator
 bindsym $mod+Mod1+1 exec gnome-screenshot -w
 bindsym $mod+Mod1+2 exec gnome-screenshot -a
 bindsym Print exec gnome-screenshot -w
 bindsym $mod+Print exec gnome-screenshot -a
 bindsym $mod+q exec vivaldi --new-window www.duckduckgo.com
+#bindsym $mod+q exec firefox --new-window www.duckduckgo.com
 bindsym $mod+e exec gvim
 bindsym $mod+n exec --no-startup-id nautilus --no-desktop
+bindsym $mod+Delete exec --no-startup-id lxtask
 bindsym $mod+Control+Delete exec i3lock-fancy -p -- scrot -z
 bindsym $mod+Shift+s exec termite --name=cheatsheet --geometry=900x600 -e ~/bin/cheatsheet
 bindsym $mod+b bar mode toggle
@@ -53,6 +55,7 @@ bindsym $mod+Control+2 exec 4k
 bindsym $mod+Control+3 exec conf.sh
 bindsym $mod+Control+4 exec home.sh
 bindsym $mod+a exec easyfocus 
+
 
 # kill focused window
 bindsym $mod+Shift+c kill
@@ -110,7 +113,7 @@ bindsym $mod+t layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Control+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+Shift+a focus parent
@@ -199,7 +202,7 @@ mode "resize" {
 
 bindsym $mod+p mode "resize"
 bindsym $mod+minus move scratchpad
-bindsym F1 scratchpad show
+bindsym $mod+space scratchpad show
 bindsym $mod+grave scratchpad show
 #bindsym F1 exec "tdrop -ma -w -4 -y 20 -h 720 termite"
 
@@ -214,9 +217,9 @@ bar {
     position top
 }
 
-focus_follows_mouse yes
+focus_follows_mouse no
 exec feh --bg-scale "/home/ozaharia/Pictures/1.jpg"
-exec --no-startup-id i3-msg 'workspace 1; exec terminator'
+exec --no-startup-id i3-msg 'workspace 1; exec alacritty'
 exec --no-startup-id i3-msg 'workspace 2; exec vivaldi'
 #exec --no-startup-id mate-volume-control-applet
 exec --no-startup-id indicator-bluetooth
@@ -232,7 +235,7 @@ workspace 1 output eDP1
 workspace 2 output eDP1
 workspace 3 output eDP1
 
-exec --no-startup-id terminator -T popup_term 
+exec --no-startup-id alacritty -t popup_term 
 for_window [title="popup_term"] floating enable, move scratchpad, scratchpad show;
 #for_window [title="popup"] resize set 1024 768, move scratchpad;
 for_window [title="popup_term"] resize grow left 350, resize grow right 350, resize grow down 250, resize grow up 250, move scratchpad;
@@ -279,8 +282,12 @@ mode "window" {
 
 mode "moveit" {
     bindsym Up move up 20px
+    bindsym button4 nop
+    bindsym button4 move up 20px
     bindsym Left move left 20px
     bindsym Down move down 20px
+    bindsym button5 nop
+    bindsym button5 move down 20px
     bindsym Right move right 20px
     bindsym $mod+m mode "default"
     bindsym Return mode "default"
@@ -343,4 +350,15 @@ bindsym $mod+Ctrl+Down resize shrink height 5 px or 5 ppt
 bindsym $mod+Ctrl+Left resize grow width 5 px or 5 ppt
 
 for_window [class="^jetbrains-.+"][window_type=dialog] focus
+# for_window [class="Pidgin"][window_role="conversation"] floating enable
+mouse_warping output
 
+set $alacritty_colorscheme ~/bin/alacritty-colorscheme
+# Toggle between light and dark colorscheme
+bindsym $alt+c exec $alacritty_colorscheme -t solarized_light.yaml dracula.yaml
+
+# Toggle between all available colorscheme
+bindsym $alt+Shift+c exec $alacritty_colorscheme -T
+
+# Get notification with current colorscheme
+bindsym $mod+Shift+o exec notify-send "Alacritty Colorscheme" `$alacritty_colorscheme -s`

@@ -5,15 +5,15 @@ set nocompatible | filetype indent plugin on | syn off
 call plug#begin()
 "ui stuff
 Plug 'scrooloose/nerdtree'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'semanticart/simple-menu.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-startify'
 Plug 'vim-airline/vim-airline'
 Plug 'pseewald/nerdtree-tagbar-combined'
-Plug 'junegunn/fzf'
-Plug 'Shougo/denite.nvim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'equalsraf/neovim-gui-shim'
 
 "autocomplete
 Plug 'ncm2/ncm2' | Plug 'roxma/nvim-yarp'
@@ -30,6 +30,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'nanotech/jellybeans.vim'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'lifepillar/vim-solarized8'
 
 "general text productivity 
 Plug 'ervandew/supertab'
@@ -43,19 +44,22 @@ Plug 'godlygeek/tabular'
 Plug 'tpope/vim-surround'
 
 "programming productivity
-Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh', 'for': ['fhsarp','javascript','python','reason', 'haskell' ] }
-Plug 'natebosch/vim-lsc', { 'for': ['scala'] }
+"Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh', 'for': ['fhsarp','javascript','python','reason', 'haskell' ] }
+"Plug 'natebosch/vim-lsc', { 'for': ['scala'] }
 Plug 'scrooloose/nerdcommenter'
 "Plug 'w0rp/ale'
 Plug 'tpope/vim-fugitive'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'mattn/emmet-vim'
 Plug 'vim-latex/vim-latex'
+Plug 'liuchengxu/vista.vim'
 
 "languages
 "scala
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
-Plug 'scrooloose/syntastic', { 'for': ['scala'] }
+"Plug 'scrooloose/syntastic', { 'for': ['scala'] }
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+au BufRead,BufNewFile *.sbt set filetype=scala
 
 "elixir
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
@@ -99,6 +103,7 @@ au Syntax * RainbowParenthesesLoadBraces
 
 set completeopt=noinsert,menuone,noselect
 
+let g:sneak#label = 1
 let g:ale_linters ={
       \   'haskell': ['hie','hlint', 'brittany'],
       \}
@@ -143,24 +148,6 @@ let g:LanguageClient_serverCommands = {
     \ 'fsharp': ['dotnet', '/home/ozaharia/tmp/fsharp-language-server/src/FSharpLanguageServer/bin/Release/netcoreapp2.0/target/FSharpLanguageServer.dll'],
     \ }
 
-let g:lsc_auto_map = {
-    \ 'GoToDefinition': 'gd',
-    \ 'FindReferences': 'gr',
-    \ 'NextReference': '<C-n>',
-    \ 'PreviousReference': '<C-p>',
-    \ 'FindImplementations': 'gI',
-    \ 'FindCodeActions': 'ga',
-    \ 'DocumentSymbol': 'go',
-    \ 'WorkspaceSymbol': 'gS',
-    \ 'SignatureHelp': '<C-m>',
-    \ 'Completion': 'completefunc',
-    \}
-
-let g:lsc_enable_autocomplete = v:true
-let g:lsc_server_commands = {
-  \ 'scala': 'metals-vim',
-  \ 'haskell': 'hie-wrapper -l /tmp/hie.log'
-  \}
 
 :command! WQ wq
 :command! Wq wq
@@ -243,11 +230,10 @@ let g:tagbar_type_haskell = {
 
 "end haskell
 
-color dracula
-"color solarized
-if has("gui_running") 
-  set background=dark
-  set guifont=Monaco\ 10
+if exists("g:gnvim") 
+  set guifont=Ubuntu\ Mono:h16
+  "set guifont=Operator\ Mono\ Lig\ Semi-Light:h12
+  set lines=999 columns=999
 else 
   let &t_SI = "\<Esc>]50;CursorShape=1\x7"
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
@@ -259,20 +245,7 @@ let g:fuf_mrucmd_maxItem = 400
 let g:fuf_ignoreCase = 1
 
 let g:tagbar_autofocus = 1
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_root_markers = ['stack.yaml','build.sbt','project']
-let g:ctrlp_user_command = {
-                        \ 'types': {
-                        \ 1: ['.git', 'cd %s && git ls-files'],
-                        \ 2: ['.hg', 'hg --cwd %s locate -I .'],
-                        \ },
-                        \ 'fallback': 'find %s/.. -type f'
-                        \ }
-let g:ctrlp_custom_ignore = {
-                        \ 'dir': '\.git$\|\.dist-buildwrapper$\|\.settings$',
-                        \ 'file': '\.o$\|\.so$\|\.class|\.hi$' }
 let g:NERDTreeChDirMode=2
-
 
 let g:rbpt_colorpairs = [
     \ ['magenta',     'purple1'],
@@ -289,6 +262,8 @@ let g:rbpt_max = 9
 
 let g:jsx_ext_required = 0
 
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+ "let g:fzf_layout = { 'window': 'enew' }
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -329,8 +304,7 @@ set autoindent
 set t_Co=256
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.class,*.hi,*.o
 set autowrite
-set undodir=/tmp/undo//
-"set backupdir=~/tmp/.backup//
+
 "set directory=~/tmp/.swp//
 set nobackup
 set noswapfile
@@ -359,29 +333,65 @@ nmap <silent> <leader>j :wincmd j<CR>
 nmap <silent> <leader>h :wincmd h<CR>
 nmap <silent> <leader>l :wincmd l<CR>
 
+map <silent> <Down> :cn<CR>
+map <silent> <Up> :cp<CR>
+nmap <leader>en :cn<CR>
+nmap <leader>ep :cn<CR>
+
+"maintain selection when indenting
+vnoremap < <gv
+vnoremap > >gv
+"replace the hovered word
+nnoremap <leader>r :%s/\<<C-r>=expand('<cword>')<CR>\>/
+"delete without adding to register
+nnoremap <Leader>D "_D
+nnoremap <Leader>C "_C
+nnoremap <Leader>c "_c
+nnoremap <Leader>x "_x
+" Move to the previous buffer
+nnoremap H :bprevious<CR>
+" Move to the next buffer
+nnoremap L :bnext<CR>
+
+" Replace H and L
+nnoremap zh H
+nnoremap zl L
+" AND/OR
+nnoremap + H
+nnoremap - L
+
 "ui
-let g:ctrlp_map = '<c-N>'
 nmap <silent><M-1> :ToggleNERDTreeAndTagbar<CR>
 nmap <silent><M-2> :TagbarToggle<CR>
 nmap <silent><M-3> :NERDTreeToggle<CR>
 nmap <silent> <Leader>q :lclose<CR>:pclose<CR>:cclose<CR>
-nmap <silent> <Leader>n :CtrlP<CR>
-nmap <silent> <leader><TAB> :Denite buffer<CR>
-nmap <silent> <leader>fd :Denite file/rec<CR>
-call denite#custom#map(
-      \ 'insert',
-      \ '<C-j>',
-      \ '<denite:move_to_next_line>',
-      \ 'noremap'
-      \)
-call denite#custom#map(
-      \ 'insert',
-      \ '<C-k>',
-      \ '<denite:move_to_previous_line>',
-      \ 'noremap'
-      \)
+nmap <silent> <Leader>n :FZF<CR>
+nmap <silent> <leader>b :Buffers<CR>
+nmap <silent> <leader>gs :GFiles?<CR>
+nnoremap <leader><TAB> :bnext<CR>
+nnoremap <leader><S-tab> :bprevious<CR>
+nnoremap <C-X> :bdelete<CR>
+let g:focuscolour = 1
+
+function! ToggleFocusColor()
+  if (g:focuscolour)
+    colorscheme base16-solarized-light
+    set background=light
+    let g:focuscolour = 0
+  else
+    colorscheme dracula
+    set background=dark
+    let g:focuscolour = 1
+  endif
+endfunc
+
+call ToggleFocusColor()
+
+"Set F6 to toggle
+nmap <leader>c :call ToggleFocusColor()<CR>
 
 nmap <silent> <leader>fz :FZF<CR>
+nmap <silent> <c-N> :FZF<CR>
 
 
 "productivity
@@ -435,7 +445,7 @@ au FileType haskell,javascript,python,fsharp,reason nnoremap <leader>t :call Lan
 au FileType haskell,javascript,python,fsharp,reason nnoremap <A-=> :call LanguageClient#textDocument_hover()<CR>
 au FileType haskell,javascript,python,fsharp,reason nnoremap <leader><S-t> :call LanguageClient#textDocument_typeDefinition()<CR>
 au FileType haskell,javascript,python,fsharp,reason nnoremap gd :call LanguageClient#textDocument_definition()<CR>
-au FileType haskell,javascript,python,fsharp,reason nnoremap <S-F6> :call LanguageClient#textDocument_rename()<CR>
+au FileType haskell,javascript,python,fsharp,reason nnoremap <leader>r :call LanguageClient#textDocument_rename()<CR>
 au FileType haskell,javascript,python,fsharp,reason nnoremap <leader>lf :call LanguageClient#textDocument_rangeFormatting()<CR>
 au FileType haskell,javascript,python,fsharp,reason nnoremap <C-A-l> :call LanguageClient#textDocument_formatting()<CR>
 au FileType haskell,javascript,python,fsharp,reason nnoremap <A-F7> :call LanguageClient#textDocument_references()<CR>
@@ -443,8 +453,39 @@ au FileType haskell,javascript,python,fsharp,reason nnoremap <A-CR> :call Langua
 au FileType haskell,javascript,python,fsharp,reason nnoremap <Leader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
 au FileType haskell,javascript,python,fsharp,reason nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 au FileType haskell,javascript,python,fsharp,reason set formatexpr=LanguageClient_textDocument_rangeFormatting() 
-"lsc
-"au FileType haskell nnoremap <Leader>t :LSClientShowHover<CR>
 
-
-
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+au FileType scala,rust,haskell set updatetime=300
+au FileType scala,rust,haskell set shortmess+=c
+au FileType scala,rust,haskell set signcolumn=yes
+au FileType scala,rust,haskell inoremap <silent><expr> <c-space> coc#refresh()
+au FileType scala,rust,haskell inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+au FileType scala,rust,haskell nmap <silent> <S-F2> <Plug>(coc-diagnostic-prev)
+au FileType scala,rust,haskell nmap <silent> <F2> <Plug>(coc-diagnostic-next)
+au FileType scala,rust,haskell nmap <silent> gd <Plug>(coc-definition)
+au FileType scala,rust,haskell nmap <silent> gy <Plug>(coc-type-definition)
+au FileType scala,rust,haskell nmap <silent> gi <Plug>(coc-implementation)
+au FileType scala,rust,haskell nmap <silent> gr <Plug>(coc-references)
+au FileType scala,rust,haskell nmap <A-CR> <Plug>(coc-codeaction)
+au FileType scala,rust,haskell nnoremap <silent> <C-A-l> :call CocAction('format')<CR>
+au FileType scala,rust,haskell nnoremap <silent>K :call <SID>show_documentation()<CR>
+au FileType scala,rust,haskell autocmd CursorHold * silent call CocActionAsync('highlight')
+au FileType scala,rust,haskell nmap <leader>r <Plug>(coc-rename)
+" Show all diagnostics
+au FileType scala,rust,haskell nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Find symbol of current document
+au FileType scala,rust,haskell nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+au FileType scala,rust,haskell nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+au FileType scala,rust,haskell nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+au FileType scala,rust,haskell nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+au FileType scala,rust,haskell nnoremap <silent> <space>p  :<C-u>CocListResume<CR>

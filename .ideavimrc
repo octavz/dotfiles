@@ -4,16 +4,18 @@ set incsearch
 
 let mapleader = " "
 
-
 nmap <Leader>f :action FindInPath<CR>
-nmap <Leader><space> :action GotoFile<CR>
+nmap <Leader>n :action GotoFile<CR>
 nmap <Leader>cc :action CommentByLineComment<CR>
 nmap <Leader>cs :action CommentByBlockComment<CR>
-
+nmap <Leader>en :action GotoNextError<CR>
+nmap <Leader>ep :action GoToPreviousError<CR>
+nmap <Leader>ee :action ShowErrorDescription<CR>
+nmap <Leader>r :action RenameElement<CR>
 
 " Press `f` to activate AceJump
 map s :action AceAction<CR>
 " Press `F` to activate Target Mode
-map F :action AceTargetAction<CR>
+map M :action AceTargetAction<CR>
 " Press `g` to activate Line Mode
 map S :action AceLineAction<CR>

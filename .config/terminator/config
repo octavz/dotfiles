@@ -1,7 +1,9 @@
 [global_config]
+  always_split_with_profile = True
   borderless = True
   enabled_plugins = TerminatorThemes, APTURLHandler
   handle_size = 1
+  hide_on_lose_focus = True
   inactive_color_offset = 0.64
   suppress_multiple_term_dialog = True
   title_hide_sizetext = True
@@ -9,8 +11,12 @@
 [keybindings]
   close_term = <Alt>F4
   close_window = <Primary><Shift>d
+  go_down = <Primary><Shift>j
+  go_left = <Primary><Shift>h
   go_next = <Primary><Shift>n
   go_prev = <Primary><Shift>p
+  go_right = <Primary><Shift>l
+  go_up = <Primary><Shift>k
   group_all = None
   help = None
   hide_window = None
@@ -44,7 +50,7 @@
   [[default]]
     [[[child1]]]
       parent = window0
-      profile = default
+      profile = Solarized Light
       type = Terminal
     [[[window0]]]
       parent = ""
@@ -57,9 +63,88 @@
     background_darkness = 0.78
     copy_on_selection = True
     cursor_color = "#aaaaaa"
-    font = Iosevka Term 11
+    custom_command = env TERM=xterm-256color fish
+    font = Iosevka Term Medium 16
     foreground_color = "#f8f8f2"
     palette = "#44475a:#ff5555:#50fa7b:#f1fa8c:#8be9fd:#bd93f9:#ff79c6:#94a3a5:#000000:#ff5555:#50fa7b:#f1fa8c:#8be9fd:#bd93f9:#ff79c6:#ffffff"
+    scrollback_infinite = True
+    show_titlebar = False
+    use_custom_command = True
+    use_system_font = False
+  [[3024 Day]]
+    background_color = "#f7f7f7"
+    background_darkness = 0.78
+    copy_on_selection = True
+    cursor_color = "#4a4543"
+    font = Iosevka Term 12
+    foreground_color = "#4a4543"
+    palette = "#090300:#db2d20:#01a252:#fded02:#01a0e4:#a16a94:#b5e4f4:#a5a2a2:#5c5855:#e8bbd0:#3a3432:#4a4543:#807d7c:#d6d5d4:#cdab53:#f7f7f7"
+    scrollback_infinite = True
+    show_titlebar = False
+    use_system_font = False
+  [[Aci]]
+    background_color = "#0d1926"
+    background_darkness = 0.78
+    copy_on_selection = True
+    cursor_color = "#c4e9ff"
+    font = Iosevka Term 11
+    foreground_color = "#b4e1fd"
+    palette = "#363636:#ff0883:#83ff08:#ff8308:#0883ff:#8308ff:#08ff83:#b6b6b6:#363636:#ff0883:#83ff08:#ff8308:#0883ff:#8308ff:#08ff83:#b6b6b6"
+    scrollback_infinite = True
+    show_titlebar = False
+    use_system_font = False
+  [[After Dark]]
+    background_color = "#10111b"
+    background_darkness = 0.78
+    copy_on_selection = True
+    cursor_color = "#aaaaaa"
+    font = Iosevka Term 11
+    foreground_color = "#536870"
+    palette = "#2e3436:#ef4a9e:#00d2bc:#e7ca7a:#9399fa:#ca5bcc:#86d079:#d3d7cf:#555753:#ef4a9e:#00d2bc:#e7ca7a:#9399fa:#ca5bcc:#86d079:#eeeeec"
+    scrollback_infinite = True
+    show_titlebar = False
+    use_system_font = False
+  [[Brogrammer]]
+    background_color = "#131313"
+    background_darkness = 0.78
+    copy_on_selection = True
+    cursor_color = "#b9b9b9"
+    font = Iosevka Term 11
+    foreground_color = "#d6dbe5"
+    palette = "#1f1f1f:#f81118:#2dc55e:#ecba0f:#2a84d2:#4e5ab7:#1081d6:#d6dbe5:#d6dbe5:#de352e:#1dd361:#f3bd09:#1081d6:#5350b9:#0f7ddb:#ffffff"
+    scrollback_infinite = True
+    show_titlebar = False
+    use_system_font = False
+  [[Desert]]
+    background_color = "#333333"
+    background_darkness = 0.78
+    copy_on_selection = True
+    cursor_color = "#00ff00"
+    font = Iosevka Term 11
+    foreground_color = "#ffffff"
+    palette = "#4d4d4d:#ff2b2b:#98fb98:#f0e68c:#cd853f:#ffdead:#ffa0a0:#f5deb3:#555555:#ff5555:#55ff55:#ffff55:#87ceff:#ff55ff:#ffd700:#ffffff"
+    scrollback_infinite = True
+    show_titlebar = False
+    use_system_font = False
+  [[Solarized Light]]
+    background_color = "#fcf4dc"
+    background_darkness = 0.78
+    copy_on_selection = True
+    cursor_color = "#536870"
+    font = Operator Mono Lig Semi-Light 12
+    foreground_color = "#536870"
+    palette = "#002831:#d11c24:#738a05:#a57706:#2176c7:#c61c6f:#259286:#eae3cb:#001e27:#bd3613:#475b62:#536870:#708284:#5956ba:#819090:#fcf4dc"
+    scrollback_infinite = True
+    show_titlebar = False
+    use_system_font = False
+  [[SpaceGray]]
+    background_color = "#20242d"
+    background_darkness = 0.78
+    copy_on_selection = True
+    cursor_color = "#b3b8c3"
+    font = Iosevka Term 11
+    foreground_color = "#b3b8c3"
+    palette = "#000000:#b04b57:#87b379:#e5c179:#7d8fa4:#a47996:#85a7a5:#b3b8c3:#000000:#b04b57:#87b379:#e5c179:#7d8fa4:#a47996:#85a7a5:#ffffff"
     scrollback_infinite = True
     show_titlebar = False
     use_system_font = False
@@ -68,7 +153,7 @@
     background_darkness = 0.2
     copy_on_selection = True
     cursor_color = "#f8f8f2"
-    font = Iosevka Term 11
+    font = Operator Mono Lig weight=330 12
     foreground_color = "#ffffff"
     palette = "#44475a:#ff5555:#50fa7b:#ffb86c:#3465a4:#ff79c6:#f1fa8c:#44475a:#44475a:#ff5555:#50fa7b:#ffb86c:#729fcf:#ad7fa8:#f1fa8c:#44475a"
     scrollback_infinite = True
