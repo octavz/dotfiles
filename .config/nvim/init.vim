@@ -1,4 +1,5 @@
 au BufRead,BufNewFile *.sbt set filetype=scala
+autocmd FileType json syntax match Comment +\/\/.\+$+
 
 set nocompatible | filetype indent plugin on | syn off
 
@@ -14,6 +15,8 @@ Plug 'pseewald/nerdtree-tagbar-combined'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'equalsraf/neovim-gui-shim'
+Plug 'flazz/vim-colorschemes'
+Plug 'felixhummel/setcolors.vim'
 
 "autocomplete
 Plug 'ncm2/ncm2' | Plug 'roxma/nvim-yarp'
@@ -94,7 +97,7 @@ Plug 'gabrielelana/vim-markdown'
 
 call plug#end()
 
-autocmd BufEnter * call ncm2#enable_for_buffer()
+"autocmd BufEnter * call ncm2#enable_for_buffer()
 autocmd BufLeave,FocusLost * silent! wall
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
@@ -231,12 +234,12 @@ let g:tagbar_type_haskell = {
 "end haskell
 
 if exists("g:gnvim") 
-  set guifont=Ubuntu\ Mono:h16
+  set guifont=Iosevka\ Nerd\ Font\ Mono:h12
   "set guifont=Operator\ Mono\ Lig\ Semi-Light:h12
   set lines=999 columns=999
 else 
-  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  "let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  "let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif 
 
 let g:fuf_modesDisable = []
@@ -301,7 +304,6 @@ set smartcase
 set smarttab
 set smartindent
 set autoindent
-set t_Co=256
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.class,*.hi,*.o
 set autowrite
 
@@ -375,12 +377,10 @@ let g:focuscolour = 1
 
 function! ToggleFocusColor()
   if (g:focuscolour)
-    colorscheme base16-solarized-light
-    set background=light
+    colorscheme ancient
     let g:focuscolour = 0
   else
     colorscheme dracula
-    set background=dark
     let g:focuscolour = 1
   endif
 endfunc
@@ -388,7 +388,7 @@ endfunc
 call ToggleFocusColor()
 
 "Set F6 to toggle
-nmap <leader>c :call ToggleFocusColor()<CR>
+nmap <leader>` :call ToggleFocusColor()<CR>
 
 nmap <silent> <leader>fz :FZF<CR>
 nmap <silent> <c-N> :FZF<CR>
@@ -474,6 +474,7 @@ au FileType scala,rust,haskell nmap <silent> gi <Plug>(coc-implementation)
 au FileType scala,rust,haskell nmap <silent> gr <Plug>(coc-references)
 au FileType scala,rust,haskell nmap <A-CR> <Plug>(coc-codeaction)
 au FileType scala,rust,haskell nnoremap <silent> <C-A-l> :call CocAction('format')<CR>
+au FileType scala,rust,haskell nnoremap <silent>F :call CocAction('format')<CR>
 au FileType scala,rust,haskell nnoremap <silent>K :call <SID>show_documentation()<CR>
 au FileType scala,rust,haskell autocmd CursorHold * silent call CocActionAsync('highlight')
 au FileType scala,rust,haskell nmap <leader>r <Plug>(coc-rename)
@@ -489,3 +490,9 @@ au FileType scala,rust,haskell nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 au FileType scala,rust,haskell nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 au FileType scala,rust,haskell nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+nnoremap <C-left> :call NextColor(-1)<CR>
+nnoremap <C-right> :call NextColor(1)<CR>
+nnoremap <C-up> :call NextColor(0)<CR>
+
+nnoremap <C-down> :SetColors all<CR>
