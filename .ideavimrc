@@ -1,6 +1,7 @@
 set ignorecase
 set smartcase
 set incsearch
+set surround
 
 let mapleader = " "
 
@@ -9,12 +10,15 @@ nmap <Leader>n :action GotoFile<CR>
 nmap <Leader>cc :action CommentByLineComment<CR>
 nmap <Leader>cs :action CommentByBlockComment<CR>
 nmap <Leader>en :action GotoNextError<CR>
-nmap <Leader>ep :action GoToPreviousError<CR>
+nmap <Leader>ep :action GotoPreviousError<CR>
 nmap <Leader>ee :action ShowErrorDescription<CR>
-nmap <Leader>r :action RenameElement<CR>
+nmap <Leader>re :action RenameElement<CR>
 nmap <Leader>tf :action RerunFailedTests<CR>
 nmap <Leader>t :action RerunTests<CR>
 nmap <Leader>rr :action Rerun<CR>
+nmap <Leader>su :action ShowUsages<CR>
+nmap <Leader>fu :action FindUsages<CR>
+nmap <Leader>q :action HideAllWindows<CR>
 
 " Press `f` to activate AceJump
 map s :action AceAction<CR>
@@ -22,3 +26,4 @@ map s :action AceAction<CR>
 map M :action AceTargetAction<CR>
 " Press `g` to activate Line Mode
 map S :action AceLineAction<CR>
+set ideajoin
