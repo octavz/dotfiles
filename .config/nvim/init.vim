@@ -2,30 +2,20 @@ au BufRead,BufNewFile *.sbt set filetype=scala
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
 set nocompatible | filetype indent plugin on | syn off
+set hidden
 
 call plug#begin()
 "ui stuff
 Plug 'scrooloose/nerdtree'
-Plug 'majutsushi/tagbar'
 Plug 'semanticart/simple-menu.vim'
-Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-startify'
 Plug 'vim-airline/vim-airline'
-Plug 'pseewald/nerdtree-tagbar-combined'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'equalsraf/neovim-gui-shim'
 Plug 'flazz/vim-colorschemes'
 Plug 'felixhummel/setcolors.vim'
-
-"autocomplete
-Plug 'ncm2/ncm2' | Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim'
-Plug 'ncm2/ncm2-neoinclude' | Plug 'Shougo/neoinclude.vim'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-tagprefix'
-Plug 'ncm2/ncm2-syntax' | Plug 'Shougo/neco-syntax'
+Plug 'vimlab/split-term.vim'
+Plug 'ervandew/supertab'
 
 "colors
 Plug 'altercation/vim-colors-solarized'
@@ -36,7 +26,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'lifepillar/vim-solarized8'
 
 "general text productivity 
-Plug 'ervandew/supertab'
 Plug 'vim-scripts/SyntaxRange'
 Plug 'vim-scripts/LargeFile'
 Plug 'justinmk/vim-sneak'
@@ -47,31 +36,27 @@ Plug 'godlygeek/tabular'
 Plug 'tpope/vim-surround'
 
 "programming productivity
-"Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh', 'for': ['fhsarp','javascript','python','reason', 'haskell' ] }
-"Plug 'natebosch/vim-lsc', { 'for': ['scala'] }
 Plug 'scrooloose/nerdcommenter'
-"Plug 'w0rp/ale'
-Plug 'tpope/vim-fugitive'
-Plug 'kien/rainbow_parentheses.vim'
 Plug 'mattn/emmet-vim'
-Plug 'vim-latex/vim-latex'
-Plug 'liuchengxu/vista.vim'
+Plug 'kassio/neoterm'
+Plug 'luochen1990/rainbow'
 
 "languages
 "scala
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
-"Plug 'scrooloose/syntastic', { 'for': ['scala'] }
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
-au BufRead,BufNewFile *.sbt set filetype=scala
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
 "elixir
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
+
 "javascript
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+
 "elm
 Plug 'elmcast/elm-vim'
+
 "purescript
 Plug 'frigoeu/psc-ide-vim', { 'for': 'purescript'}
 Plug 'raichoo/purescript-vim', { 'for': 'purescript'}
@@ -85,13 +70,16 @@ Plug 'ndmitchell/ghcid', { 'for' : 'haskell', 'rtp': 'plugins/nvim' }
 Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
 Plug 'tpope/vim-classpath', { 'for': 'clojure' }
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+
 "fsharp
 Plug 'fsharp/vim-fsharp', {
       \ 'for': 'fsharp',
       \ 'do':  'make fsautocomplete',
       \}
+
 "reasonml
 Plug 'reasonml-editor/vim-reason-plus'
+
 "others
 Plug 'gabrielelana/vim-markdown'
 
@@ -99,58 +87,12 @@ call plug#end()
 
 "autocmd BufEnter * call ncm2#enable_for_buffer()
 autocmd BufLeave,FocusLost * silent! wall
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
 
 set completeopt=noinsert,menuone,noselect
-
+let g:rainbow_active = 1
 let g:sneak#label = 1
-let g:ale_linters ={
-      \   'haskell': ['hie','hlint', 'brittany'],
-      \}
-let g:ale_fixers = {'haskell': ['brittany']}
-let g:ale_haskell_hie_executable='hie-wrapper'
-let g:ale_reason_ols_executable='reason-language-server.exe'
-let g:ale_fix_on_save = 1
-
-"let g:necoghc_enable_detailed_browse = 1
-let g:haskell_classic_highlighting = 1
-let g:haskell_indent_if = 3
-let g:haskell_indent_case = 2
-let g:haskell_indent_let = 4
-let g:haskell_indent_where = 6
-let g:haskell_indent_before_where = 2
-let g:haskell_indent_after_bare_where = 2
-let g:haskell_indent_do = 3
-let g:haskell_indent_in = 1
-let g:haskell_indent_guard = 2
-let g:haskell_indent_case_alternative = 1
-let g:cabal_indent_section = 2
-
-let g:neomake_open_list = 2
-let g:neomake_haskell_enabled_makers = []
-
-"let g:LanguageClient_loggingLevel = 'INFO'
-"let g:LanguageClient_loadSettings = 0
-let g:LanguageClient_loggingFile =  expand('/tmp/LanguageClient.log')
-let g:LanguageClient_serverStderr = expand('/tmp/LanguageServer.log')
-
-"let g:deoplete#enable_at_startup = 1
 let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
 let g:SuperTabClosePreviewOnPopupClose = 1
-
-let g:LanguageClient_serverCommands = {
-    \ 'haskell': ['hie-wrapper', '-l', '/tmp/hie.log'],
-    \ 'reason': ['/home/ozaharia/bin/reason-language-server.exe'],
-    \ 'javascript': ['/home/ozaharia/node_modules/.bin/javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
-    \ 'python': ['/home/ozaharia/.local/bin/pyls'],
-    \ 'clojure': ['/home/ozaharia/bin/clojure-lsp'],
-    \ 'fsharp': ['dotnet', '/home/ozaharia/tmp/fsharp-language-server/src/FSharpLanguageServer/bin/Release/netcoreapp2.0/target/FSharpLanguageServer.dll'],
-    \ }
-
 
 :command! WQ wq
 :command! Wq wq
@@ -166,70 +108,8 @@ let g:acp_enableAtStartup = 0
 let g:syntastic_scala_checkers=['scalastyle']
 let g:loaded_syntastic_scala_scalastyle_checker = 1
 let g:syntastic_auto_loc_list=1
-"let g:syntastic_scala_scalastyle_jar = '~/Apps/scalastyle_2.10-0.7.0-batch.jar'
 "end scala
 
-let g:tagbar_type_scala = {
-    \ 'ctagstype' : 'scala',
-    \ 'ctagsbin'    : 'stags',
-    \ 'sro'       : '.',
-    \ 'kinds'     : [
-      \ 'p:packages',
-      \ 'T:types:1',
-      \ 't:traits',
-      \ 'o:objects',
-      \ 'O:case objects',
-      \ 'c:classes',
-      \ 'C:case classes',
-      \ 'm:methods',
-      \ 'V:values:1',
-      \ 'v:variables:1'
-    \ ]
-\ }
-
-"haskell
-let g:tagbar_type_haskell = {
-    \ 'ctagsbin'    : 'hasktags',
-    \ 'ctagsargs'   : '-x -c -o-',
-    \ 'kinds'       : [
-        \  'm:modules:0:1',
-        \  'd:data:0:1',
-        \  'd_gadt:data gadt:0:1',
-        \  'nt:newtype:0:1',
-        \  'c:classes:0:1',
-        \  'i:instances:0:1',
-        \  'cons:constructors:0:1',
-        \  'c_gadt:constructor gadt:0:1',
-        \  'c_a:constructor accessors:1:1',
-        \  't:type names:0:1',
-        \  'pt:pattern types:0:1',
-        \  'pi:pattern implementations:0:1',
-        \  'ft:function types:0:1',
-        \  'fi:function implementations:0:1',
-        \  'o:others:0:1'
-    \ ],
-    \ 'sro'          : '.',
-    \ 'kind2scope'   : {
-        \ 'm'        : 'module',
-        \ 'd'        : 'data',
-        \ 'd_gadt'   : 'd_gadt',
-        \ 'c_gadt'   : 'c_gadt',
-        \ 'nt'       : 'newtype',
-        \ 'cons'     : 'cons',
-        \ 'c_a'      : 'accessor',
-        \ 'c'        : 'class',
-        \ 'i'        : 'instance'
-    \ },
-    \ 'scope2kind'   : {
-        \ 'module'   : 'm',
-        \ 'data'     : 'd',
-        \ 'newtype'  : 'nt',
-        \ 'cons'     : 'c_a',
-        \ 'd_gadt'   : 'c_gadt',
-        \ 'class'    : 'ft',
-        \ 'instance' : 'ft'
-    \ }
-\ }
 
 "end haskell
 
@@ -247,33 +127,13 @@ let g:fuf_mrufile_maxItem = 400
 let g:fuf_mrucmd_maxItem = 400
 let g:fuf_ignoreCase = 1
 
-let g:tagbar_autofocus = 1
 let g:NERDTreeChDirMode=2
 
-let g:rbpt_colorpairs = [
-    \ ['magenta',     'purple1'],
-    \ ['cyan',        'magenta1'],
-    \ ['green',       'slateblue1'],
-    \ ['yellow',      'cyan1'],
-    \ ['red',         'springgreen1'],
-    \ ['magenta',     'green1'],
-    \ ['cyan',        'greenyellow'],
-    \ ['green',       'yellow1'],
-    \ ['yellow',      'orange1'],
-    \ ]
-let g:rbpt_max = 9
-
 let g:jsx_ext_required = 0
-
 let g:fzf_history_dir = '~/.local/share/fzf-history'
  "let g:fzf_layout = { 'window': 'enew' }
+let g:fzf_layout = { 'down': '~20%' }
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-
-let g:elm_syntastic_show_warnings = 1
-let g:elm_format_autosave = 1
-let g:elm_setup_keybindings = 0
 let g:netrw_liststyle=3
 let g:netrw_winsize=20
 
@@ -284,7 +144,6 @@ let g:LargeFile = 2
 let g:airline_section_a = ''
 let g:airline_section_y = ''
 let g:airline#extensions#tabline#enabled = 0
-let g:airline#extensions#ale#enabled = 1
 let g:airline_powerline_fonts = 1
 
 set timeoutlen=500
@@ -306,6 +165,8 @@ set smartindent
 set autoindent
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.class,*.hi,*.o
 set autowrite
+set splitright
+set splitbelow
 
 "set directory=~/tmp/.swp//
 set nobackup
@@ -334,6 +195,10 @@ nmap <silent> <leader>k :wincmd k<CR>
 nmap <silent> <leader>j :wincmd j<CR>
 nmap <silent> <leader>h :wincmd h<CR>
 nmap <silent> <leader>l :wincmd l<CR>
+tnoremap <C-h> <C-\><C-n><C-h>
+tnoremap <C-j> <C-\><C-n><C-j>
+tnoremap <C-k> <C-\><C-n><C-k>
+tnoremap <C-l> <C-\><C-n><C-l>
 
 map <silent> <Down> :cn<CR>
 map <silent> <Up> :cp<CR>
@@ -350,6 +215,8 @@ nnoremap <Leader>D "_D
 nnoremap <Leader>C "_C
 nnoremap <Leader>c "_c
 nnoremap <Leader>x "_x
+nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 " Move to the previous buffer
 nnoremap H :bprevious<CR>
 " Move to the next buffer
@@ -363,13 +230,10 @@ nnoremap + H
 nnoremap - L
 
 "ui
-nmap <silent><M-1> :ToggleNERDTreeAndTagbar<CR>
-nmap <silent><M-2> :TagbarToggle<CR>
-nmap <silent><M-3> :NERDTreeToggle<CR>
+nmap <silent><M-1> :NERDTreeToggle<CR>
 nmap <silent> <Leader>q :lclose<CR>:pclose<CR>:cclose<CR>
 nmap <silent> <Leader>n :FZF<CR>
 nmap <silent> <leader>b :Buffers<CR>
-nmap <silent> <leader>gs :GFiles?<CR>
 nnoremap <leader><TAB> :bnext<CR>
 nnoremap <leader><S-tab> :bprevious<CR>
 nnoremap <C-X> :bdelete<CR>
@@ -387,7 +251,7 @@ endfunc
 
 call ToggleFocusColor()
 
-"Set F6 to toggle
+"Set F6 to toggle, switch colorscheme
 nmap <leader>` :call ToggleFocusColor()<CR>
 
 nmap <silent> <leader>fz :FZF<CR>
@@ -441,19 +305,9 @@ au FileType clojure nmap <silent> <Leader>q :ccl<CR>
 au FileType haskell nnoremap <silent> <leader>his :HsimportSymbol<CR>
 au FileType haskell nnoremap <silent> <leader>him :HsimportModule<CR>
 " Or map each action separately
-au FileType haskell,javascript,python,fsharp,reason nnoremap <leader>t :call LanguageClient#textDocument_hover()<CR>
-au FileType haskell,javascript,python,fsharp,reason nnoremap <A-=> :call LanguageClient#textDocument_hover()<CR>
-au FileType haskell,javascript,python,fsharp,reason nnoremap <leader><S-t> :call LanguageClient#textDocument_typeDefinition()<CR>
-au FileType haskell,javascript,python,fsharp,reason nnoremap gd :call LanguageClient#textDocument_definition()<CR>
-au FileType haskell,javascript,python,fsharp,reason nnoremap <leader>r :call LanguageClient#textDocument_rename()<CR>
-au FileType haskell,javascript,python,fsharp,reason nnoremap <leader>lf :call LanguageClient#textDocument_rangeFormatting()<CR>
-au FileType haskell,javascript,python,fsharp,reason nnoremap <C-A-l> :call LanguageClient#textDocument_formatting()<CR>
-au FileType haskell,javascript,python,fsharp,reason nnoremap <A-F7> :call LanguageClient#textDocument_references()<CR>
-au FileType haskell,javascript,python,fsharp,reason nnoremap <A-CR> :call LanguageClient#textDocument_codeAction()<CR>
-au FileType haskell,javascript,python,fsharp,reason nnoremap <Leader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
-au FileType haskell,javascript,python,fsharp,reason nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-au FileType haskell,javascript,python,fsharp,reason set formatexpr=LanguageClient_textDocument_rangeFormatting() 
 
+
+"coc settings
 function! s:show_documentation()
   if &filetype == 'vim'
     execute 'h '.expand('<cword>')
@@ -461,38 +315,74 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
-au FileType scala,rust,haskell set updatetime=300
-au FileType scala,rust,haskell set shortmess+=c
-au FileType scala,rust,haskell set signcolumn=yes
-au FileType scala,rust,haskell inoremap <silent><expr> <c-space> coc#refresh()
-au FileType scala,rust,haskell inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-au FileType scala,rust,haskell nmap <silent> <S-F2> <Plug>(coc-diagnostic-prev)
-au FileType scala,rust,haskell nmap <silent> <F2> <Plug>(coc-diagnostic-next)
-au FileType scala,rust,haskell nmap <silent> gd <Plug>(coc-definition)
-au FileType scala,rust,haskell nmap <silent> gy <Plug>(coc-type-definition)
-au FileType scala,rust,haskell nmap <silent> gi <Plug>(coc-implementation)
-au FileType scala,rust,haskell nmap <silent> gr <Plug>(coc-references)
-au FileType scala,rust,haskell nmap <A-CR> <Plug>(coc-codeaction)
-au FileType scala,rust,haskell nnoremap <silent> <C-A-l> :call CocAction('format')<CR>
-au FileType scala,rust,haskell nnoremap <silent>F :call CocAction('format')<CR>
-au FileType scala,rust,haskell nnoremap <silent>K :call <SID>show_documentation()<CR>
-au FileType scala,rust,haskell autocmd CursorHold * silent call CocActionAsync('highlight')
-au FileType scala,rust,haskell nmap <leader>r <Plug>(coc-rename)
-" Show all diagnostics
-au FileType scala,rust,haskell nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Find symbol of current document
-au FileType scala,rust,haskell nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-au FileType scala,rust,haskell nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-au FileType scala,rust,haskell nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-au FileType scala,rust,haskell nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-au FileType scala,rust,haskell nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+au FileType reason,scala,rust,haskell call SetCocOptions()
+
+
+nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
+
+function SetCocOptions()
+  set updatetime=300
+  set cmdheight=2
+  set shortmess+=c
+  set signcolumn=yes
+
+  autocmd CursorHold * silent call CocActionAsync('highlight')
+  inoremap <silent><expr> <c-space> coc#refresh()
+  "noremap <expr> <TAB>
+    "\ pumvisible() ? "\<C-n>" :
+    "\ <SID>check_back_space() ? "\<TAB>" :
+    "\ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+  xmap <silent><leader>as  <Plug>(coc-codeaction-selected)
+  nmap <silent><leader>as  <Plug>(coc-codeaction-selected)
+  nmap <silent><leader>af  <Plug>(coc-fix-current)
+  xmap <silent><leader>afi <Plug>(coc-funcobj-i)
+  xmap <silent><leader>afa <Plug>(coc-funcobj-a)
+  omap <silent><leader>afi <Plug>(coc-funcobj-i)
+  omap <silent><leader>afa <Plug>(coc-funcobj-a)
+  nmap <silent><leader>aa <Plug>(coc-codeaction)
+
+  nmap <silent> <leader>ap <Plug>(coc-diagnostic-prev)
+  nmap <silent> <leader>an <Plug>(coc-diagnostic-next)
+  nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> <leader>at <Plug>(coc-type-definition)
+  nmap <silent> <leader>ai <Plug>(coc-implementation)
+  nmap <silent> <leader>ar <Plug>(coc-references)
+  nnoremap <silent> <leader>af :call CocAction('format')<CR>
+  nnoremap <silent> <leader>ad :call <SID>show_documentation()<CR>
+  nmap <leader>ar <Plug>(coc-rename)
+  " Show all diagnostics
+  nnoremap <silent> <space>ag  :<C-u>CocList diagnostics<cr>
+  " Find symbol of current document
+  nnoremap <silent> <space>ao  :<C-u>CocList outline<cr>
+  " Search workspace symbols
+  nnoremap <silent> <space>ay  :<C-u>CocList -I symbols<cr>
+  " Do default action for next item.
+  nnoremap <silent> <space>aj  :<C-u>CocNext<CR>
+  " Do default action for previous item.
+  nnoremap <silent> <space>ak  :<C-u>CocPrev<CR>
+  " Resume latest coc list
+  nnoremap <silent> <space>ap  :<C-u>CocListResume<CR>
+  nnoremap <silent> <space>am  :<C-u>CocList commands<CR>
+endfunction
 
 nnoremap <C-left> :call NextColor(-1)<CR>
 nnoremap <C-right> :call NextColor(1)<CR>
 nnoremap <C-up> :call NextColor(0)<CR>
 
 nnoremap <C-down> :SetColors all<CR>
+function! s:find_project_root()
+  let nerd_root = g:NERDTree.ForCurrentTab().getRoot().path.str()
+  let git_root = system('git -C '.shellescape(nerd_root).' rev-parse --show-toplevel 2> /dev/null')[:-2]
+  if strlen(git_root)
+    return git_root
+  endif
+  return nerd_root
+endfunction
+command! ProjectFiles execute 'Files' s:find_project_root()

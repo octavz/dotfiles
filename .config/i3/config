@@ -371,3 +371,4 @@ bindsym $mod+Shift+o exec notify-send "Alacritty Colorscheme" `$alacritty_colors
 bindsym $mod+d exec td
 bindsym $mod+Shift+d exec tl
 bindsym $mod+grave exec "i3-msg [class=Station] fullscreen toggle"
+bindsym --whole-window $mod+button3 kill

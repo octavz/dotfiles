@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+has_display() {
+	[[ -n "$DISPLAY" ]]
+}
+
+main() {
+  ln -sf "$HOME/.config/termite/config_light_fhd" "$HOME/.config/termite/config"
+  killall -USR1 termite
+}
+
+main
