@@ -35,8 +35,9 @@ Plug 'wellle/targets.vim'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-surround'
 
+
 "programming productivity
-Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-commentary'
 Plug 'mattn/emmet-vim'
 Plug 'kassio/neoterm'
 Plug 'luochen1990/rainbow'

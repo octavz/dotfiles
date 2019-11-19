@@ -36,8 +36,8 @@ bindsym $mod+Mod1+1 exec gnome-screenshot -w
 bindsym $mod+Mod1+2 exec gnome-screenshot -a
 bindsym Print exec gnome-screenshot -w
 bindsym $mod+Print exec gnome-screenshot -a
-bindsym $mod+q exec vivaldi --new-window www.duckduckgo.com
-#bindsym $mod+q exec firefox --new-window www.duckduckgo.com
+#bindsym $mod+q exec vivaldi --new-window www.duckduckgo.com
+bindsym $mod+q exec firefox --new-window www.duckduckgo.com
 bindsym $mod+e exec gvim
 bindsym $mod+n exec --no-startup-id nautilus --no-desktop
 bindsym $mod+Delete exec --no-startup-id lxtask
@@ -46,7 +46,7 @@ bindsym $mod+Shift+s exec termite --name=cheatsheet --geometry=900x600 -e ~/bin/
 bindsym $mod+b bar mode toggle
 bindsym $mod+z exec --no-startup-id exec i3zen
 bindsym $mod+Shift+b border pixel 5
-bindsym --release $mod+Shift+b border pixel 1
+bindsym --release $mod+Shift+b border pixel 0
 
 bindsym $mod+Control+1 exec laptop.sh
 bindsym $mod+Control+2 exec 4k
@@ -58,15 +58,9 @@ bindsym $mod+a exec easyfocus
 # kill focused window
 bindsym $mod+Shift+c kill
 
-# start dmenu (a program launcher)
-#bindsym $mod+r exec dmenu_run
+# start rofi (a program launcher)
 bindsym $mod+r exec "rofi -location 0 -width 800 -combi-modi window,drun,run -show combi -modi combi"
 bindsym Mod1+Tab  exec "rofi -show window "
-
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+h focus left
@@ -101,6 +95,7 @@ bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
+bindsym $mod+o exec --no-startup-id flash_window
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -215,9 +210,10 @@ bar {
 }
 
 focus_follows_mouse no
+exec_always --no-startup-id flashfocus
 exec feh --bg-scale "/home/ozaharia/Pictures/1.jpg"
-exec --no-startup-id i3-msg 'workspace 1; exec vivaldi'
-exec --no-startup-id i3-msg 'workspace 2; exec station'
+exec --no-startup-id i3-msg 'workspace 1; exec firefox'
+exec --no-startup-id i3-msg 'workspace 2; exec station.AppImage'
 exec --no-startup-id i3-msg 'workspace 2; exec skypeforlinux'
 #exec --no-startup-id mate-volume-control-applet
 exec --no-startup-id indicator-bluetooth
@@ -228,17 +224,15 @@ exec --no-startup-id nm-applet
 #show cheatsheet as floating
 for_window [instance="cheatsheet"] floating enable
 # hide window title
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 0
 workspace 1 output eDP1
 workspace 2 output eDP1
 workspace 3 output eDP1
 
 exec --no-startup-id termite -t popup_term 
 for_window [title="popup_term"] floating enable, move scratchpad, scratchpad show;
-#for_window [title="popup"] resize set 1024 768, move scratchpad;
 for_window [title="popup_term"] resize grow left 350, resize grow right 350, resize grow down 250, resize grow up 250, move scratchpad;
 floating_maximum_size 1792 x 1008
-
 
 bindsym Mod1+Control+1 exec --no-startup-id ~/bin/dump-asy.pl 1
 bindsym Mod1+Control+2 exec --no-startup-id ~/bin/dump-asy.pl 2
@@ -247,8 +241,6 @@ bindsym Mod1+Control+4 exec --no-startup-id ~/bin/dump-asy.pl 4
 bindsym Mod1+Control+5 exec --no-startup-id ~/bin/dump-asy.pl 5
 
 #for_window [class="GV"] floating enable, border none
-
-#hide_edge_borders horizontal
 
 #exec --no-startup-id ~/bin/last.sh
 #bindsym $mod+n [con_mark=_last] focus
@@ -263,8 +255,8 @@ client.urgent           #2f343f #2f343f #d8dee8 #2f343f #2f343f
 client.placeholder      #2f343f #2f343f #d8dee8 #2f343f #2f343f
 client.background       #2f343f
 
-default_border pixel 1
-#exec --no-startup-id compton -b
+#default_border pixel 2
+exec --no-startup-id compton -b
 
 mode "window" {
     # use window title, but no border
@@ -307,47 +299,6 @@ bindsym $mod+Tab focus parent; focus right; focus child
 bindsym $mod+Shift+Tab focus parent; focus left; focus child
 show_marks yes
 
-set $mode_gaps Gaps: (o) outer, (i) inner
-set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-bindsym $mod+Shift+g mode "$mode_gaps"
-
-mode "$mode_gaps" {
-        bindsym o      mode "$mode_gaps_outer"
-        bindsym i      mode "$mode_gaps_inner"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-mode "$mode_gaps_inner" {
-        bindsym plus  gaps inner current plus 5
-        bindsym minus gaps inner current minus 5
-        bindsym 0     gaps inner current set 0
-
-        bindsym Shift+plus  gaps inner all plus 5
-        bindsym Shift+minus gaps inner all minus 5
-        bindsym Shift+0     gaps inner all set 0
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_outer" {
-        bindsym plus  gaps outer current plus 5
-        bindsym minus gaps outer current minus 5
-        bindsym 0     gaps outer current set 0
-
-        bindsym Shift+plus  gaps outer all plus 5
-        bindsym Shift+minus gaps outer all minus 5
-        bindsym Shift+0     gaps outer all set 0
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-gaps inner 0
-gaps outer 0
-smart_gaps on
-smart_borders on
-
 # Resizing by 10
 bindsym $mod+Ctrl+Right resize shrink width 5 px or 5 ppt
 bindsym $mod+Ctrl+Up resize grow height 5 px or 5 ppt
@@ -355,18 +306,7 @@ bindsym $mod+Ctrl+Down resize shrink height 5 px or 5 ppt
 bindsym $mod+Ctrl+Left resize grow width 5 px or 5 ppt
 
 for_window [class="^jetbrains-.+"][window_type=dialog] focus
-# for_window [class="Pidgin"][window_role="conversation"] floating enable
 mouse_warping output
-
-set $alacritty_colorscheme ~/bin/alacritty-colorscheme
-# Toggle between light and dark colorscheme
-bindsym $alt+c exec $alacritty_colorscheme -t solarized_light.yaml dracula.yaml
-
-# Toggle between all available colorscheme
-bindsym $alt+Shift+c exec $alacritty_colorscheme -T
-
-# Get notification with current colorscheme
-bindsym $mod+Shift+o exec notify-send "Alacritty Colorscheme" `$alacritty_colorscheme -s`
 
 bindsym $mod+d exec td
 bindsym $mod+Shift+d exec tl

@@ -15,14 +15,16 @@ set -x TERM xterm-256color
 set -x LD_LIBRARY_PATH /usr/local/lib
 set -x GOROOT /usr/local/go
 set -x PATH $PATH $GOPATH/bin $GOROOT/bin /home/ozaharia/go/bin /home/ozaharia/.cargo/bin /home/ozaharia/.local/bin /home/ozaharia/bin /home/ozaharia/.cabal/bin /home/ozaharia/node_modules/.bin /home/ozaharia/apps/apache-maven-3.6.0/bin /home/ozaharia/apps/gonvim ~/.npm-global/bin ~/apps/purescript
-
+set -x BAT_THEME ansi-light
 
 alias work="cd ~/work"
 alias p="cd ~/projects"
+alias int="cd ~/projects/wantsome/interactive"
 alias tmp="cd ~/tmp"
 alias bin="cd ~/bin"
 alias apps="cd ~/apps"
 alias kafka="cd ~/apps/confluent-3.3.0/bin"
+alias kafka2="cd ~/apps/kafka_2.12-2.1.0/bin"
 alias gatling="ssh root@10.200.50.18"
 alias i3c="vim ~/.config/i3/config"
 alias termc="vim ~/.config/termite/config"
@@ -48,6 +50,11 @@ alias gst='git status'
 alias ga='git add .'
 alias ds='docker stop (docker ps -aq)'
 alias dr='docker rm (docker ps -aq)'
+alias nm='cd /home/ozaharia/work/blaze-nifi-cluster-manager-service'
+alias ..='cd ..'
+alias ....='cd ../..'
+alias ......='cd ../../..'
+alias ro='cd (git rev-parse --show-toplevel)'
 
 setxkbmap us -variant colemak
 
@@ -70,8 +77,8 @@ bind o accept-autosuggestion
 bind -M insert \co accept-autosuggestion
 
 set devices (xinput list)
-if string match -qr 'BluetoothMouse3600' $devices
-	xinput set-button-map (xinput list --id-only "BluetoothMouse3600")  3 2 1 
+if string match -qr 'BluetoothMouse3600 Mouse' $devices
+	xinput set-button-map (xinput list --id-only "BluetoothMouse3600 Mouse")  3 2 1 
 end
 
 set -x NVM_DIR "$HOME/.nvm"

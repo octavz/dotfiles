@@ -2,6 +2,8 @@ set ignorecase
 set smartcase
 set incsearch
 set surround
+set multiple-cursors
+set commentary
 
 let mapleader = " "
 
@@ -25,5 +27,4 @@ map s :action AceAction<CR>
 " Press `F` to activate Target Mode
 map M :action AceTargetAction<CR>
 " Press `g` to activate Line Mode
-map S :action AceLineAction<CR>
 set ideajoin
