@@ -3,6 +3,8 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 
 set nocompatible | filetype indent plugin on | syn off
 set hidden
+set autoread
+au CursorHold * checktime
 
 call plug#begin()
 "ui stuff
@@ -15,7 +17,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'felixhummel/setcolors.vim'
 Plug 'vimlab/split-term.vim'
-Plug 'ervandew/supertab'
+" Plug 'ervandew/supertab'
+Plug 'codcodog/simplebuffer.vim'
 
 "colors
 Plug 'altercation/vim-colors-solarized'
@@ -28,66 +31,45 @@ Plug 'lifepillar/vim-solarized8'
 "general text productivity 
 Plug 'vim-scripts/SyntaxRange'
 Plug 'vim-scripts/LargeFile'
-Plug 'justinmk/vim-sneak'
+" Plug 'justinmk/vim-sneak'
 Plug 'rking/ag.vim'
 Plug 'tpope/vim-repeat'
 Plug 'wellle/targets.vim'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-surround'
-
+Plug 'tmsvg/pear-tree'
 
 "programming productivity
-Plug 'tpope/vim-commentary'
-Plug 'mattn/emmet-vim'
+Plug 'tomtom/tcomment_vim'
 Plug 'kassio/neoterm'
 Plug 'luochen1990/rainbow'
+Plug 'sheerun/vim-polyglot'
 
 "languages
 "scala
-Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
 "elixir
-Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
-
-"javascript
-Plug 'mxw/vim-jsx', { 'for': 'javascript' }
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-
-"elm
-Plug 'elmcast/elm-vim'
 
 "purescript
 Plug 'frigoeu/psc-ide-vim', { 'for': 'purescript'}
-Plug 'raichoo/purescript-vim', { 'for': 'purescript'}
 
 "haskell
 Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
-Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 Plug 'ndmitchell/ghcid', { 'for' : 'haskell', 'rtp': 'plugins/nvim' }
 
 "clojure
-Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
 Plug 'tpope/vim-classpath', { 'for': 'clojure' }
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-
-"fsharp
-Plug 'fsharp/vim-fsharp', {
-      \ 'for': 'fsharp',
-      \ 'do':  'make fsautocomplete',
-      \}
 
 "reasonml
 Plug 'reasonml-editor/vim-reason-plus'
 
-"others
-Plug 'gabrielelana/vim-markdown'
-
 call plug#end()
 
 "autocmd BufEnter * call ncm2#enable_for_buffer()
-autocmd BufLeave,FocusLost * silent! wall
+"autocmd BufLeave,FocusLost * silent! wall
 
 set completeopt=noinsert,menuone,noselect
 let g:rainbow_active = 1
@@ -154,6 +136,7 @@ set magic
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
+set textwidth=120
 set expandtab
 set ma
 set mouse=a
@@ -231,14 +214,17 @@ nnoremap + H
 nnoremap - L
 
 "ui
-nmap <silent><M-1> :NERDTreeToggle<CR>
+nmap <silent><M-1> :NERDTreeToggleVCS<CR>
 nmap <silent> <Leader>q :lclose<CR>:pclose<CR>:cclose<CR>
+nmap <silent> <Leader>Q :bd<CR>
 nmap <silent> <Leader>n :FZF<CR>
-nmap <silent> <leader>b :Buffers<CR>
+nmap <silent> <leader>b :SimpleBufferToggle<CR>
 nnoremap <leader><TAB> :bnext<CR>
 nnoremap <leader><S-tab> :bprevious<CR>
-nnoremap <C-X> :bdelete<CR>
+nnoremap <C-x> :bdelete<CR>
+nnoremap <C-A-x> :bdelete!<CR>
 let g:focuscolour = 1
+
 
 function! ToggleFocusColor()
   if (g:focuscolour)
@@ -261,7 +247,7 @@ nmap <silent> <c-N> :FZF<CR>
 
 "productivity
 noremap <Leader>f :Ag <C-R><C-W><CR>
-nmap <silent> <Leader><Space> :bnext<CR>
+nmap <silent> <Leader><Space> <C-^>
 nmap <silent> <C-A> :e $MYVIMRC<CR>
 inoremap <C-space> <C-x><C-o>
 noremap <silent> <Leader>h :Startify <CR>
@@ -335,42 +321,60 @@ function SetCocOptions()
 
   autocmd CursorHold * silent call CocActionAsync('highlight')
   inoremap <silent><expr> <c-space> coc#refresh()
-  "noremap <expr> <TAB>
-    "\ pumvisible() ? "\<C-n>" :
-    "\ <SID>check_back_space() ? "\<TAB>" :
-    "\ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-  xmap <silent><leader>as  <Plug>(coc-codeaction-selected)
-  nmap <silent><leader>as  <Plug>(coc-codeaction-selected)
-  nmap <silent><leader>af  <Plug>(coc-fix-current)
-  xmap <silent><leader>afi <Plug>(coc-funcobj-i)
-  xmap <silent><leader>afa <Plug>(coc-funcobj-a)
-  omap <silent><leader>afi <Plug>(coc-funcobj-i)
-  omap <silent><leader>afa <Plug>(coc-funcobj-a)
-  nmap <silent><leader>aa <Plug>(coc-codeaction)
+  inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+  inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+  autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
-  nmap <silent> <leader>ap <Plug>(coc-diagnostic-prev)
-  nmap <silent> <leader>an <Plug>(coc-diagnostic-next)
+
+  " Use `[c` and `]c` for navigate diagnostics
+  nmap <silent> [c <Plug>(coc-diagnostic-prev)
+  nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+  " Remap keys for gotos
   nmap <silent> gd <Plug>(coc-definition)
-  nmap <silent> <leader>at <Plug>(coc-type-definition)
-  nmap <silent> <leader>ai <Plug>(coc-implementation)
-  nmap <silent> <leader>ar <Plug>(coc-references)
-  nnoremap <silent> <leader>af :call CocAction('format')<CR>
-  nnoremap <silent> <leader>ad :call <SID>show_documentation()<CR>
-  nmap <leader>ar <Plug>(coc-rename)
+  nmap <silent> gy <Plug>(coc-type-definition)
+  nmap <silent> gi <Plug>(coc-implementation)
+  nmap <silent> gr <Plug>(coc-references)
+
+  " Remap for do codeAction of current line
+  nmap <leader>ac <Plug>(coc-codeaction)
+
+  " Remap for do action format
+  nnoremap <silent> F :call CocAction('format')<CR>
+
+  " Use K for show documentation in preview window
+  nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+  " Highlight symbol under cursor on CursorHold
+  autocmd CursorHold * silent call CocActionAsync('highlight')
+
+  " Remap for rename current word
+  nmap <leader>rn <Plug>(coc-rename)
+
   " Show all diagnostics
-  nnoremap <silent> <space>ag  :<C-u>CocList diagnostics<cr>
+  nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
   " Find symbol of current document
-  nnoremap <silent> <space>ao  :<C-u>CocList outline<cr>
+  nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
   " Search workspace symbols
-  nnoremap <silent> <space>ay  :<C-u>CocList -I symbols<cr>
+  nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
   " Do default action for next item.
-  nnoremap <silent> <space>aj  :<C-u>CocNext<CR>
+  nnoremap <silent> <space>j  :<C-u>CocNext<CR>
   " Do default action for previous item.
-  nnoremap <silent> <space>ak  :<C-u>CocPrev<CR>
+  nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
   " Resume latest coc list
-  nnoremap <silent> <space>ap  :<C-u>CocListResume<CR>
-  nnoremap <silent> <space>am  :<C-u>CocList commands<CR>
+  nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+  " Notify coc.nvim that <enter> has been pressed.
+  " Currently used for the formatOnType feature.
+
+  " Metals specific commands
+  " Start Metals Doctor
+  command! -nargs=0 MetalsDoctor :call CocRequestAsync('metals', 'workspace/executeCommand', { 'command': 'doctor-run' })
+  " Manually start build import
+  command! -nargs=0 MetalsImport :call CocRequestAsync('metals', 'workspace/executeCommand', { 'command': 'build-import' })
+  " Manually connect with the build server
+  command! -nargs=0 MetalsConnect :call CocRequestAsync('metals', 'workspace/executeCommand', { 'command': 'build-connect' })
 endfunction
 
 nnoremap <C-left> :call NextColor(-1)<CR>
@@ -378,12 +382,6 @@ nnoremap <C-right> :call NextColor(1)<CR>
 nnoremap <C-up> :call NextColor(0)<CR>
 
 nnoremap <C-down> :SetColors all<CR>
-function! s:find_project_root()
-  let nerd_root = g:NERDTree.ForCurrentTab().getRoot().path.str()
-  let git_root = system('git -C '.shellescape(nerd_root).' rev-parse --show-toplevel 2> /dev/null')[:-2]
-  if strlen(git_root)
-    return git_root
-  endif
-  return nerd_root
-endfunction
-command! ProjectFiles execute 'Files' s:find_project_root()
+nnoremap <A-down> :SetColors all<CR>
+
+hi Normal guibg=NONE ctermbg=NONE
