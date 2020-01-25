@@ -32,7 +32,7 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'vim-scripts/SyntaxRange'
 Plug 'vim-scripts/LargeFile'
 " Plug 'justinmk/vim-sneak'
-Plug 'rking/ag.vim'
+Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-repeat'
 Plug 'wellle/targets.vim'
 Plug 'godlygeek/tabular'
@@ -202,19 +202,12 @@ nnoremap <Leader>x "_x
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 " Move to the previous buffer
-nnoremap H :bprevious<CR>
+nnoremap <leader>H :bprevious<CR>
 " Move to the next buffer
-nnoremap L :bnext<CR>
-
-" Replace H and L
-nnoremap zh H
-nnoremap zl L
-" AND/OR
-nnoremap + H
-nnoremap - L
+nnoremap <leader>L :bnext<CR>
 
 "ui
-nmap <silent><M-1> :NERDTreeToggleVCS<CR>
+nmap <silent><Leader>1 :NERDTreeToggleVCS<CR>
 nmap <silent> <Leader>q :lclose<CR>:pclose<CR>:cclose<CR>
 nmap <silent> <Leader>Q :bd<CR>
 nmap <silent> <Leader>n :FZF<CR>
@@ -223,7 +216,7 @@ nnoremap <leader><TAB> :bnext<CR>
 nnoremap <leader><S-tab> :bprevious<CR>
 nnoremap <C-x> :bdelete<CR>
 nnoremap <C-A-x> :bdelete!<CR>
-let g:focuscolour = 1
+let g:focuscolour = 0
 
 
 function! ToggleFocusColor()
@@ -231,14 +224,13 @@ function! ToggleFocusColor()
     colorscheme ancient
     let g:focuscolour = 0
   else
-    colorscheme dracula
+    colorscheme gruvbox
     let g:focuscolour = 1
   endif
 endfunc
 
 call ToggleFocusColor()
 
-"Set F6 to toggle, switch colorscheme
 nmap <leader>` :call ToggleFocusColor()<CR>
 
 nmap <silent> <leader>fz :FZF<CR>
@@ -246,7 +238,7 @@ nmap <silent> <c-N> :FZF<CR>
 
 
 "productivity
-noremap <Leader>f :Ag <C-R><C-W><CR>
+noremap <Leader>f :Ack <C-R><C-W><CR>
 nmap <silent> <Leader><Space> <C-^>
 nmap <silent> <C-A> :e $MYVIMRC<CR>
 inoremap <C-space> <C-x><C-o>
@@ -384,4 +376,6 @@ nnoremap <C-up> :call NextColor(0)<CR>
 nnoremap <C-down> :SetColors all<CR>
 nnoremap <A-down> :SetColors all<CR>
 
-hi Normal guibg=NONE ctermbg=NONE
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif

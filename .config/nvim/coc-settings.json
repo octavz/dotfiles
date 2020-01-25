@@ -3,7 +3,7 @@
   "coc.preferences.formatOnSaveFiletypes": [
     "scala"
   ],
-  "metals.serverVersion": "0.7.6+575-8d02443d-SNAPSHOT",
+  "metals.serverVersion": "0.8.0",
   "metals.javaHome": "/usr/lib/jvm/java-11-openjdk-amd64",
   "suggest.noselect": false,
   "languageserver": {
