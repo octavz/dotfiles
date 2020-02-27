@@ -17,7 +17,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'felixhummel/setcolors.vim'
 Plug 'vimlab/split-term.vim'
-" Plug 'ervandew/supertab'
+Plug 'ervandew/supertab'
 Plug 'codcodog/simplebuffer.vim'
 
 "colors
@@ -27,6 +27,7 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'nanotech/jellybeans.vim'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'lifepillar/vim-solarized8'
+Plug 'machakann/vim-sandwich'
 
 "general text productivity 
 Plug 'vim-scripts/SyntaxRange'
@@ -36,7 +37,7 @@ Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-repeat'
 Plug 'wellle/targets.vim'
 Plug 'godlygeek/tabular'
-Plug 'tpope/vim-surround'
+Plug 'vim-scripts/AutoComplPop'
 Plug 'tmsvg/pear-tree'
 
 "programming productivity
@@ -44,6 +45,7 @@ Plug 'tomtom/tcomment_vim'
 Plug 'kassio/neoterm'
 Plug 'luochen1990/rainbow'
 Plug 'sheerun/vim-polyglot'
+Plug 'airblade/vim-rooter'
 
 "languages
 "scala
@@ -51,9 +53,6 @@ Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
 "elixir
 Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
-
-"purescript
-Plug 'frigoeu/psc-ide-vim', { 'for': 'purescript'}
 
 "haskell
 Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
@@ -68,14 +67,13 @@ Plug 'reasonml-editor/vim-reason-plus'
 
 call plug#end()
 
-"autocmd BufEnter * call ncm2#enable_for_buffer()
 "autocmd BufLeave,FocusLost * silent! wall
 
-set completeopt=noinsert,menuone,noselect
 let g:rainbow_active = 1
 let g:sneak#label = 1
 let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
 let g:SuperTabClosePreviewOnPopupClose = 1
+let g:pear_tree_repeatable_expand = 1
 
 :command! WQ wq
 :command! Wq wq
@@ -153,7 +151,6 @@ set splitright
 set splitbelow
 
 "set directory=~/tmp/.swp//
-set nobackup
 set noswapfile
 
 set guioptions-=T
@@ -217,14 +214,15 @@ nnoremap <leader><S-tab> :bprevious<CR>
 nnoremap <C-x> :bdelete<CR>
 nnoremap <C-A-x> :bdelete!<CR>
 let g:focuscolour = 0
+colorscheme gruvbox
 
 
 function! ToggleFocusColor()
   if (g:focuscolour)
-    colorscheme ancient
+    set background=dark
     let g:focuscolour = 0
   else
-    colorscheme gruvbox
+    set background=light
     let g:focuscolour = 1
   endif
 endfunc
@@ -246,7 +244,6 @@ noremap <silent> <Leader>h :Startify <CR>
 nnoremap Q gq
 
 "scala
-"au filetype scala nmap <Leader>m :%!java -jar /home/octav/cli-assembly-0.1.7.jar -f -q +compactControlReadability +alignParameters +alignSingleLineCaseStatements +doubleIndentClassDeclaration +preserveDanglingCloseParenthesis +rewriteArrowSymbols +preserveSpaceBeforeArguments --stdin --stdout <CR>
 
 vmap <Leader>% :Tabularize /%\{1,2} <CR>
 vmap <Leader>= :Tabularize /=\{1,2} <CR>
@@ -261,18 +258,6 @@ au FileType elm nmap <silent> <Leader>e :ElmErrorDetail<CR>
 au FileType elm nmap <silent> <Leader>d :ElmBrowseDocs<CR>
 au FileType elm nmap <silent> <Leader>re :ElmRepl<CR>
 au FileType elm nmap <silent> <C-A-l> :ElmFormat<CR>
-
-"purescript
-au FileType purescript nmap <leader>t :PSCIDEtype<CR>
-au FileType purescript nmap <leader>s :PSCIDEapplySuggestion<CR>
-au FileType purescript nmap <leader>a :PSCIDEaddTypeAnnotation<CR>
-au FileType purescript nmap <leader>im :PSCIDEimportIdentifier<CR>
-au FileType purescript nmap <leader>r :PSCIDEload<CR>
-au FileType purescript nmap <leader>p :PSCIDEpursuit<CR>
-au FileType purescript nmap <leader>c :PSCIDEcaseSplit<CR>
-au FileType purescript nmap <leader>qd :PSCIDEremoveImportQualifications<CR>
-au FileType purescript nmap <leader>qa :PSCIDEaddImportQualifications<CR>
-au FileType purescript nmap gd :PSCIDEgoToDefinition<CR>
 
 "clojure
 au FileType clojure nmap <silent> cpR :Require!<CR>
@@ -306,16 +291,18 @@ au FileType reason,scala,rust,haskell call SetCocOptions()
 nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
 
 function SetCocOptions()
+  :cd %:h | cd `git rev-parse --show-toplevel`
   set updatetime=300
   set cmdheight=2
   set shortmess+=c
   set signcolumn=yes
+  set completeopt=longest,menuone
 
   autocmd CursorHold * silent call CocActionAsync('highlight')
   inoremap <silent><expr> <c-space> coc#refresh()
-  inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
   inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+  inoremap <expr> <C-n> pumvisible() ? '<C-n>' : \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+  inoremap <expr> <M-,> pumvisible() ? '<C-n>' : \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
   autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 
@@ -379,3 +366,4 @@ nnoremap <A-down> :SetColors all<CR>
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
+
