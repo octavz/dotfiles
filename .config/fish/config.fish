@@ -6,16 +6,19 @@ end
 
 source /home/ozaharia/.oh-my-zsh/env.sh
 
-set -x EDITOR nvim
-set -x -U GOPATH $HOME/go
+set -x EDITOR nvim.appimage
+set -x BROWSER vivaldi
 set -x KAFKA_HOME /home/ozaharia/apps/confluent-3.3.0
 set -x  SPARK_HOME /home/ozaharia/apps/spark-2.3.1
 set -x IDEA_JDK /home/ozaharia/bin/jdk-idea
 set -x TERM xterm-256color
 set -x LD_LIBRARY_PATH /usr/local/lib
-set -x GOROOT /usr/local/go
 set -x PATH $PATH $GOPATH/bin $GOROOT/bin /home/ozaharia/go/bin /home/ozaharia/.cargo/bin /home/ozaharia/.local/bin /home/ozaharia/bin /home/ozaharia/.cabal/bin /home/ozaharia/node_modules/.bin /home/ozaharia/apps/apache-maven-3.6.0/bin /home/ozaharia/apps/gonvim ~/.npm-global/bin ~/apps/purescript
 set -x BAT_THEME ansi-light
+set -x JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
+set -x NVM_DIR $HOME/.nvm
+set -x FZF_DEFAULT_COMMAND 'fd --type f --hidden --follow --exclude .git'
+set -x BLAZE_SBT_CHECK_UPDATES_INTERVAL 0
 
 alias work="cd ~/work"
 alias p="cd ~/projects"
@@ -42,7 +45,7 @@ alias ovpn="oathtool --base32 --totp $OSECRET | xclip -sel clip ;sudo openvpn --
 alias s='sbt -mem 4000'
 alias sd='sbt -mem 4000 -jvmDebug 9999'
 alias clip='xclip -sel clip'
-alias v='nvim'
+alias v='nvim.appimage'
 alias dc='docker-compose'
 alias dp='docker ps'
 alias gca='git add . && git commit --amend --no-edit'
@@ -51,6 +54,7 @@ alias ga='git add .'
 alias ds='docker stop (docker ps -aq)'
 alias dr='docker rm (docker ps -aq)'
 alias nm='cd /home/ozaharia/work/blaze-nifi-cluster-manager-service'
+alias ns='cd /home/ozaharia/work/blaze-nifi-cluster-manager-site'
 alias ..='cd ..'
 alias ....='cd ../..'
 alias ......='cd ../../..'
@@ -81,7 +85,7 @@ if string match -qr 'BluetoothMouse3600 Mouse' $devices
 	xinput set-button-map (xinput list --id-only "BluetoothMouse3600 Mouse")  3 2 1 
 end
 
-set -x NVM_DIR "$HOME/.nvm"
 
 # OPAM configuration
 source /home/ozaharia/.opam/opam-init/init.fish > /dev/null 2> /dev/null or true
+back

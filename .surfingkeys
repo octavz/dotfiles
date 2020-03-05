@@ -475,6 +475,14 @@ parcelRequire = function(e, r, t, n) {
             f = {
                 repeatIgnore: !0
             };
+            function openGoogleTranslate() {
+                if (window.getSelection().toString()) {
+                    searchSelectedWith('https://translate.google.com/?hl=en#auto/en/', false, false, '');
+                } else {
+                    tabOpenLink("https://translate.google.com/translate?js=n&sl=auto&tl=zh-CN&u=" + window.location.href);
+                }
+            }
+        vmapkey('<Ctrl-t>', '#9Translate selected text with google', openGoogleTranslate);    
         mapkey("gi", "#4Edit current URL with vim editor", o, f), mapkey("gI", "#4View image in new tab", d("img", function(n) {
             return tabOpenLink(n.src)
         }), f), mapkey("yp", "#7Copy URL path of current page", m(), f), mapkey("yI", "#7Copy Image URL", d("img", function(n) {
@@ -493,7 +501,7 @@ parcelRequire = function(e, r, t, n) {
                     extra: t.alias
                 })
             })
-        }), map("H", "S"), map("L", "D"), unmap("S"), map("J", "E"), map("K", "R"), unmap("E"), unmap("R"), map("o", "t"), map("O", "go"), unmap("t"), vmap("e", "w"), vmap("E", "w"), vmap("W", "w"), Hints.characters = "arstdhneioqwfpgluy;zxcvkm,", settings.defaultSearchEngine = "ss", iunmap(":");
+        }), map("H", "S"), map("L", "D"), unmap("S"), map("J", "E"), map("K", "R"), unmap("E"), unmap("R"), map("o", "t"), map("O", "go"), unmap("t"),vunmap("t"), vmap("e", "w"), vmap("E", "w"), vmap("W", "w"), Hints.characters = "arstdhneioqwfpgluy;zxcvkm,", settings.defaultSearchEngine = "ss", iunmap(":");
     }, {
         "./completions": "HkY7"
     }]

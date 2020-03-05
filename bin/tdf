@@ -4,7 +4,7 @@ has_display() {
 }
 
 main() {
-  ln -sf "$HOME/.config/termite/config_dark_fhd" "$HOME/.config/termite/config"
+  ln -sf "$HOME/.config/termite/theme_fhd_dark_dracula" "$HOME/.config/termite/config"
   killall -USR1 termite
 }
 

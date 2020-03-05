@@ -1,8 +1,3 @@
-[merge]
-  keepBackup = false
-	tool = p4mergetool
-[diff]
-	tool = kdiff3
 [user]
 	name = octav
 	email = zahariao@gmail.com
@@ -16,7 +11,14 @@
 	default = current
 [gc]
 	autoDetach = false
-[mergetool "p4mergetool"]
-	trustExitCode = false
-	keepBackup = false
-  cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+[diff]
+  tool = vimdiff
+[merge]
+	tool = vimdiff
+  conflictstyle = diff3
+[mergetool]
+  prompt = false
+[mergetool "vimdiff"]
+  cmd = nvim -d $LOCAL $MERGED $BASE $REMOTE   -c 'wincmd w' -c 'wincmd J'
+[difftool]
+  prompt = false
