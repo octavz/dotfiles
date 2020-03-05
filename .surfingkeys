@@ -1,8 +1,501 @@
-parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcelRequire,u="function"==typeof require&&require;function f(t,n){if(!r[t]){if(!e[t]){var i="function"==typeof parcelRequire&&parcelRequire;if(!n&&i)return i(t,!0);if(o)return o(t,!0);if(u&&"string"==typeof t)return u(t);var c=new Error("Cannot find module '"+t+"'");throw c.code="MODULE_NOT_FOUND",c}p.resolve=function(r){return e[t][1][r]||r},p.cache={};var l=r[t]=new f.Module(t);e[t][0].call(l.exports,p,l,l.exports,this)}return r[t].exports;function p(e){return f(p.resolve(e))}}f.isParcelRequire=!0,f.Module=function(e){this.id=e,this.bundle=f,this.exports={}},f.modules=e,f.cache=r,f.parent=o,f.register=function(r,t){e[r]=[function(e,r){r.exports=t},{}]};for(var c=0;c<t.length;c++)try{f(t[c])}catch(e){i||(i=e)}if(t.length){var l=f(t[t.length-1]);"object"==typeof exports&&"undefined"!=typeof module?module.exports=l:"function"==typeof define&&define.amd?define(function(){return l}):n&&(this[n]=l)}if(parcelRequire=f,i)throw i;return f}({"pawg":[function(require,module,exports) {
-var o={crunchbase:"",google_cs:"",google_yt:"",wolframalpha:"",domainr:"",google_cx_ex:"",google_cx_af:"",google_cx_al:"",google_cx_no:"",google_cx_cs:"",google_cx_jq:"",google_cx_gg:""};module.exports={keys:o};
-},{}],"HkY7":[function(require,module,exports) {
-var t=require("./conf.priv.js"),a=t.keys;function e(t){return String(t).replace(/[&<>"'`=\/]/g,function(t){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;","/":"&#x2F;","`":"&#x60;","=":"&#x3D;"}[t]})}function c(t){var a=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},e=document.createElement("li");return e.innerHTML=t,{html:e.outerHTML,url:a.url,props:a}}function n(t,a){var n=t,o=a;return(!(arguments.length>2&&void 0!==arguments[2])||arguments[2])&&(n=e(n),o=new URL(o).toString()),c('\n      <div class="title">'.concat(n,'</div>\n      <div class="url">').concat(o,"</div>\n    "),{url:o})}function o(t){return JSON.parse(t.text).items.map(function(t){return c('\n      <div>\n        <div class="title"><strong>'.concat(t.htmlTitle,"</strong></div>\n        <div>").concat(t.htmlSnippet,"</div>\n      </div>\n    "),{url:t.link})})}function s(t){var e="google_cx_".concat(t);return"https://www.googleapis.com/customsearch/v1?key=".concat(a.google_cs,"&cx=").concat(a[e],"&q=")}function r(t){var e="google_cx_".concat(t);return"https://cse.google.com/cse/publicurl?cx=".concat(a[e],"&q=")}var i={dh:{alias:"dh",name:"dockerhub",search:"https://hub.docker.com/search/?page=1&q=",compl:"https://hub.docker.com/v2/search/repositories/?page_size=20&query="}};i.dh.callback=function(t){return JSON.parse(t.text).results.map(function(t){var a="",n=e(t.repo_name);return a+="[★".concat(e(t.star_count),"] "),a+="[↓".concat(e(t.pull_count),"] "),-1===n.indexOf("/")&&(n="_/".concat(n)),c('\n      <div>\n        <div class="title"><strong>'.concat(e(t.repo_name),"</strong></div>\n        <div>").concat(a,"</div>\n        <div>").concat(e(t.short_description),"</div>\n      </div>\n    "),{url:"https://hub.docker.com/r/".concat(n)})})},i.gh={alias:"gh",name:"github",search:"https://github.com/search?q=",compl:"https://api.github.com/search/repositories?sort=stars&order=desc&q="},i.gh.callback=function(t){return JSON.parse(t.text).items.map(function(t){var a="";return t.stargazers_count&&(a+="[★".concat(t.stargazers_count,"] ")),n(a+t.full_name,t.html_url)})},i.do={alias:"do",name:"domainr",search:"https://domainr.com/?q=",compl:"https://domainr.p.mashape.com/v2/search?mashape-key=".concat(a.domainr,"&query=%s")},i.do.callback=function(t){return JSON.parse(t.text).results.map(function(t){return c('<div><div class="title"><strong>'.concat(e(t.domain),"</strong></div></div>"),{url:"https://domainr.com/".concat(t.domain)})})},i.vw={alias:"vw",name:"vimwikia",search:"https://vim.wikia.com/wiki/Special:Search?query=",compl:"https://vim.wikia.com/api.php?action=opensearch&format=json&formatversion=2&namespace=0&limit=10&suggest=true&search="},i.vw.callback=function(t){return JSON.parse(t.text)[1].map(function(t){return n(t,"https://vim.wikia.com/wiki/".concat(t))})},i.de={alias:"de",name:"define",search:"http://onelook.com/?w=",compl:"https://api.datamuse.com/words?md=d&sp=%s*"},i.de.callback=function(t){var a=JSON.parse(t.text),n=[];return a.forEach(function(t){t.defs&&0!==t.defs.length?t.defs.forEach(function(a){var e=a.split("\t"),c="(".concat(e[0],")"),o=e[1];n.push([t.word,c,o])}):n.push([t.word,"",""])}),n.map(function(t){var a=e(t[0]),n=e(t[1]),o=e(t[2]);return c('<div class="title"><strong>'.concat(a,"</strong> <em>").concat(n,"</em> ").concat(o,"</div>"),{url:"http://onelook.com/?w=".concat(encodeURIComponent(t[0]))})})},i.th={alias:"th",name:"thesaurus",search:"https://www.onelook.com/thesaurus/?s=",compl:"https://api.datamuse.com/words?md=d&ml=%s"},i.th.callback=function(t){var a=JSON.parse(t.text),n=[];return a.forEach(function(t){t.defs&&0!==t.defs.length?t.defs.forEach(function(a){var c=a.split("\t"),o="(".concat(e(c[0]),")"),s=e(c[1]);n.push([e(t.word),o,s])}):n.push([e(t.word),"",""])}),n.map(function(t){return c('<div class="title"><strong>'.concat(t[0],"</strong> <em>").concat(t[1],"</em> ").concat(t[2],"</div>"),{url:"http://onelook.com/thesaurus/?s=".concat(t[0])})})},i.wp={alias:"wp",name:"wikipedia",search:"https://en.wikipedia.org/w/index.php?search=",compl:"https://en.wikipedia.org/w/api.php?action=query&format=json&generator=prefixsearch&prop=info|pageprops%7Cpageimages%7Cdescription&redirects=&ppprop=displaytitle&piprop=thumbnail&pithumbsize=100&pilimit=6&inprop=url&gpssearch="};var l="data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0A%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2056%2056%22%20enable-background%3D%22new%200%200%2056%2056%22%3E%0A%20%20%20%20%3Cpath%20fill%3D%22%23eee%22%20d%3D%22M0%200h56v56h-56z%22%2F%3E%0A%20%20%20%20%3Cpath%20fill%3D%22%23999%22%20d%3D%22M36.4%2013.5h-18.6v24.9c0%201.4.9%202.3%202.3%202.3h18.7v-25c.1-1.4-1-2.2-2.4-2.2zm-6.2%203.5h5.1v6.4h-5.1v-6.4zm-8.8%200h6v1.8h-6v-1.8zm0%204.6h6v1.8h-6v-1.8zm0%2015.5v-1.8h13.8v1.8h-13.8zm13.8-4.5h-13.8v-1.8h13.8v1.8zm0-4.7h-13.8v-1.8h13.8v1.8z%22%2F%3E%0A%3C%2Fsvg%3E%0A";i.wp.callback=function(t){return Object.values(JSON.parse(t.text).query.pages).map(function(t){var a=t.thumbnail?t.thumbnail.source:l;return c('\n      <div style="padding:5px;display:grid;grid-template-columns:60px 1fr;grid-gap:15px">\n        <img style="width:60px" src="'.concat(a,'" alt="').concat(t.title,'">\n        <div>\n          <div class="title"><strong>').concat(t.title,'</strong></div>\n          <div class="title">').concat(t.description,"</div>\n        </div>\n      </div>\n    "),{url:t.fullurl})})};var p="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAAAAAByaaZbAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAACYktHRAD/h4/MvwAAAAlwSFlzAAAOwwAADsMBx2+oZAAAAAd0SU1FB+EICxEMErRVWUQAAABOdEVYdFJhdyBwcm9maWxlIHR5cGUgZXhpZgAKZXhpZgogICAgICAyMAo0NTc4Njk2NjAwMDA0OTQ5MmEwMDA4MDAwMDAwMDAwMDAwMDAwMDAwCnwMkD0AAAGXSURBVEjH1ZRvc4IwDMb7/T8dbVr/sEPlPJQd3g22GzJdmxVOHaQa8N2WN7wwvyZ5Eh/hngzxTwDr0If/TAK67POxbqxnpgCIx9dkrkEvswYnAFiutFSgtQapS4ejwFYqbXQXBmC+QxawuI/MJb0LiCq0DICNHoZRKQdYLKQZEhATcQmwDYD5GR8DDtfqaYAMActvTiVMaUvqhZPVYhYAK2SBAwGMTHngnc4wVmFPW9L6k1PJxbSCkfvhqolKSQhsWSClizNyxwAWdzIADixQRXRmdWSHthsg+TknaztFMZgC3vh/nG/qo68TLAKrCSrUg1ulp3cH+BpItBp3DZf0lFXVOIDnBdwKkLO4D5Q3QMO6HJ+hUb1NKNWMGJn3jf4ejPKn99CXOtsuyab95obGL/rpdZ7oIJK87iPiumG01drbdggoCZuq/f0XaB8/FbG62Ta5cD97XJwuZUT7ONbZTIK5m94hBuQs8535MsL5xxPw6ZoNj0DiyzhhcyMf9BJ0Jk1uRRpNyb4y0UaM9UI7E8+kt/EHgR/R6042JzmiwgAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxNy0wOC0xMVQxNzoxMjoxOC0wNDowMLy29LgAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTctMDgtMTFUMTc6MTI6MTgtMDQ6MDDN60wEAAAAAElFTkSuQmCC";i.dg={alias:"dg",name:"duckduckgo",search:"https://duckduckgo.com/?q=",compl:"https://duckduckgo.com/ac/?q="},i.dg.callback=function(t){return JSON.parse(t.text).map(function(t){return t.phrase})},i.go={alias:"go",name:"google",search:"https://www.google.com/search?q=",compl:"https://www.google.com/complete/search?client=chrome-omni&gs_ri=chrome-ext&oit=1&cp=1&pgcl=7&q="},i.go.callback=function(t){return JSON.parse(t.text)[1]},i.gi={alias:"gi",name:"google-images",search:"https://www.google.com/search?tbm=isch&q=",compl:"https://www.google.com/complete/search?client=chrome-omni&gs_ri=chrome-ext&oit=1&cp=1&pgcl=7&ds=i&q="},i.gi.callback=function(t){return JSON.parse(t.text)[1]},i.gl={alias:"gl",name:"google-lucky",search:"https://www.google.com/search?btnI=1&q=",compl:"https://www.google.com/complete/search?client=chrome-omni&gs_ri=chrome-ext&oit=1&cp=1&pgcl=7&q="},i.gl.callback=function(t){return JSON.parse(t.text)[1]},i.md={alias:"md",name:"marathon-dev",search:"http://mesos-master.nl.wehkamp.dev.blaze.ps:8080/ui/#/apps?filterText=",compl:"http://mesos-master.nl.wehkamp.dev.blaze.ps:8080/v2/apps?id="},i.md.callback=function(t){return JSON.parse(t.text).apps.map(function(t){var a=e(t.id.substring(1));return c('\n    <div>\n      <div class="title"><strong>'.concat(a,"</strong></div>\n    </div>\n  "),{url:"http://mesos-master.nl.wehkamp.dev.blaze.ps:8080/ui/#/apps/%2F".concat(encodeURIComponent(a))})})},i.mp={alias:"mp",name:"marathon-prod",search:"http://mesos-master.nl.wehkamp.prod.blaze.ps:8080/ui/#/apps?filterText=",compl:"http://mesos-master.nl.wehkamp.prod.blaze.ps:8080/v2/apps?id="},i.mp.callback=function(t){return JSON.parse(t.text).apps.map(function(t){var a=e(t.id.substring(1));return c('\n    <div>\n      <div class="title"><strong>'.concat(a,"</strong></div>\n    </div>\n  "),{url:"http://mesos-master.nl.wehkamp.prod.blaze.ps:8080/ui/#/apps/%2F".concat(encodeURIComponent(a))})})},i.ci={alias:"ci",name:"blaze-ci",search:"https://ci.global.control.blaze.ps/search/?q="},i.cd={alias:"cd",name:"blaze-cd",search:"https://cd.nl.wehkamp.control.blaze.ps/search/?q="},i.ha={alias:"ha",name:"hackage",search:"https://hackage.haskell.org/packages/search?terms=",compl:"https://hackage.haskell.org/packages/search.json?terms="},i.ha.callback=function(t){return JSON.parse(t.text).map(function(t){return n(t.name,"https://hackage.haskell.org/package/".concat(t.name))})},i.ho={alias:"ho",name:"hoogle",search:"https://www.haskell.org/hoogle/?hoogle=".concat(encodeURIComponent("+platform +xmonad +xmonad-contrib ")),compl:"https://www.haskell.org/hoogle/?mode=json&hoogle=".concat(encodeURIComponent("+platform +xmonad +xmonad-contrib "))},i.ho.callback=function(t){return JSON.parse(t.text).results.map(function(t){return n(t.self,t.location)})},i.hw={alias:"hw",name:"haskellwiki",search:"https://wiki.haskell.org/index.php?go=go&search=",compl:"https://wiki.haskell.org/api.php?action=opensearch&format=json&formatversion=2&namespace=0&limit=10&suggest=true&search="},i.hw.callback=function(t){return JSON.parse(t.text)[1]},i.hy={alias:"hy",name:"hayoo",search:"http://hayoo.fh-wedel.de/?query=",compl:"http://hayoo.fh-wedel.de/json?query="},i.hy.callback=function(t){return JSON.parse(t.text).result.map(function(t){return n("[".concat(t.resultType,"] ").concat(t.resultName),t.resultUri)})},i.jq={alias:"jq",name:"jquery",search:r("jq"),compl:s("jq"),callback:o},i.no={alias:"no",name:"node",search:r("no"),compl:s("no"),callback:o},i.np={alias:"np",name:"npm",search:"https://www.npmjs.com/search?q=",compl:"https://api.npms.io/v2/search/suggestions?size=20&q="},i.np.callback=function(t){return JSON.parse(t.text).map(function(t){var a="",n="",o="",s="";return t.package.description&&(n=e(t.package.description)),t.score&&t.score.final&&(s=Math.round(5*Number(t.score.final)),o="★".repeat(s)+"☆".repeat(5-s)),t.flags&&Object.keys(t.flags).forEach(function(t){a+="[<span style='color:#ff4d00'>⚑</span> ".concat(e(t),"] ")}),c('\n      <div>\n        <style>\n          .title>em {\n            font-weight: bold;\n          }\n        </style>\n        <div class="title">'.concat(t.highlight,'</div>\n        <div>\n          <span style="font-size:2em;line-height:0.5em">').concat(o,"</span>\n          <span>").concat(a,"</span>\n        </div>\n        <div>").concat(n,"</div>\n      </div>\n    "),{url:t.package.links.npm})})},i.hn={alias:"hn",name:"hackernews",search:"https://hn.algolia.com/?query=",compl:"https://hn.algolia.com/api/v1/search?tags=(story,comment)&query="},i.hn.callback=function(t){var a=JSON.parse(t.text);return a.hits.map(function(t){var e="",n="";switch(t.points&&(n+="[↑".concat(t.points,"] ")),t.num_comments&&(n+="[↲".concat(t.num_comments,"] ")),t._tags[0]){case"story":e=t.title;break;case"comment":e=t.comment_text;break;default:e=t.objectID}var o=new RegExp("(".concat(a.query.split(" ").join("|"),")"),"ig");e=e.replace(o,"<strong>$&</strong>");var s="https://news.ycombinator.com/item?id=".concat(t.objectID);return c('\n      <div>\n        <div class="title">'.concat(n+e,'</div>\n        <div class="url">').concat(s,"</div>\n      </div>\n    "),{url:s})})},i.re={alias:"re",name:"reddit",search:"https://www.reddit.com/search?sort=relevance&t=all&q=",compl:"https://api.reddit.com/search?syntax=plain&sort=relevance&limit=20&q="},i.re.callback=function(t){return JSON.parse(t.text).data.children.map(function(t){return n("[".concat(t.data.score,"] ").concat(t.data.title),"https://reddit.com".concat(t.data.permalink))})},i.yt={alias:"yt",name:"youtube",search:"https://www.youtube.com/search?q=",compl:"https://www.googleapis.com/youtube/v3/search?maxResults=20&part=snippet&type=video,channel&key=".concat(a.google_yt,"&safeSearch=none&q=")},i.yt.callback=function(t){return JSON.parse(t.text).items.map(function(t){switch(t.id.kind){case"youtube#channel":return n("".concat(t.snippet.channelTitle,": ").concat(t.snippet.description),"https://youtube.com/channel/".concat(t.id.channelId));case"youtube#video":return n(" ▶ ".concat(t.snippet.title),"https://youtu.be/".concat(t.id.videoId));default:return null}}).filter(function(t){return null!==t})},i.cats={alias:"sc",name:"cats",search:"https://typelevel.org/cats/api/cats/Applicative.html?search="},i.ss={alias:"ss",name:"StartPage",search:"https://www.startpage.com/do/dsearch?cat=web&pl=opensearch&language=english&query="},module.exports=i;
-},{"./conf.priv.js":"pawg"}],"Nwkc":[function(require,module,exports) {
-var n=require("./completions"),e=["sb","sw","ob","ow","cp",";cp",";ap","spa","spb","spd","sps","spc","spi","sfr","zQ","zz","zR","ab","Q","q","ag","af",";s","yp"];e.forEach(function(n){unmap(n)});var t={s:["b","w","h"]};Object.keys(t).forEach(function(n){t[n].forEach(function(e){removeSearchAliasX(e,n)})}),settings.hintAlign="left",settings.omnibarSuggestionTimeout=500,settings.hintGroups=!0,settings.richHintsForKeystroke=1,settings.theme="\n    /* Disable RichHints CSS animation */\n    .expandRichHints {\n        animation: 0s ease-in-out 1 forwards expandRichHints;\n    }\n    .collapseRichHints {\n        animation: 0s ease-in-out 1 forwards collapseRichHints;\n    }\n",map("w","k"),map("J","E"),map("K","R"),map("H","S"),map("L","D");var o=function(){return Front.showEditor(window.location.href,function(n){window.location.href=n},"url")},a="http://centralops.net/co/DomainDossier.aspx",i=function(){return tabOpenLink("".concat(a,"?dom_whois=true&addr=").concat(window.location.hostname))},r=function(){return tabOpenLink("".concat(a,"?dom_dns=true&addr=").concat(window.location.hostname))},c=function(){return tabOpenLink("".concat(a,"?dom_whois=true&dom_dns=true&traceroute=true&net_whois=true&svc_scan=true&addr=").concat(window.location.hostname))},s=function(){return chrome.storage.local.get("noPdfViewer",function(n){n.noPdfViewer?chrome.storage.local.remove("noPdfViewer",function(){Front.showBanner("PDF viewer enabled.")}):chrome.storage.local.set({noPdfViewer:1},function(){Front.showBanner("PDF viewer disabled.")})})},p=function(n,e){var t=window.location.pathname.slice(1);return n&&(t=t.split("/").slice(0,n).join("/")),e&&(t="".concat(window.location.hostname,"/").concat(t)),t},m=function(n,e){return function(){return Clipboard.write(p(n,e))}},u=function(){return tabOpenLink("/pages/options.html")},d=function(n){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:Hints.dispatchMouseClick;return function(){return Hints.create(n,e)}},f={repeatIgnore:!0};mapkey("gi","#4Edit current URL with vim editor",o,f),mapkey("gI","#4View image in new tab",d("img",function(n){return tabOpenLink(n.src)}),f),mapkey("yp","#7Copy URL path of current page",m(),f),mapkey("yI","#7Copy Image URL",d("img",function(n){return Clipboard.write(n.src)}),f),mapkey(";se","#11Edit Settings",u,f),mapkey("gS","#12Open Chrome settings",function(){return tabOpenLink("chrome://settings/")}),mapkey("=w","#14Lookup whois information for domain",i,f),mapkey("=d","#14Lookup dns information for domain",r,f),mapkey("=D","#14Lookup all information for domain",c,f),mapkey(";pd","#14Toggle PDF viewer from SurfingKeys",s,f);var h="<Space>",l="a";Object.keys(n).forEach(function(e){var t=n[e],o=l+t.alias;addSearchAliasX(t.alias,t.name,t.search,l,t.compl,t.callback),mapkey(o,"#8Search ".concat(t.name),function(){return Front.openOmnibar({type:"SearchEngine",extra:t.alias})})}),map("H","S"),map("L","D"),unmap("S"),map("J","E"),map("K","R"),unmap("E"),unmap("R"),map("o","t"),map("O","go"),unmap("t"),vmap("e","w"),vmap("E","w"),vmap("W","w"),Hints.characters="arstdhneio",settings.defaultSearchEngine="ss",iunmap(":");
-},{"./completions":"HkY7"}]},{},["Nwkc"], null)
+parcelRequire = function(e, r, t, n) {
+    var i, o = "function" == typeof parcelRequire && parcelRequire,
+        u = "function" == typeof require && require;
+
+    function f(t, n) {
+        if (!r[t]) {
+            if (!e[t]) {
+                var i = "function" == typeof parcelRequire && parcelRequire;
+                if (!n && i) return i(t, !0);
+                if (o) return o(t, !0);
+                if (u && "string" == typeof t) return u(t);
+                var c = new Error("Cannot find module '" + t + "'");
+                throw c.code = "MODULE_NOT_FOUND", c
+            }
+            p.resolve = function(r) {
+                return e[t][1][r] || r
+            }, p.cache = {};
+            var l = r[t] = new f.Module(t);
+            e[t][0].call(l.exports, p, l, l.exports, this)
+        }
+        return r[t].exports;
+
+        function p(e) {
+            return f(p.resolve(e))
+        }
+    }
+    f.isParcelRequire = !0, f.Module = function(e) {
+        this.id = e, this.bundle = f, this.exports = {}
+    }, f.modules = e, f.cache = r, f.parent = o, f.register = function(r, t) {
+        e[r] = [function(e, r) {
+            r.exports = t
+        }, {}]
+    };
+    for (var c = 0; c < t.length; c++) try {
+        f(t[c])
+    } catch (e) {
+        i || (i = e)
+    }
+    if (t.length) {
+        var l = f(t[t.length - 1]);
+        "object" == typeof exports && "undefined" != typeof module ? module.exports = l : "function" == typeof define && define.amd ? define(function() {
+            return l
+        }) : n && (this[n] = l)
+    }
+    if (parcelRequire = f, i) throw i;
+    return f
+}({
+    "pawg": [function(require, module, exports) {
+        var o = {
+            crunchbase: "",
+            google_cs: "",
+            google_yt: "",
+            wolframalpha: "",
+            domainr: "",
+            google_cx_ex: "",
+            google_cx_af: "",
+            google_cx_al: "",
+            google_cx_no: "",
+            google_cx_cs: "",
+            google_cx_jq: "",
+            google_cx_gg: ""
+        };
+        module.exports = {
+            keys: o
+        };
+    }, {}],
+    "HkY7": [function(require, module, exports) {
+        var t = require("./conf.priv.js"),
+            a = t.keys;
+
+        function e(t) {
+            return String(t).replace(/[&<>"'`=\/]/g, function(t) {
+                return {
+                    "&": "&amp;",
+                    "<": "&lt;",
+                    ">": "&gt;",
+                    '"': "&quot;",
+                    "'": "&#39;",
+                    "/": "&#x2F;",
+                    "`": "&#x60;",
+                    "=": "&#x3D;"
+                } [t]
+            })
+        }
+
+        function c(t) {
+            var a = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {},
+                e = document.createElement("li");
+            return e.innerHTML = t, {
+                html: e.outerHTML,
+                url: a.url,
+                props: a
+            }
+        }
+
+        function n(t, a) {
+            var n = t,
+                o = a;
+            return (!(arguments.length > 2 && void 0 !== arguments[2]) || arguments[2]) && (n = e(n), o = new URL(o).toString()), c('\n      <div class="title">'.concat(n, '</div>\n      <div class="url">').concat(o, "</div>\n    "), {
+                url: o
+            })
+        }
+
+        function o(t) {
+            return JSON.parse(t.text).items.map(function(t) {
+                return c('\n      <div>\n        <div class="title"><strong>'.concat(t.htmlTitle, "</strong></div>\n        <div>").concat(t.htmlSnippet, "</div>\n      </div>\n    "), {
+                    url: t.link
+                })
+            })
+        }
+
+        function s(t) {
+            var e = "google_cx_".concat(t);
+            return "https://www.googleapis.com/customsearch/v1?key=".concat(a.google_cs, "&cx=").concat(a[e], "&q=")
+        }
+
+        function r(t) {
+            var e = "google_cx_".concat(t);
+            return "https://cse.google.com/cse/publicurl?cx=".concat(a[e], "&q=")
+        }
+        var i = {
+            dh: {
+                alias: "dh",
+                name: "dockerhub",
+                search: "https://hub.docker.com/search/?page=1&q=",
+                compl: "https://hub.docker.com/v2/search/repositories/?page_size=20&query="
+            }
+        };
+        i.dh.callback = function(t) {
+            return JSON.parse(t.text).results.map(function(t) {
+                var a = "",
+                    n = e(t.repo_name);
+                return a += "[★".concat(e(t.star_count), "] "), a += "[↓".concat(e(t.pull_count), "] "), -1 === n.indexOf("/") && (n = "_/".concat(n)), c('\n      <div>\n        <div class="title"><strong>'.concat(e(t.repo_name), "</strong></div>\n        <div>").concat(a, "</div>\n        <div>").concat(e(t.short_description), "</div>\n      </div>\n    "), {
+                    url: "https://hub.docker.com/r/".concat(n)
+                })
+            })
+        }, i.gh = {
+            alias: "gh",
+            name: "github",
+            search: "https://github.com/search?q=",
+            compl: "https://api.github.com/search/repositories?sort=stars&order=desc&q="
+        }, i.gh.callback = function(t) {
+            return JSON.parse(t.text).items.map(function(t) {
+                var a = "";
+                return t.stargazers_count && (a += "[★".concat(t.stargazers_count, "] ")), n(a + t.full_name, t.html_url)
+            })
+        }, i.do = {
+            alias: "do",
+            name: "domainr",
+            search: "https://domainr.com/?q=",
+            compl: "https://domainr.p.mashape.com/v2/search?mashape-key=".concat(a.domainr, "&query=%s")
+        }, i.do.callback = function(t) {
+            return JSON.parse(t.text).results.map(function(t) {
+                return c('<div><div class="title"><strong>'.concat(e(t.domain), "</strong></div></div>"), {
+                    url: "https://domainr.com/".concat(t.domain)
+                })
+            })
+        }, i.vw = {
+            alias: "vw",
+            name: "vimwikia",
+            search: "https://vim.wikia.com/wiki/Special:Search?query=",
+            compl: "https://vim.wikia.com/api.php?action=opensearch&format=json&formatversion=2&namespace=0&limit=10&suggest=true&search="
+        }, i.vw.callback = function(t) {
+            return JSON.parse(t.text)[1].map(function(t) {
+                return n(t, "https://vim.wikia.com/wiki/".concat(t))
+            })
+        }, i.de = {
+            alias: "de",
+            name: "define",
+            search: "http://onelook.com/?w=",
+            compl: "https://api.datamuse.com/words?md=d&sp=%s*"
+        }, i.de.callback = function(t) {
+            var a = JSON.parse(t.text),
+                n = [];
+            return a.forEach(function(t) {
+                t.defs && 0 !== t.defs.length ? t.defs.forEach(function(a) {
+                    var e = a.split("\t"),
+                        c = "(".concat(e[0], ")"),
+                        o = e[1];
+                    n.push([t.word, c, o])
+                }) : n.push([t.word, "", ""])
+            }), n.map(function(t) {
+                var a = e(t[0]),
+                    n = e(t[1]),
+                    o = e(t[2]);
+                return c('<div class="title"><strong>'.concat(a, "</strong> <em>").concat(n, "</em> ").concat(o, "</div>"), {
+                    url: "http://onelook.com/?w=".concat(encodeURIComponent(t[0]))
+                })
+            })
+        }, i.th = {
+            alias: "th",
+            name: "thesaurus",
+            search: "https://www.onelook.com/thesaurus/?s=",
+            compl: "https://api.datamuse.com/words?md=d&ml=%s"
+        }, i.th.callback = function(t) {
+            var a = JSON.parse(t.text),
+                n = [];
+            return a.forEach(function(t) {
+                t.defs && 0 !== t.defs.length ? t.defs.forEach(function(a) {
+                    var c = a.split("\t"),
+                        o = "(".concat(e(c[0]), ")"),
+                        s = e(c[1]);
+                    n.push([e(t.word), o, s])
+                }) : n.push([e(t.word), "", ""])
+            }), n.map(function(t) {
+                return c('<div class="title"><strong>'.concat(t[0], "</strong> <em>").concat(t[1], "</em> ").concat(t[2], "</div>"), {
+                    url: "http://onelook.com/thesaurus/?s=".concat(t[0])
+                })
+            })
+        }, i.wp = {
+            alias: "wp",
+            name: "wikipedia",
+            search: "https://en.wikipedia.org/w/index.php?search=",
+            compl: "https://en.wikipedia.org/w/api.php?action=query&format=json&generator=prefixsearch&prop=info|pageprops%7Cpageimages%7Cdescription&redirects=&ppprop=displaytitle&piprop=thumbnail&pithumbsize=100&pilimit=6&inprop=url&gpssearch="
+        };
+        var l = "data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0A%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2056%2056%22%20enable-background%3D%22new%200%200%2056%2056%22%3E%0A%20%20%20%20%3Cpath%20fill%3D%22%23eee%22%20d%3D%22M0%200h56v56h-56z%22%2F%3E%0A%20%20%20%20%3Cpath%20fill%3D%22%23999%22%20d%3D%22M36.4%2013.5h-18.6v24.9c0%201.4.9%202.3%202.3%202.3h18.7v-25c.1-1.4-1-2.2-2.4-2.2zm-6.2%203.5h5.1v6.4h-5.1v-6.4zm-8.8%200h6v1.8h-6v-1.8zm0%204.6h6v1.8h-6v-1.8zm0%2015.5v-1.8h13.8v1.8h-13.8zm13.8-4.5h-13.8v-1.8h13.8v1.8zm0-4.7h-13.8v-1.8h13.8v1.8z%22%2F%3E%0A%3C%2Fsvg%3E%0A";
+        i.wp.callback = function(t) {
+            return Object.values(JSON.parse(t.text).query.pages).map(function(t) {
+                var a = t.thumbnail ? t.thumbnail.source : l;
+                return c('\n      <div style="padding:5px;display:grid;grid-template-columns:60px 1fr;grid-gap:15px">\n        <img style="width:60px" src="'.concat(a, '" alt="').concat(t.title, '">\n        <div>\n          <div class="title"><strong>').concat(t.title, '</strong></div>\n          <div class="title">').concat(t.description, "</div>\n        </div>\n      </div>\n    "), {
+                    url: t.fullurl
+                })
+            })
+        };
+        var p = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAAAAAByaaZbAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAACYktHRAD/h4/MvwAAAAlwSFlzAAAOwwAADsMBx2+oZAAAAAd0SU1FB+EICxEMErRVWUQAAABOdEVYdFJhdyBwcm9maWxlIHR5cGUgZXhpZgAKZXhpZgogICAgICAyMAo0NTc4Njk2NjAwMDA0OTQ5MmEwMDA4MDAwMDAwMDAwMDAwMDAwMDAwCnwMkD0AAAGXSURBVEjH1ZRvc4IwDMb7/T8dbVr/sEPlPJQd3g22GzJdmxVOHaQa8N2WN7wwvyZ5Eh/hngzxTwDr0If/TAK67POxbqxnpgCIx9dkrkEvswYnAFiutFSgtQapS4ejwFYqbXQXBmC+QxawuI/MJb0LiCq0DICNHoZRKQdYLKQZEhATcQmwDYD5GR8DDtfqaYAMActvTiVMaUvqhZPVYhYAK2SBAwGMTHngnc4wVmFPW9L6k1PJxbSCkfvhqolKSQhsWSClizNyxwAWdzIADixQRXRmdWSHthsg+TknaztFMZgC3vh/nG/qo68TLAKrCSrUg1ulp3cH+BpItBp3DZf0lFXVOIDnBdwKkLO4D5Q3QMO6HJ+hUb1NKNWMGJn3jf4ejPKn99CXOtsuyab95obGL/rpdZ7oIJK87iPiumG01drbdggoCZuq/f0XaB8/FbG62Ta5cD97XJwuZUT7ONbZTIK5m94hBuQs8535MsL5xxPw6ZoNj0DiyzhhcyMf9BJ0Jk1uRRpNyb4y0UaM9UI7E8+kt/EHgR/R6042JzmiwgAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxNy0wOC0xMVQxNzoxMjoxOC0wNDowMLy29LgAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTctMDgtMTFUMTc6MTI6MTgtMDQ6MDDN60wEAAAAAElFTkSuQmCC";
+        i.dg = {
+            alias: "dg",
+            name: "duckduckgo",
+            search: "https://duckduckgo.com/?q=",
+            compl: "https://duckduckgo.com/ac/?q="
+        }, i.dg.callback = function(t) {
+            return JSON.parse(t.text).map(function(t) {
+                return t.phrase
+            })
+        }, i.go = {
+            alias: "go",
+            name: "google",
+            search: "https://www.google.com/search?q=",
+            compl: "https://www.google.com/complete/search?client=chrome-omni&gs_ri=chrome-ext&oit=1&cp=1&pgcl=7&q="
+        }, i.go.callback = function(t) {
+            return JSON.parse(t.text)[1]
+        }, i.gi = {
+            alias: "gi",
+            name: "google-images",
+            search: "https://www.google.com/search?tbm=isch&q=",
+            compl: "https://www.google.com/complete/search?client=chrome-omni&gs_ri=chrome-ext&oit=1&cp=1&pgcl=7&ds=i&q="
+        }, i.gi.callback = function(t) {
+            return JSON.parse(t.text)[1]
+        }, i.gl = {
+            alias: "gl",
+            name: "google-lucky",
+            search: "https://www.google.com/search?btnI=1&q=",
+            compl: "https://www.google.com/complete/search?client=chrome-omni&gs_ri=chrome-ext&oit=1&cp=1&pgcl=7&q="
+        }, i.gl.callback = function(t) {
+            return JSON.parse(t.text)[1]
+        }, i.md = {
+            alias: "md",
+            name: "marathon-dev",
+            search: "http://mesos-master.nl.wehkamp.dev.blaze.ps:8080/ui/#/apps?filterText=",
+            compl: "http://mesos-master.nl.wehkamp.dev.blaze.ps:8080/v2/apps?id="
+        }, i.md.callback = function(t) {
+            return JSON.parse(t.text).apps.map(function(t) {
+                var a = e(t.id.substring(1));
+                return c('\n    <div>\n      <div class="title"><strong>'.concat(a, "</strong></div>\n    </div>\n  "), {
+                    url: "http://mesos-master.nl.wehkamp.dev.blaze.ps:8080/ui/#/apps/%2F".concat(encodeURIComponent(a))
+                })
+            })
+        }, i.mp = {
+            alias: "mp",
+            name: "marathon-prod",
+            search: "http://mesos-master.nl.wehkamp.prod.blaze.ps:8080/ui/#/apps?filterText=",
+            compl: "http://mesos-master.nl.wehkamp.prod.blaze.ps:8080/v2/apps?id="
+        }, i.mp.callback = function(t) {
+            return JSON.parse(t.text).apps.map(function(t) {
+                var a = e(t.id.substring(1));
+                return c('\n    <div>\n      <div class="title"><strong>'.concat(a, "</strong></div>\n    </div>\n  "), {
+                    url: "http://mesos-master.nl.wehkamp.prod.blaze.ps:8080/ui/#/apps/%2F".concat(encodeURIComponent(a))
+                })
+            })
+        }, i.ci = {
+            alias: "ci",
+            name: "blaze-ci",
+            search: "https://ci.global.control.blaze.ps/search/?q="
+        }, i.cd = {
+            alias: "cd",
+            name: "blaze-cd",
+            search: "https://cd.nl.wehkamp.control.blaze.ps/search/?q="
+        }, i.ha = {
+            alias: "ha",
+            name: "hackage",
+            search: "https://hackage.haskell.org/packages/search?terms=",
+            compl: "https://hackage.haskell.org/packages/search.json?terms="
+        }, i.ha.callback = function(t) {
+            return JSON.parse(t.text).map(function(t) {
+                return n(t.name, "https://hackage.haskell.org/package/".concat(t.name))
+            })
+        }, i.ho = {
+            alias: "ho",
+            name: "hoogle",
+            search: "https://www.haskell.org/hoogle/?hoogle=".concat(encodeURIComponent("+platform +xmonad +xmonad-contrib ")),
+            compl: "https://www.haskell.org/hoogle/?mode=json&hoogle=".concat(encodeURIComponent("+platform +xmonad +xmonad-contrib "))
+        }, i.ho.callback = function(t) {
+            return JSON.parse(t.text).results.map(function(t) {
+                return n(t.self, t.location)
+            })
+        }, i.hw = {
+            alias: "hw",
+            name: "haskellwiki",
+            search: "https://wiki.haskell.org/index.php?go=go&search=",
+            compl: "https://wiki.haskell.org/api.php?action=opensearch&format=json&formatversion=2&namespace=0&limit=10&suggest=true&search="
+        }, i.hw.callback = function(t) {
+            return JSON.parse(t.text)[1]
+        }, i.hy = {
+            alias: "hy",
+            name: "hayoo",
+            search: "http://hayoo.fh-wedel.de/?query=",
+            compl: "http://hayoo.fh-wedel.de/json?query="
+        }, i.hy.callback = function(t) {
+            return JSON.parse(t.text).result.map(function(t) {
+                return n("[".concat(t.resultType, "] ").concat(t.resultName), t.resultUri)
+            })
+        }, i.jq = {
+            alias: "jq",
+            name: "jquery",
+            search: r("jq"),
+            compl: s("jq"),
+            callback: o
+        }, i.no = {
+            alias: "no",
+            name: "node",
+            search: r("no"),
+            compl: s("no"),
+            callback: o
+        }, i.np = {
+            alias: "np",
+            name: "npm",
+            search: "https://www.npmjs.com/search?q=",
+            compl: "https://api.npms.io/v2/search/suggestions?size=20&q="
+        }, i.np.callback = function(t) {
+            return JSON.parse(t.text).map(function(t) {
+                var a = "",
+                    n = "",
+                    o = "",
+                    s = "";
+                return t.package.description && (n = e(t.package.description)), t.score && t.score.final && (s = Math.round(5 * Number(t.score.final)), o = "★".repeat(s) + "☆".repeat(5 - s)), t.flags && Object.keys(t.flags).forEach(function(t) {
+                    a += "[<span style='color:#ff4d00'>⚑</span> ".concat(e(t), "] ")
+                }), c('\n      <div>\n        <style>\n          .title>em {\n            font-weight: bold;\n          }\n        </style>\n        <div class="title">'.concat(t.highlight, '</div>\n        <div>\n          <span style="font-size:2em;line-height:0.5em">').concat(o, "</span>\n          <span>").concat(a, "</span>\n        </div>\n        <div>").concat(n, "</div>\n      </div>\n    "), {
+                    url: t.package.links.npm
+                })
+            })
+        }, i.hn = {
+            alias: "hn",
+            name: "hackernews",
+            search: "https://hn.algolia.com/?query=",
+            compl: "https://hn.algolia.com/api/v1/search?tags=(story,comment)&query="
+        }, i.hn.callback = function(t) {
+            var a = JSON.parse(t.text);
+            return a.hits.map(function(t) {
+                var e = "",
+                    n = "";
+                switch (t.points && (n += "[↑".concat(t.points, "] ")), t.num_comments && (n += "[↲".concat(t.num_comments, "] ")), t._tags[0]) {
+                    case "story":
+                        e = t.title;
+                        break;
+                    case "comment":
+                        e = t.comment_text;
+                        break;
+                    default:
+                        e = t.objectID
+                }
+                var o = new RegExp("(".concat(a.query.split(" ").join("|"), ")"), "ig");
+                e = e.replace(o, "<strong>$&</strong>");
+                var s = "https://news.ycombinator.com/item?id=".concat(t.objectID);
+                return c('\n      <div>\n        <div class="title">'.concat(n + e, '</div>\n        <div class="url">').concat(s, "</div>\n      </div>\n    "), {
+                    url: s
+                })
+            })
+        }, i.re = {
+            alias: "re",
+            name: "reddit",
+            search: "https://www.reddit.com/search?sort=relevance&t=all&q=",
+            compl: "https://api.reddit.com/search?syntax=plain&sort=relevance&limit=20&q="
+        }, i.re.callback = function(t) {
+            return JSON.parse(t.text).data.children.map(function(t) {
+                return n("[".concat(t.data.score, "] ").concat(t.data.title), "https://reddit.com".concat(t.data.permalink))
+            })
+        }, i.yt = {
+            alias: "yt",
+            name: "youtube",
+            search: "https://www.youtube.com/search?q=",
+            compl: "https://www.googleapis.com/youtube/v3/search?maxResults=20&part=snippet&type=video,channel&key=".concat(a.google_yt, "&safeSearch=none&q=")
+        }, i.yt.callback = function(t) {
+            return JSON.parse(t.text).items.map(function(t) {
+                switch (t.id.kind) {
+                    case "youtube#channel":
+                        return n("".concat(t.snippet.channelTitle, ": ").concat(t.snippet.description), "https://youtube.com/channel/".concat(t.id.channelId));
+                    case "youtube#video":
+                        return n(" ▶ ".concat(t.snippet.title), "https://youtu.be/".concat(t.id.videoId));
+                    default:
+                        return null
+                }
+            }).filter(function(t) {
+                return null !== t
+            })
+        }, i.cats = {
+            alias: "sc",
+            name: "cats",
+            search: "https://typelevel.org/cats/api/cats/Applicative.html?search="
+        }, i.ss = {
+            alias: "ss",
+            name: "StartPage",
+            search: "https://www.startpage.com/do/dsearch?cat=web&pl=opensearch&language=english&query="
+        }, module.exports = i;
+    }, {
+        "./conf.priv.js": "pawg"
+    }],
+    "Nwkc": [function(require, module, exports) {
+        var n = require("./completions"),
+            e = ["sb", "sw", "ob", "ow", "cp", ";cp", ";ap", "spa", "spb", "spd", "sps", "spc", "spi", "sfr", "zQ", "zz", "zR", "ab", "Q", "q", "ag", "af", ";s", "yp"];
+        e.forEach(function(n) {
+            unmap(n)
+        });
+        var t = {
+            s: ["b", "w", "h"]
+        };
+        Object.keys(t).forEach(function(n) {
+            t[n].forEach(function(e) {
+                removeSearchAliasX(e, n)
+            })
+        }), settings.hintAlign = "left", settings.omnibarSuggestionTimeout = 500, settings.hintGroups = !0, settings.richHintsForKeystroke = 1, settings.theme = "\n    /* Disable RichHints CSS animation */\n    .expandRichHints {\n        animation: 0s ease-in-out 1 forwards expandRichHints;\n    }\n    .collapseRichHints {\n        animation: 0s ease-in-out 1 forwards collapseRichHints;\n    }\n", map("w", "k"), map("J", "E"), map("K", "R"), map("H", "S"), map("L", "D");
+        var o = function() {
+                return Front.showEditor(window.location.href, function(n) {
+                    window.location.href = n
+                }, "url")
+            },
+            a = "http://centralops.net/co/DomainDossier.aspx",
+            i = function() {
+                return tabOpenLink("".concat(a, "?dom_whois=true&addr=").concat(window.location.hostname))
+            },
+            r = function() {
+                return tabOpenLink("".concat(a, "?dom_dns=true&addr=").concat(window.location.hostname))
+            },
+            c = function() {
+                return tabOpenLink("".concat(a, "?dom_whois=true&dom_dns=true&traceroute=true&net_whois=true&svc_scan=true&addr=").concat(window.location.hostname))
+            },
+            s = function() {
+                return chrome.storage.local.get("noPdfViewer", function(n) {
+                    n.noPdfViewer ? chrome.storage.local.remove("noPdfViewer", function() {
+                        Front.showBanner("PDF viewer enabled.")
+                    }) : chrome.storage.local.set({
+                        noPdfViewer: 1
+                    }, function() {
+                        Front.showBanner("PDF viewer disabled.")
+                    })
+                })
+            },
+            p = function(n, e) {
+                var t = window.location.pathname.slice(1);
+                return n && (t = t.split("/").slice(0, n).join("/")), e && (t = "".concat(window.location.hostname, "/").concat(t)), t
+            },
+            m = function(n, e) {
+                return function() {
+                    return Clipboard.write(p(n, e))
+                }
+            },
+            u = function() {
+                return tabOpenLink("/pages/options.html")
+            },
+            d = function(n) {
+                var e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : Hints.dispatchMouseClick;
+                return function() {
+                    return Hints.create(n, e)
+                }
+            },
+            f = {
+                repeatIgnore: !0
+            };
+        mapkey("gi", "#4Edit current URL with vim editor", o, f), mapkey("gI", "#4View image in new tab", d("img", function(n) {
+            return tabOpenLink(n.src)
+        }), f), mapkey("yp", "#7Copy URL path of current page", m(), f), mapkey("yI", "#7Copy Image URL", d("img", function(n) {
+            return Clipboard.write(n.src)
+        }), f), mapkey(";se", "#11Edit Settings", u, f), mapkey("gS", "#12Open Chrome settings", function() {
+            return tabOpenLink("chrome://settings/")
+        }), mapkey("=w", "#14Lookup whois information for domain", i, f), mapkey("=d", "#14Lookup dns information for domain", r, f), mapkey("=D", "#14Lookup all information for domain", c, f), mapkey(";pd", "#14Toggle PDF viewer from SurfingKeys", s, f);
+        var h = "<Space>",
+            l = "a";
+        Object.keys(n).forEach(function(e) {
+            var t = n[e],
+                o = l + t.alias;
+            addSearchAliasX(t.alias, t.name, t.search, l, t.compl, t.callback), mapkey(o, "#8Search ".concat(t.name), function() {
+                return Front.openOmnibar({
+                    type: "SearchEngine",
+                    extra: t.alias
+                })
+            })
+        }), map("H", "S"), map("L", "D"), unmap("S"), map("J", "E"), map("K", "R"), unmap("E"), unmap("R"), map("o", "t"), map("O", "go"), unmap("t"), vmap("e", "w"), vmap("E", "w"), vmap("W", "w"), Hints.characters = "arstdhneioqwfpgluy;zxcvkm,", settings.defaultSearchEngine = "ss", iunmap(":");
+    }, {
+        "./completions": "HkY7"
+    }]
+}, {}, ["Nwkc"], null)
 //# sourceMappingURL=/conf.js.map
