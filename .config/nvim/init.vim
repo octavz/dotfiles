@@ -9,14 +9,12 @@ au CursorHold * checktime
 call plug#begin()
 "ui stuff
 Plug 'scrooloose/nerdtree'
-Plug 'semanticart/simple-menu.vim'
 Plug 'mhinz/vim-startify'
 Plug 'vim-airline/vim-airline'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'felixhummel/setcolors.vim'
-Plug 'vimlab/split-term.vim'
 Plug 'ervandew/supertab'
 Plug 'codcodog/simplebuffer.vim'
 
@@ -27,18 +25,18 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'nanotech/jellybeans.vim'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'lifepillar/vim-solarized8'
-Plug 'machakann/vim-sandwich'
+Plug 'tpope/vim-surround'
+Plug 'romgrk/github-light.vim'
 
 "general text productivity 
 Plug 'vim-scripts/SyntaxRange'
 Plug 'vim-scripts/LargeFile'
-" Plug 'justinmk/vim-sneak'
 Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-repeat'
 Plug 'wellle/targets.vim'
 Plug 'godlygeek/tabular'
-Plug 'vim-scripts/AutoComplPop'
 Plug 'tmsvg/pear-tree'
+Plug 'justinmk/vim-sneak'
 
 "programming productivity
 Plug 'tomtom/tcomment_vim'
@@ -46,21 +44,16 @@ Plug 'kassio/neoterm'
 Plug 'luochen1990/rainbow'
 Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-rooter'
+Plug 'pechorin/any-jump.vim'
+Plug 'tpope/vim-dadbod'
 
 "languages
 "scala
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-
-"elixir
-Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['scala','reason']}
 
 "haskell
 Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
 Plug 'ndmitchell/ghcid', { 'for' : 'haskell', 'rtp': 'plugins/nvim' }
-
-"clojure
-Plug 'tpope/vim-classpath', { 'for': 'clojure' }
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 "reasonml
 Plug 'reasonml-editor/vim-reason-plus'
@@ -73,7 +66,24 @@ let g:rainbow_active = 1
 let g:sneak#label = 1
 let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
 let g:SuperTabClosePreviewOnPopupClose = 1
-let g:pear_tree_repeatable_expand = 1
+let g:pear_tree_repeatable_expand = 0
+"
+" Check if NERDTree is open or active
+function! IsNERDTreeOpen()
+  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+endfunction
+
+" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
+" file, and we're not in vimdiff
+function! SyncTree()
+  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
+    NERDTreeFind
+    wincmd p
+  endif
+endfunction
+
+" Highlight currently open buffer in NERDTree
+autocmd BufRead * call SyncTree()
 
 :command! WQ wq
 :command! Wq wq
@@ -150,9 +160,12 @@ set autowrite
 set splitright
 set splitbelow
 
-"set directory=~/tmp/.swp//
-set noswapfile
-
+set directory=$HOME/.vim/swapfiles//
+set undodir=$HOME/.vim/tmp//
+set backupdir=$HOME/.vim/backup//
+set undofile
+set undolevels=1000
+set undoreload=10000
 set guioptions-=T
 set guioptions-=r
 set guioptions-=L
@@ -181,6 +194,9 @@ tnoremap <C-j> <C-\><C-n><C-j>
 tnoremap <C-k> <C-\><C-n><C-k>
 tnoremap <C-l> <C-\><C-n><C-l>
 
+nnoremap <leader>f :AnyJump<CR>
+xnoremap <leader>f :AnyJumpVisual<CR>
+
 map <silent> <Down> :cn<CR>
 map <silent> <Up> :cp<CR>
 nmap <leader>en :cn<CR>
@@ -198,19 +214,23 @@ nnoremap <Leader>c "_c
 nnoremap <Leader>x "_x
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
-" Move to the previous buffer
-nnoremap <leader>H :bprevious<CR>
-" Move to the next buffer
-nnoremap <leader>L :bnext<CR>
+
+nnoremap <leader>t :tabnew<CR>
+nnoremap <leader>H :tabprevious<CR>
+nnoremap <leader>L :tabnext<CR>
 
 "ui
 nmap <silent><Leader>1 :NERDTreeToggleVCS<CR>
+nmap <silent><Leader>S :NERDTreeFind<CR>
 nmap <silent> <Leader>q :lclose<CR>:pclose<CR>:cclose<CR>
 nmap <silent> <Leader>Q :bd<CR>
 nmap <silent> <Leader>n :FZF<CR>
 nmap <silent> <leader>b :SimpleBufferToggle<CR>
-nnoremap <leader><TAB> :bnext<CR>
-nnoremap <leader><S-tab> :bprevious<CR>
+
+nnoremap <silent> <leader><tab> :bnext<CR>:call SyncTree()<CR>
+nnoremap <silent> <leader><s-tab> :bprev<CR>:call SyncTree()<CR>
+nnoremap <silent> <F2> :NERDTreeToggle<cr><c-w>l:call SyncTree()<cr><c-w>h
+
 nnoremap <C-x> :bdelete<CR>
 nnoremap <C-A-x> :bdelete!<CR>
 let g:focuscolour = 0
@@ -236,7 +256,7 @@ nmap <silent> <c-N> :FZF<CR>
 
 
 "productivity
-noremap <Leader>f :Ack <C-R><C-W><CR>
+noremap <Leader>F :Ack <C-R><C-W><CR>
 nmap <silent> <Leader><Space> <C-^>
 nmap <silent> <C-A> :e $MYVIMRC<CR>
 inoremap <C-space> <C-x><C-o>
@@ -245,31 +265,10 @@ nnoremap Q gq
 
 "scala
 
-vmap <Leader>% :Tabularize /%\{1,2} <CR>
-vmap <Leader>= :Tabularize /=\{1,2} <CR>
-vmap <Leader>, :Tabularize /=\{1} <CR>
-vmap <Leader>s :Tabularize /\s\+ <CR>
-
-"elm
-au FileType elm nmap <silent> <Leader>t :ElmShowDocs<CR>
-au FileType elm nmap <silent> <Leader>c :ElmMake<CR>
-au FileType elm nmap <silent> <Leader>l :ElmMakeMain<CR>
-au FileType elm nmap <silent> <Leader>e :ElmErrorDetail<CR>
-au FileType elm nmap <silent> <Leader>d :ElmBrowseDocs<CR>
-au FileType elm nmap <silent> <Leader>re :ElmRepl<CR>
-au FileType elm nmap <silent> <C-A-l> :ElmFormat<CR>
-
-"clojure
-au FileType clojure nmap <silent> cpR :Require!<CR>
-au FileType clojure nmap <silent> <leader>R :Require!<CR>
-au FileType clojure nmap <silent> <leader><f9> :!lein run<CR>
-au FileType clojure nmap <silent> <Leader>q :ccl<CR>
-
-"haskell
-au FileType haskell nnoremap <silent> <leader>his :HsimportSymbol<CR>
-au FileType haskell nnoremap <silent> <leader>him :HsimportModule<CR>
-" Or map each action separately
-
+vmap <Leader>t% :Tabularize /%\{1,2} <CR>
+vmap <Leader>t= :Tabularize /=\{1,2} <CR>
+vmap <Leader>t, :Tabularize /=\{1} <CR>
+vmap <Leader>ts :Tabularize /\s\+ <CR>
 
 "coc settings
 function! s:show_documentation()
@@ -285,7 +284,7 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-au FileType reason,scala,rust,haskell call SetCocOptions()
+au FileType reason,scala call SetCocOptions()
 
 
 nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
@@ -326,8 +325,6 @@ function SetCocOptions()
   nnoremap <silent> K :call <SID>show_documentation()<CR>
 
   " Highlight symbol under cursor on CursorHold
-  autocmd CursorHold * silent call CocActionAsync('highlight')
-
   " Remap for rename current word
   nmap <leader>rn <Plug>(coc-rename)
 
@@ -366,4 +363,3 @@ nnoremap <A-down> :SetColors all<CR>
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
-

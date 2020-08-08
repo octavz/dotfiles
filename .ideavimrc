@@ -18,12 +18,14 @@ nmap <Leader>re :action RenameElement<CR>
 nmap <Leader>tf :action RerunFailedTests<CR>
 nmap <Leader>t :action RerunTests<CR>
 nmap <Leader>rr :action Rerun<CR>
-nmap <Leader>su :action ShowUsages<CR>
+nmap <Leader>u :action ShowUsages<CR>
+nmap s :action KJumpAction<CR>
+nmap S :action KJumpAction.Char2<CR>
+nmap <Leader>l :action KJumpAction.Line<CR>
 nmap <Leader>fu :action FindUsages<CR>
 nmap <Leader>q :action HideAllWindows<CR>
+nmap K :action Scala.TypeInfo<cr>
 
-" Press `f` to activate AceJump
-map s :action AceAction<CR>
 " Press `F` to activate Target Mode
 map M :action AceTargetAction<CR>
 " Press `g` to activate Line Mode

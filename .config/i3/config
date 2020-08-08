@@ -31,25 +31,24 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec termite
-bindsym $mod+Shift+Return exec terminator
+bindsym $mod+Shift+Return exec urxvt
 bindsym $mod+Mod1+1 exec gnome-screenshot -w
 bindsym $mod+Mod1+2 exec gnome-screenshot -a
+bindsym $mod+Mod1+3 exec gnome-screenshot 
 bindsym Print exec gnome-screenshot -w
 bindsym $mod+Print exec gnome-screenshot -a
-bindsym $mod+q exec $BROWSER --new-window www.duckduckgo.com
-#bindsym $mod+q exec firefox --new-window www.duckduckgo.com
-bindsym $mod+e exec gvim
+bindsym $mod+q exec vivaldi-stable --new-window www.startpage.com
+bindsym $mod+e exec gnvim
 bindsym $mod+n exec --no-startup-id nautilus --no-desktop
 bindsym $mod+Delete exec --no-startup-id lxtask
 bindsym $mod+Control+Delete exec i3lock-fancy -p -- scrot -z
 bindsym $mod+Shift+s exec termite --name=cheatsheet --geometry=900x600 -e ~/bin/cheatsheet
 bindsym $mod+b bar mode toggle
-bindsym $mod+z exec --no-startup-id exec i3zen
 bindsym $mod+Shift+b border pixel 5
 bindsym --release $mod+Shift+b border pixel 0
 
 bindsym $mod+Control+1 exec laptop.sh
-bindsym $mod+Control+2 exec 4k
+bindsym $mod+Control+2 exec 4k1
 bindsym $mod+Control+3 exec conf.sh
 bindsym $mod+Control+4 exec h.sh
 bindsym $mod+a exec easyfocus 
@@ -216,8 +215,8 @@ focus_follows_mouse no
 exec_always --no-startup-id flashfocus
 exec feh --bg-scale "/home/ozaharia/Pictures/1.jpg"
 exec --no-startup-id i3-msg 'workspace 1; exec $BROWSER'
-exec --no-startup-id i3-msg 'workspace 2; exec station.AppImage'
-exec --no-startup-id i3-msg 'workspace 2; exec skypeforlinux'
+#exec --no-startup-id i3-msg 'workspace 2; exec station.AppImage'
+#exec --no-startup-id i3-msg 'workspace 2; exec skypeforlinux'
 #exec --no-startup-id mate-volume-control-applet
 exec --no-startup-id indicator-bluetooth
 exec --no-startup-id indicator-diskman
@@ -313,5 +312,8 @@ mouse_warping output
 
 bindsym $mod+d exec td
 bindsym $mod+Shift+d exec tl
-bindsym $mod+grave exec "i3-msg [class=Station] fullscreen toggle"
+#bindsym $mod+grave exec "i3-msg [class=Station] fullscreen toggle"
+bindsym $mod+grave exec "i3-msg [class=Slack] fullscreen toggle"
 bindsym --whole-window $mod+button3 kill
+
+exec --no-startup-id alsactl restore

@@ -126,7 +126,7 @@ if [[ $TERM == xterm-termite ]]; then
   __vte_osc7
 fi
 export GOROOT=/usr/local/go
-export PATH=$PATH:$GOPATH/bin:$GOROOT/bin:/home/ozaharia/go/bin:/home/ozaharia/.cargo/bin:/home/ozaharia/.local/bin:/home/ozaharia/bin:/home/ozaharia/.cabal/bin:/home/ozaharia/node_modules/.bin:/home/ozaharia/apps/apache-maven-3.6.0/bin
+export PATH=$PATH:$GOPATH/bin:$GOROOT/bin:/home/ozaharia/go/bin:/home/ozaharia/.cargo/bin:/home/ozaharia/.local/bin:/home/ozaharia/bin:/home/ozaharia/.cabal/bin:/home/ozaharia/node_modules/.bin:/home/ozaharia/apps/apache-maven-3.6.0/bin:/usr/bin:/bin
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
