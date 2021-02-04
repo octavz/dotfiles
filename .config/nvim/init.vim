@@ -1,4 +1,3 @@
-au BufRead,BufNewFile *.sbt set filetype=scala
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
 set nocompatible | filetype indent plugin on | syn off
@@ -15,8 +14,9 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'felixhummel/setcolors.vim'
-Plug 'ervandew/supertab'
+"Plug 'ervandew/supertab'
 Plug 'codcodog/simplebuffer.vim'
+Plug 'arcticicestudio/nord-vim'
 
 "colors
 Plug 'altercation/vim-colors-solarized'
@@ -35,8 +35,10 @@ Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-repeat'
 Plug 'wellle/targets.vim'
 Plug 'godlygeek/tabular'
-Plug 'tmsvg/pear-tree'
+"Plug 'tmsvg/pear-tree'
 Plug 'justinmk/vim-sneak'
+Plug 'dyng/ctrlsf.vim'
+Plug 'ojroques/vim-oscyank'
 
 "programming productivity
 Plug 'tomtom/tcomment_vim'
@@ -49,11 +51,14 @@ Plug 'tpope/vim-dadbod'
 
 "languages
 "scala
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['scala','reason']}
-
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'scalameta/nvim-metals'
+Plug 'nvim-lua/completion-nvim'
+Plug 'steelsojka/completion-buffers'
+Plug 'gfanto/fzf-lsp.nvim'
 "haskell
-Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
-Plug 'ndmitchell/ghcid', { 'for' : 'haskell', 'rtp': 'plugins/nvim' }
+"Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
+"Plug 'ndmitchell/ghcid', { 'for' : 'haskell', 'rtp': 'plugins/nvim' }
 
 "reasonml
 Plug 'reasonml-editor/vim-reason-plus'
@@ -61,6 +66,8 @@ Plug 'reasonml-editor/vim-reason-plus'
 call plug#end()
 
 "autocmd BufLeave,FocusLost * silent! wall
+"copy text to + register using OSC
+autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | OSCYankReg + | endif
 
 let g:rainbow_active = 1
 let g:sneak#label = 1
@@ -194,8 +201,15 @@ tnoremap <C-j> <C-\><C-n><C-j>
 tnoremap <C-k> <C-\><C-n><C-k>
 tnoremap <C-l> <C-\><C-n><C-l>
 
-nnoremap <leader>f :AnyJump<CR>
-xnoremap <leader>f :AnyJumpVisual<CR>
+" nnoremap <leader>F :AnyJump<CR>
+" xnoremap <leader>F :AnyJumpVisual<CR>
+
+nmap     <leader>f <Plug>CtrlSFCwordPath<CR>
+vmap     <leader>F <Plug>CtrlSFVwordPath
+vmap     <leader>r <Plug>CtrlSFVwordExec
+
+"nnoremap <leader>fo :CtrlSFOpen<CR>
+"nnoremap <leader>ft :CtrlSFToggle<CR>
 
 map <silent> <Down> :cn<CR>
 map <silent> <Up> :cp<CR>
@@ -206,7 +220,7 @@ nmap <leader>ep :cn<CR>
 vnoremap < <gv
 vnoremap > >gv
 "replace the hovered word
-nnoremap <leader>r :%s/\<<C-r>=expand('<cword>')<CR>\>/
+"nnoremap <leader>r :%s/\<<C-r>=expand('<cword>')<CR>\>/
 "delete without adding to register
 nnoremap <Leader>D "_D
 nnoremap <Leader>C "_C
@@ -215,7 +229,7 @@ nnoremap <Leader>x "_x
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 
-nnoremap <leader>t :tabnew<CR>
+nnoremap <leader>T :tabnew<CR>
 nnoremap <leader>H :tabprevious<CR>
 nnoremap <leader>L :tabnext<CR>
 
@@ -233,8 +247,8 @@ nnoremap <silent> <F2> :NERDTreeToggle<cr><c-w>l:call SyncTree()<cr><c-w>h
 
 nnoremap <C-x> :bdelete<CR>
 nnoremap <C-A-x> :bdelete!<CR>
-let g:focuscolour = 0
-colorscheme gruvbox
+let g:focuscolour = 1
+colorscheme nord
 
 
 function! ToggleFocusColor()
@@ -256,10 +270,10 @@ nmap <silent> <c-N> :FZF<CR>
 
 
 "productivity
-noremap <Leader>F :Ack <C-R><C-W><CR>
+"noremap <Leader>F :Ack <C-R><C-W><CR>
 nmap <silent> <Leader><Space> <C-^>
 nmap <silent> <C-A> :e $MYVIMRC<CR>
-inoremap <C-space> <C-x><C-o>
+"inoremap <C-space> <C-x><C-o>
 noremap <silent> <Leader>h :Startify <CR>
 nnoremap Q gq
 
@@ -284,15 +298,16 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-au FileType reason,scala call SetCocOptions()
+"au FileType scala call SetCocOptions()
 
+set shortmess-=F
 
-nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
+"nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
 
 function SetCocOptions()
   :cd %:h | cd `git rev-parse --show-toplevel`
   set updatetime=300
-  set cmdheight=2
+  set cmdheight=1
   set shortmess+=c
   set signcolumn=yes
   set completeopt=longest,menuone
@@ -343,14 +358,16 @@ function SetCocOptions()
 
   " Notify coc.nvim that <enter> has been pressed.
   " Currently used for the formatOnType feature.
-
-  " Metals specific commands
-  " Start Metals Doctor
-  command! -nargs=0 MetalsDoctor :call CocRequestAsync('metals', 'workspace/executeCommand', { 'command': 'doctor-run' })
-  " Manually start build import
-  command! -nargs=0 MetalsImport :call CocRequestAsync('metals', 'workspace/executeCommand', { 'command': 'build-import' })
-  " Manually connect with the build server
-  command! -nargs=0 MetalsConnect :call CocRequestAsync('metals', 'workspace/executeCommand', { 'command': 'build-connect' })
+" Toggle panel with Tree Views
+  nnoremap <silent> <space>2 :<C-u>CocCommand metals.tvp<CR>
+  " Toggle Tree View 'metalsPackages'
+  nnoremap <silent> <space>tp :<C-u>CocCommand metals.tvp metalsPackages<CR>
+  " Toggle Tree View 'metalsCompile'
+  nnoremap <silent> <space>tc :<C-u>CocCommand metals.tvp metalsCompile<CR>
+  " Toggle Tree View 'metalsBuild'
+  nnoremap <silent> <space>tb :<C-u>CocCommand metals.tvp metalsBuild<CR>
+  " Reveal current current class (trait or object) in Tree View 'metalsPackages'
+  nnoremap <silent> <space>tf :<C-u>CocCommand metals.revealInTreeView metalsPackages<CR
 endfunction
 
 nnoremap <C-left> :call NextColor(-1)<CR>
@@ -363,3 +380,115 @@ nnoremap <A-down> :SetColors all<CR>
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
+
+if exists('+termguicolors')
+  let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
+" Remap for do codeAction of selected region
+function! s:cocActionsOpenFromSelected(type) abort
+  execute 'CocCommand actions.open ' . a:type
+endfunction
+
+xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
+
+set colorcolumn=100
+
+"=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+" These are example settings to use with nvim-metals and the nvim built in
+" LSP.  Be sure to thoroughly read the the help docs to get an idea of what
+" everything does.
+"
+" The below configuration also makes use of the following plugin
+" - https://github.com/nvim-lua/completion-nvim
+"=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+
+"-----------------------------------------------------------------------------
+" nvim-lsp Mappings
+"-----------------------------------------------------------------------------
+nnoremap <silent> gd          <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> K           <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> gi          <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> gr          <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> gds         <cmd>lua vim.lsp.buf.document_symbol()<CR>
+nnoremap <silent> <leader>ws   <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+nnoremap <silent> <leader>rn  <cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <silent> <leader>f   <cmd>lua vim.lsp.buf.formatting()<CR>
+nnoremap <silent> <leader>ca  <cmd>lua vim.lsp.buf.code_action()<CR>
+nnoremap <silent> <leader>ws  <cmd>lua require'metals'.worksheet_hover()<CR>
+nnoremap <silent> <leader>a   <cmd>lua require'metals'.open_all_diagnostics()<CR>
+nnoremap <silent> <space>d    <cmd>lua vim.lsp.diagnostic.set_loclist()<CR>
+nnoremap <silent> [c          <cmd>lua vim.lsp.diagnostic.goto_prev { wrap = false }<CR>
+nnoremap <silent> ]c          <cmd>lua vim.lsp.diagnostic.goto_next { wrap = false }<CR>
+
+"-----------------------------------------------------------------------------
+" nvim-lsp Settings
+"-----------------------------------------------------------------------------
+
+"-----------------------------------------------------------------------------
+" nvim-metals setup with a few additions such as nvim-completions
+"-----------------------------------------------------------------------------
+:lua << EOF
+  metals_config = require'metals'.bare_config
+  metals_config.settings = {
+     showImplicitArguments = true,
+     excludedPackages = {
+       "akka.actor.typed.javadsl",
+       "com.github.swagger.akka.javadsl"
+     }
+  }
+
+  metals_config.on_attach = function()
+    require'completion'.on_attach();
+  end
+
+  metals_config.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+      virtual_text = {
+        prefix = '',
+      }
+    }
+  )
+EOF
+
+if has('nvim-0.5')
+  augroup lsp
+    au!
+    au FileType scala,sbt lua require('metals').initialize_or_attach(metals_config)
+  augroup end
+endif
+
+"-----------------------------------------------------------------------------
+" completion-nvim settings
+"-----------------------------------------------------------------------------
+" Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+imap <silent> <c-space> <Plug>(completion_trigger)
+
+let g:completion_chain_complete_list = [
+    \{'complete_items': ['lsp']},
+    \{'complete_items': ['buffers']},
+    \{'mode': '<c-p>'},
+    \{'mode': '<c-n>'}
+\]
+
+let g:completion_auto_change_source = 1
+
+nnoremap <leader>s :WorkspaceSymbols 
+"-----------------------------------------------------------------------------
+" Helpful general settings
+"-----------------------------------------------------------------------------
+
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+
+" Avoid showing message extra message when using completion
+set shortmess+=c
+
+" Ensure autocmd works for Filetype
+set shortmess-=F
